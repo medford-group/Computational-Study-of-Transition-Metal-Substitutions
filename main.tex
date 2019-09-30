@@ -1,0 +1,274 @@
+\documentclass[catalysts,article,submit,moreauthors,pdftex,10pt,a4paper]{mdpi} 
+\usepackage{todonotes}
+\usepackage{comment}
+%--------------------
+% Class Options:
+%--------------------
+% journal
+%----------
+% Choose between the following MDPI journals:
+% actuators, admsci, aerospace, agriculture, agronomy, algorithms, animals, antibiotics, antibodies, antioxidants, applsci, arts, atmosphere, atoms, axioms, batteries, behavsci, beverages, bioengineering, biology, biomedicines, biomimetics, biomolecules, biosensors, brainsci, buildings, carbon, cancers, catalysts, cells, challenges, chemosensors, children, chromatography, climate, coatings, computation, computers, condensedmatter, cosmetics, cryptography, crystals, data, dentistry, designs, diagnostics, diseases, diversity, econometrics, economies, education, electronics, energies, entropy, environments, epigenomes, fermentation, fibers, fishes, fluids, foods, forests, futureinternet, galaxies, games, gels, genealogy, genes, geosciences, geriatrics, healthcare, horticulturae, humanities, hydrology, informatics, information, infrastructures, inorganics, insects, instruments, ijerph, ijfs, ijms, ijgi, inventions, jcdd, jcm, jdb, jfb, jfmk, jimaging, jof, jintelligence, jlpea, jmse, jpm, jrfm, jsan, land, languages, laws, life, literature, lubricants, machines, magnetochemistry, marinedrugs, materials, mathematics, mca, mti, medsci, medicines, membranes, metabolites, metals, microarrays, micromachines, microorganisms, minerals, molbank, molecules, mps, nanomaterials, ncrna, neonatalscreening, nutrients, particles, pathogens, pharmaceuticals, pharmaceutics, pharmacy, philosophies, photonics, plants, polymers, processes, proteomes, publications, recycling, religions, remotesensing, resources, risks, robotics, safety, sensors, separations, sexes, sinusitis, socsci, societies, soils, sports, standards, sustainability, symmetry, systems, technologies, toxics, toxins, universe, urbansci, vaccines, vetsci, viruses, water
+%---------
+% article
+%---------
+% The default type of manuscript is article, but can be replaced by: 
+% addendum, article, book, bookreview, briefreport, casereport, changes, comment, commentary, communication, conceptpaper, correction, conferencereport, expressionofconcern, meetingreport, creative, datadescriptor, discussion, editorial, essay, erratum, hypothesis, interestingimage, letter, newbookreceived, opinion, obituary, projectreport, reply, retraction, review, sciprints, shortnote, supfile, technicalnote
+% supfile = supplementary materials
+%----------
+% submit
+%----------
+% The class option "submit" will be changed to "accept" by the Editorial Office when the paper is accepted. This will only make changes to the frontpage (e.g. the logo of the journal will get visible), the headings, and the copyright information. Also, line numbering will be removed. Journal info and pagination for accepted papers will also be assigned by the Editorial Office.
+%------------------
+% moreauthors
+%------------------
+% If there is only one author the class option oneauthor should be used. Otherwise use the class option moreauthors.
+%---------
+% pdftex
+%---------
+% The option pdftex is for use with pdfLaTeX. If eps figure are used, remove the option pdftex and use LaTeX and dvi2pdf.
+
+%=================================================================
+\firstpage{1} 
+\makeatletter 
+\setcounter{page}{\@firstpage} 
+\makeatother 
+\articlenumber{x}
+\doinum{10.3390/------}
+\pubvolume{xx}
+\pubyear{2016}
+\copyrightyear{2016}
+\externaleditor{Academic Editor: name}
+\history{Received: date; Accepted: date; Published: date}
+%------------------------------------------------------------------
+% The following line should be uncommented if the LaTeX file is uploaded to arXiv.org
+%\pdfoutput=1
+
+%=================================================================
+% Add packages and commands here. The following packages are loaded in our class file: fontenc, calc, indentfirst, fancyhdr, graphicx, lastpage, ifthen, lineno, float, amsmath, setspace, enumitem, mathpazo, booktabs, titlesec, etoolbox, amsthm, hyphenat, natbib, hyperref, footmisc, geometry, caption, url, mdframed
+
+%=================================================================
+%% Please use the following mathematics environments:
+ \theoremstyle{mdpi}
+ \newcounter{thm}
+ \setcounter{thm}{0}
+ \newcounter{ex}
+ \setcounter{ex}{0}
+ \newcounter{re}
+ \setcounter{re}{0}
+
+ \newtheorem{Theorem}[thm]{Theorem}
+ \newtheorem{Lemma}[thm]{Lemma}
+ \newtheorem{Corollary}[thm]{Corollary}
+ \newtheorem{Proposition}[thm]{Proposition}
+
+ \theoremstyle{mdpidefinition}
+ \newtheorem{Characterization}[thm]{Characterization}
+ \newtheorem{Property}[thm]{Property}
+ \newtheorem{Problem}[thm]{Problem}
+ \newtheorem{Example}[ex]{Example}
+ \newtheorem{ExamplesandDefinitions}[ex]{Examples and Definitions}
+ \newtheorem{Remark}[re]{Remark}
+ \newtheorem{Definition}[thm]{Definition}
+%% For proofs, please use the proof environment (the amsthm package is loaded by the MDPI class).
+
+%=================================================================
+% Full title of the paper (Capitalized)
+\Title{Transition-Metal Dopants in TiO$_2$ for Photocatalytic Nitrogen Fixation}
+
+% Authors, for the paper (add full first names)
+\Author{}
+% Authors, for metadata in PDF
+\AuthorNames{}
+
+% Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
+\address{%
+$^{1}$ \quad Affiliation 1; e-mail@e-mail.com\\
+$^{2}$ \quad Affiliation 2; e-mail@e-mail.com}
+
+% Contact information of the corresponding author
+\corres{Correspondence: e-mail@e-mail.com; Tel.: +x-xxx-xxx-xxxx}
+
+% Current address and/or shared authorship
+\firstnote{Current address: Affiliation 3} 
+\secondnote{These authors contributed equally to this work.}
+
+% Simple summary
+%\simplesumm{}
+
+% Abstract (Do not use inserted blank lines, i.e. \\) 
+\abstract{}
+
+% Keywords
+\keyword{keyword 1; keyword 2; keyword 3. List three to ten pertinent keywords specific to the article, yet reasonably common within the subject discipline.}
+
+% The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
+%\PACS{J0101}
+%\MSC{}
+%\JEL{}
+
+% If this is an expanded version of a conference paper, please cite it here: enter the full citation of your conference paper, and add $^\S$ in the end of the title of this article.
+%\conference{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Data:
+
+%\dataset{DOI number or link to the deposited data set in cases where the data set is published or set to be published separately. If the data set is submitted and will be published as a supplement to this paper in the journal Data, this field will be filled by the editors of the journal. In this case, please make sure to submit the data set as a supplement when entering your manuscript into our manuscript editorial system.}
+
+%\datasetlicense{license under which the data set is made available (CC0, CC-BY, CC-BY-SA, CC-BY-NC, etc.)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+
+\maketitle
+\begin{abstract}
+    
+\end{abstract}
+\section{Introduction}
+%%boilerplate Haber-Bosch intro
+The fixation of atmospheric nitrogen has long been one of the prime challenges in chemistry and chemical engineering.\cite{ritter_18, Schloegl_2003} The Haber-Bosch process has been the route of choice for performing the fixation for the past century, permitting the must of the population growth over that period.\cite{Smil_1999} However, this process has many significant drawbacks, including high CO$_2$ emissions and heavy centralization requirements.\cite{Comer_2019} The Haber-Bosch process' considerable contribution to CO$_2$ emissions has been an increasingly pressing concern for the global community, as it is accountable 340 million tonnes of CO$_2$---fully 2\% of the carbon emissions worldwide.\cite{gross_12, Schiffer_2017} For this reason, supplanting the Haber-Bosch process could be a large contribution in global efforts to curb climate change. Another drawback lies in the necessity of centralization for Haber-Bosch, which contributes to global economic inequality.\cite{Comer_2019} Due to the high temperatures and pressures required, Haber-Bosch has significant economies of scale, meaning significant resources as well as a critical mass of demand is required for a new plant. Both of these conditions are met in industrialized nations, as the strong availability of capital allows for the necessary resources to be obtained and the agricultural industry provides the demand.\cite{McArthur_2017} However, these barriers have prevented developing regions, such as Sub-Saharan Africa, from developing Haber-Bosch plants, resulting in high costs of fertilizer for those regions, leading to reduced crop yields.\cite{yuan_2014, IFDC_2012} This causes fertilizer to be more expensive in poorer regions than in wealthy ones.
+
+Due to the various drawbacks of the Haber-Bosch process, researchers have sought alternative means of producing fixed nitrogen \cite{Comer_2019, McPherson_2019,WANG20181055, Kyriakou_2017}. Two strategies seeing being examined are electrocatalysis\cite{McPherson_2019} and photocatalysis\cite{Medford_2017}. However, making either of these technologies viable presents a significant challenge. Electrochemical nitrogen fixation requires first generating electricity before conveying it to the catalyst surface to perform the reaction.\cite{kyriakou_2017} This extra step limits the ability of electrochemical processes to be decentralized, as power generation is needed in addition to the electrocatalytic cells. Another route has been photochemical nitrogen fixation, which provides a solution that only relies on sunlight and humidified air to produce fixed nitrogen. The photochemical route involves less capital investment and less local infrastructure because of its simplicity relative to electrochemistry, and is thus preverable for low resource environments.
+
+%review photocatalytic nitrogen fixation experiments, then a paragraph on metal/nonmetal doping
+Photochemical nitrogen fixation has been known to the scientific community for some time, but inconsistent results and low rates have discouraged further study.\cite{Medford_2017} While some would attribute the first discovery of photocatalytic nitrogen fixation to Dhar,\cite{Dhar_1941} the first well-controlled experiments were performed by Schrauzer and Guth.\cite{Schrauzer_1977} Schrauzer and Guth were able to establish the production of NH$_3$ in sterilized desert sands under illumination. These initial results spurred some skepticism, leading to follow-up experiments which included more precise markers, such as isotropic labeling.\cite{Schrauzer_1983} Many further experiments have been performed over the years attempting to establish that the production of NH$_3$ was not merely due to contamination\cite{Bickley_1979,Augugliaro_1982,Soria_1991,Li_2018,Yuan_2013,Hirakawa_2017} though the topic remains somewhat controversial. However, recent experiments utilizing ambient pressure XPS have observed reduced nitrogen compounds under only under illunation, strongly supporting the validity of previous experiments.\cite{Comer_2018b} Indeed, it has proven critical to ensure great care is taken in NH$_3$ measurement methods, due to the small concentrations and interference of other species.\cite{Gao_2018,Cui2018}
+
+%describe difference between photochemical and electrochemical systems
+
+%discuss efficiency
+Rates of reaction for photocatalytic nitrogen fixation remain relatively low ($\mu mol$ scale \cite{Hirakawa_2017}), with no great improvements since the process's discovery. However, while it is often tacitly assumed that high efficiency is required to make a viable technology, it has been posited that only a comparatively low 0.1\% solar efficiency is required for feasibility.\cite{Comer_2019,Medford_2017} With sufficiently low capital cost, this system could see use in areas that are relatively far from fertilizer plants due to lowering of transportation costs. The competition of NH$_3$ production with H$_2$ evolution is the primary challenge for a potential electrocatalyst or photocatalyst, dubbed the "selectivity challenge".\cite{Singh_2017} For this reason, high faradic efficiency is also often sought in the electrochemical literature.\cite{McPherson_2019} The driver of this is the opportunity cost of using electricity for catalysis over other possible uses. Attention being focused on faradic efficiency often leads to the use of low overpotentials to obtain efficiency at the cost of reaction rate. Conversely, because the photoexcited electrons within a photocatalyst have no alternative uses there is no faradic efficiency requirement for a photocatalyst. A photochemical system could waste arbitrary amounts of it's catalytic turnovers producing H$_2$ gas, but be successful by achieving the 0.1\% solar to ammonia efficiency and reasonable reaction rates. %%write more on this
+
+One proposal for improving surface reaction rates is the inclusion of doping metals into TiO$_2$ samples. Doping metals can improve reaction rates by either altering the kinetics of the surface reaction or improving the material's photochemical properties of the material, such means as decreasing the band gap and tuning band alignment. Adding dopants is a common strategy to improve performance in TiO$_2$ photochemistry.\cite{Schneider_2014, Li_2007, Dozzi_2013, Diebold2003} Schrauzer and Guth tested a variety of doping metals in their 1983 paper.\cite{Schrauzer_1983} In particular, the presence of iron was shown to improve NH$_3$ yields\cite{Schrauzer_1977,Augugliaro_1982}. However, the mechanism of iron appears to be based on charge separation rather than affecting the surface kinetics.\cite{Comer_2018} Hirakawa et al. found that depositing noble metals (Pt, Ir, etc.) onto an already prepared rutile (110) surface led to a decrease in reaction rates.\cite{Hirakawa_2017} They hypothesized that this was due to the metal atoms filling oxygen vacancy sites responsible for the reaction, though the vacancies they implicated are theoretically inactive.\cite{Comer_2018} In this work we focus on the ability of metals to improve surface kinetics, while setting aside their possible role in photophysics.
+
+%review theoretical work
+
+%To expedite the process, avoiding a multitude of experimental tests on the domain of possible dopants, there have been attempts to predict catalytic activity computationally. Computational screening has been used profitably in several areas of catalysis including CO$_2$ reduction\cite{}, hydrogen evolution\cite{}, and oxygen reduction\cite{Norskov_004}. These theoretical studies screening materials for effectiveness in nitrogen fixation have confirmed its applicability as a predictive method.\cite{Hoskuldsson_2017} Theoretical results verify that the N$_2$ bond dissociation is the rate-limiting step. \cite{https://pubs.acs.org/doi/pdf/10.1021/jp056982h} Further endeavors focus on determining specific reaction pathways or finding more efficient ceramics, surfaces, and dopants.\cite{}
+%describe challenges of ambient temperature N2 fixation
+
+The two largest challenges to fixing nitrogen under ambient conditions have been posited to be the kinetics of the first hydrogenation step and the desorption of NH$_3$.\cite{Hoskuldsson_2017,Singh_2017,Montoya_2015} These two challenges provide the basis of two design criteria for nitrogen fixation catalysts. N$_2$ is a molecules with no intrinsic dipole and a very strong N-N triple bond making reactions challenging at room temperature.\cite{Montoya_2015,Comer_2018}. For this reason, N$_2$ is often referred to as being inert. This is the primary reason the first hydrogenation step is found to be rate limiting for low temperature nitrogen reduction.\cite{Montoya_2015, Singh_2017, Hoskuldsson_2017, Comer_2018} The exceedingly high temperatures of the Haber-Bosch process (700K) allow it to follow a "dissociative" mechanism, whereby N$_2$ is dissociated on the catalyst surface into nitrogen adatoms immediately in the first step.\cite{Ullmann_amm_2006, Hellman_2006} Surmounting such a high energy barrier is not feasible at room temperature, requiring the reaction to follow an "associative" mechanism in which hydrogen atoms are attached successively to the nitrogen until the N-N bond can be broken.\cite{Montoya_2015}
+
+% review what we did in this publication then lead into results
+In this work, we examine the potential of doping metal atoms to improve the surface chemistry of nitrogen fixation on the rutile (110) surface. We screen The d-block transition metals substituted onto the (110) surface at a bridging oxygen vacancy, thus holding the 2+ oxidation state. We map out the thermodynamics of both associative and dissociative pathways on these materials. We also identify trends across the periodic table in the formation energy of these defect sites and the N$_2$ binding energy. Finally, we assess the expected improvement in reaction rates that is expected from forming metal dopant sites on the surface for photocatalytic reactions. We find that none of the examined candidates improve the reaction rate significantly. This finding agrees with findings in the experimental literature, that the addition of metals does not improve reaction rates for photocatalytic nitrogen fixation.
+
+\section{Results and Discussion}
+Rutile (110) was chosen as a model surface due to rutile's implication in increased rates of reaction.\cite{Schrauzer_1977} Addtionally, there is a rich literature on the surface science of rutile (110)\cite{Diebold2003,Yates_1991,Lu1994,Walle2009}. From this model surface slabs containing metal dopants at the surface in the 2+ state were generated for each studied dopant metal. These 2+ sites were created by replacing the 6 fold titanium site with the metal and removing a bridging oxygen. The lattice parameters of the unit cells were fixed at the calculated value for pure rutile TiO$_2$. Spin polarization was implemented in all simulations to ensure the lowest energy spin state was obtained for each site. In total, 47 \todo{check this number --52 if including both 2+ and 4+ of pure TiO2 - We have 5 failed calculations right now, so I'm putting 47 - hopefully we'll have these fixed by the final deadline and we can put 52} surfaces were screened for their nitrogen fixation potential by mapping out the thermodynamics of all possible nitrogen reduction pathways on the surface.\todo{fill in details}
+
+
+
+The stability of substituted metal surface sites has been examined with respect to their position on the periodic table. The formation energy if each metal substitute was calculated with respect to their pure metallic form. The results in Figure \ref{fig:hamming} indicate there is a strong correlation between these two quantities indicates that the ability for a metal to form 2+ surface sites is strongly related on its position on the periodic table, with the relationship becoming stronger when the element is more than 3 positions away from Ti. This correlation lines up with the chemical intuition that elements with similar  valence numbers are most able to substitute one another chemically. Trends in atomic radii and electron affinity are unlikely to explain this however as they do not show the monotonic trend across the periodic table.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{Images/hamming_distance.png}
+    \caption{Surface site formation energy of surface sites with respect to their bulk metalic form vs the substituted metal's Hamming Distance from Ti}
+    \label{fig:hamming}
+\end{figure}
+
+Binding energies of N$_2$ and N$_2$H were calculated on each slab. The results can be seen in Figures \ref{fig:2+_N2_react_stab}-\ref{fig:2+_N2H_react_stab}. 
+
+In Figures \ref{fig:2+_N2_react_stab} the formation energy of the surface vs binding energy of N$_2$ are shown. These figures show the binding energy of N$_2$ compared to the surface  formation energy. Both of these values are important to quantify, as an active site with an exceptionally high formation energy is unlikely to exist on the surface in any significant quantity. Figure \ref{fig:2+_N2_react_stab} shows a clear trend in the relationship between these variables. There are many sites that bind N$_2$ with an energy of $\approx$ -0.2eV, which represents a weak physorption interaction and is not sufficient to bind N$_2$ at room temperature. However, some metal sites bind N$_2$ in a manner related to the site's formation energy. This second group highlights the trade-off between reactivity toward N$_2$ and surface formation energy that has been observed in amorphous catalysts.\cite{} These metal sites yield a frontier of Pareto optimal surface sites for adsorbing N$_2$. This analysis indicates that the active site's relative instability is a necessary but not sufficient condition for increasing N$_2$ binding.
+
+The most stable active sites are those involving Sc, Y, Hf, and Zr, all of which have favorable formation energies with respect to their corresponding pure metal forms in the 2+ configuration with respect to their pure metalic forms. In the case of Hf and Zr this is not surprising based on our previous analysis, as they lie in the same column of the periodic table as Ti, Thus having the same valence electron configuration. Critically, the favorable formation energy of these sites indicate that these metals would form surface sites rather than surface metal clusters in the thermodynamic limit, producing excellent dispersal.  Nb, Ta, and V are the next nearest in formation energy, all of which lie in the column directly to the right of Ti on the periodic table. Taken together, these metals surround Ti on the periodic table, and also form the most stable surface dopant states.
+
+Interesting patterns in nitrogen binding can also be seen down the rows of the periodic table as seen in Figures \ref{fig:2+_N2_period} and \ref{fig:4+_N2_period}. Figure \ref{fig:2+_N2_period} particularly shows the trend of increased N$_2$ binding down the periodic row, reaching a maximum when the d-shell is half filled and dropping as the d-shell is filled. The results are consistent with the well known d-band model\cite{}. Additionally, the binding strength increases down the columns as well as across the rows, with Os having the strongest binding as well as being in the middle of the d-block and on the lowest tested row. \todo{flesh this out and add more chemical reasoning}
+
+From the metal dopants in Figure \ref{fig:2+_N2_react_stab} the most promising appear to be Hf, Zr, Sc, and Y. All of these materials are able to bind N$_2$ at room temperature and are not excessively unstable.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{Images/2+N2_Formation.pdf}
+    \caption{2+ Formation Energy versus N2 Adsorption Energy}
+    \label{fig:2+_N2_react_stab}
+\end{figure}
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=0.8\linewidth]{Images/4+N2_Formation.pdf}
+%    \caption{4+ Formation Energy versus N2 Adsorption Energy}
+%    \label{fig:4+_N2_react_stab}
+%\end{figure}
+
+The first hydrogenation step is commonly thought to be rate limiting, thus the third criterion is a reasonable N$_2$ $\rightarrow$ N$_2$H reaction energy. While some would also add NH$_2$ binding energy as a fourth criterion\cite{}, this was not evaluated. \todo{give a better reason why we didn't do this} However, these authors suggest that an N$_2$H binding energy of 0eV is the optimum for rutile oxides. 
+
+A similar pattern with respect to binding energy and surface formation energy is seen with respect to N$_2$H as was seen with N$_2$. This can be seen for 2+ slabs in Figure \ref{fig:2+_N2H_react_stab}, with a group of metals lying on a line with negative slope. However, in this case there is a cluster of dopants with very unfavorable binding energies as well as high formation energies. \ref{fig:4+_N2H_period}
+
+%Based on this analysis we have identified X metals which show promise for photocatalytic nitrogen fixation. We completed reaction pathways for each of these reactions, the results can be seen in Figure \ref{}.\todo{discuss the results once we have the data}
+
+\todo{lets make a table of metal dopants that have been tried in the experimental literature and if they saw an increased or decreased rate, and if we predict an increased or decreased rate}
+%The adsorption of N$_2$ on dopant metals follows a clear trend across the rows of the periodic table as well as down the periodic columns (Figure \ref{}). The trend can be generally described by the d band model.\cite{Nilsson_2008}\todo{describe the d band model} 
+%D-band theory is an explanation of one factor involved in deciding the strength of the interaction between the molecule and the adsorbate. Because of the similarity of the s and p blocks of the transition metals, the most important interactions between the metal adsorbate and the molecule are with the d band. When the molecule and the metal adsorbate interact, they create both a bonding and antibonding state. The higher the filling of the antibonding state, the weaker the bonding is. This corresponds inversely with the height of the d band center; the higher the d band center, the less the antibonding state is filled. This theory predicts that near the center of the d block, the interactions will be stronger, corroborating our theory.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{Images/2+N2_by_element.pdf}
+    \caption{2+ N2 Adsorption Energy versus Element}
+    \label{fig:2+_N2_period}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{Images/2+N2H_by_element.pdf}
+    \caption{2+ N2H Adsorption Energy versus Element}
+    \label{fig:2+_N2H_period}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{Images/2+N2H_Formation.pdf}
+    \caption{2+ Formation Energy versus N2H Adsorption Energy}
+    \label{fig:2+_N2H_react_stab}
+\end{figure}
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=0.8\linewidth]{Images/4+N2_by_element.pdf}
+%    \caption{4+ N2 Adsorption Energy versus Element}
+%    \label{fig:4+_N2_period}
+%\end{figure}
+
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=0.8\linewidth]{Images/4+N2H_by_element.pdf}
+%    \caption{4+ N2H Adsorption Energy versus Element}
+%    \label{fig:4+_N2H_period}
+%\end{figure}
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=0.8\linewidth]{Images/4+N2H_Formation.pdf}
+%    \caption{4+ Formation Energy versus N2H Adsorption Energy}
+%    \label{fig:2+_N2H_react_stab}
+%\end{figure}
+
+%There is an inherent uncertainty in predicting energies of reactions using DFT. Literature suggests an additional error buffer of around 0.2 eV (CITATIONS). This does not greatly change the interpretation of our results, as the margin of favorability or disfavorability for the calculated reactions is typically larger than 0.2 eV. The change in the likelihood of a reaction occurring with the energetic favorability becomes smaller with increasing magnitude of energies, due to the exponential distribution of temperature.
+
+The full thermodynamics of the N$_2$ reduction reaction pathways of all elements were calculated. Figure \ref{} summarizes the results for the case of photocatalysis. X,X,and X show a small improvement in the largest thermodynamic barrier. However, the differences are limited to only ten's of meV, which remains within the error of the DFT methods chosen. Thus, the plot indicates that no metal is able to significantly improve the surface kinetics of N$_2$ reduction within the framework of photocatalysis with most several metal sites making the process more challenging. Thus, doping the rutile (110) surface with transition metals does not appear to be a viable strategy for the case of photocatalysis.
+
+These results highlight the challenge of improving reaction rates for photocatalytic nitrogen fixation. We have not considered the possible effects of metals on TiO$_2$'s bulk photochemical properties such as charge separation and carrier lifetime we believe this provides a starting point for engineering surface segregated metal dopants. In future, we could imagine engineering TiO$_2$ with metal dopants in the bulk structure that improve photochemical properties and surface segregated metal dopants that improve reaction kinetics. 
+
+\todo{describe the limitations, including limitations of CHE model, lack of kinetic barriers, error inherent in DFT (~0.2eV), etc}
+
+\section{Conclusions}
+This work has investigated stability of metal dopant surface sites and their effects on the reaction thermodynamics of N$_2$ reduction on rutile (110). We find a trade-off between the binding energy of N$_2$ and the formation energy of the metal site, forming a Pareto frontier. We also find that the formation energy of these doped surface states is strongly related to the distances from Ti on the periodic table, with metals closer to Ti integrating more favorably into the surface. Finally, we investigate the effects of dopant sites on the full reaction pathways for the studied metals, discovering that no metal substitute is able to significantly improve the thermodynamics of the surface.
+\section{Methods}
+\subsection{Density Functional Theory Calculations}
+All first principles calculations were performed in the Quantum Espresso software package \cite{QE-2009}.
+The TiO$_2$ slab was created using the Atomic Simulation Environment (ASE) package. It is a 110 surface, two Ti atoms long and wide and four Ti atoms deep. The pristine slab totals 48 atoms, with 4 Ti and 8 O per layer. Either of the two non-identical types of Ti atoms on the top layer were changed to a different transition metal to make 2+ or 4+ oxidation states. One bridging O was removed to create the vacancy for the added gas to adsorb at. 6 Angstroms of vacuum were added on both top and bottom, to avoid adverse effects of periodicity in the z direction.
+
+For the DFT calculations, the bottom 4 Ti and 14 O atoms were fixed in place to aid convergence. Periodic boundary conditions were implemented in all three dimensions, but the vacuum in the z direction separated the surface of interest. A plane wave cutoff of 400 eV and a Monkhorst-Pack k-point grid with a spacing of 4 by 4 by 1 was used \cite{Monkhorst_1976}. Dipole corrections and spin polarization were included, and the magnetic moments were perturbed for each calculation. The convergence threshold was selected as $10^{-6}$ eV, and BEEF-vdW functionals \cite{Wellendorff_2012} with Fermi-Dirac smearing were used.
+
+The adsorption energies were obtained from the DFT calculations by subtracting the energy of a clean slab and the energy of the free gas molecule from the energy of the gas adsorbed to the slab.
+\begin{equation}
+E_{adsorption} = E_{slab+adsorbate} - E_{slab} - E_{adsorbate}
+\end{equation}
+The error of DFT calculations tends to be in the order of magnitude of 0.5 eV \cite{Gautier_2015}. The BEEF-vdW functional ensemble allows an estimate of the error to be made. The calculation of the energy for a given reaction was repeated for each functional individually, resulting in a distribution of energies. Error bars were determined from this by finding the standard deviation of 
+
+\subsection{Thermochemistry}
+\cite{ase-paper,Reuter_2005}
+
+To calculate the adsorption energy at standard temperature and pressure, the Thermochemistry package from ASE was used \cite{ase-paper}. Free gasses were approximated in the ideal gas limit, and adsorbed gasses in the harmonic limit. The ideal gas limit thermochemistry module allows translation and rotation in all directions, and assumes these modes are independent. The harmonic limit thermochemistry module approximates vibrations in all directions as harmonic oscillators. The two approximations give the Gibbs and Helmholtz free energies, respectively. The Helmholtz free energy is equivalent to Gibbs, if the product of the pressure and the volume is taken to be negligible, which was assumed in this case. From these results, the free energies were calculated using \begin{equation}
+    G=H-TS
+\end{equation}. The same DFT parameters were used for calculating the free energies of adsorption as for the non-entropic results.
+
+\subsection{Photochemistry}
+The photochemistry has been treated within the framework outlined by Hellman et. al. \cite{Hellman2017} \todo{fill this out}
+
+
+\bibliographystyle{mdpi}
+\bibliography{main}
+\end{document}
