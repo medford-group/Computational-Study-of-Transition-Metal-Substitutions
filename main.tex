@@ -1,6 +1,7 @@
 \documentclass[catalysts,article,submit,moreauthors,pdftex,10pt,a4paper]{mdpi} 
 \usepackage{todonotes}
 \usepackage{comment}
+\usepackage{graphicx}
 %--------------------
 % Class Options:
 %--------------------
@@ -166,25 +167,70 @@ These data indicate that when considering a dopant metal's tendency to form surf
     \label{fig:d_band}
 \end{figure}
 
-In Figures \ref{fig:2+_N2_react_stab} the formation energy of the surface vs binding energy of N$_2$ are shown. Both of these values are important to quantify, as an active site with an exceptionally high formation energy is unlikely to exist on the surface in any significant quantity. Because of the close relationship between the formation energy of 2+ metal substitutes and the valence number seen in Figure \ref{fig:valence} this plot may also be read as approximately showing the N$_2$ adsorption energy across the periodic row similar to Figure \ref{fig:2+_N2_period}. From a There are many sites that bind N$_2$ with an energy of $\approx$ -0.2eV, which represents a weak physorption interaction and is not sufficient to bind N$_2$ at room temperature. However, some metal sites bind N$_2$ in a manner related to the site's formation energy. The sites able to bind N$_2$ are all in the middle of the row as seen in Figure \ref{fig:2+_N2_period} This fact highlights the tradeoff between two trends: the adsorption of N$_2$ and surface formation energy. These metal sites yield a frontier of Pareto optimal surface sites for adsorbing N$_2$. This analysis indicates that the active site's relative instability is a necessary but not sufficient condition for increasing N$_2$ binding.
+%In Figure \ref{fig:2+_N2_react_stab} the formation energy of the surface vs binding energy of N$_2$ are shown. Both of these values are important to quantify, as an active site with an exceptionally high formation energy is unlikely to exist on the surface in any significant quantity. Because of the close relationship between the formation energy of 2+ metal substitutes and the valence number seen in Figure \ref{fig:valence} this plot may also be read as approximately showing the N$_2$ adsorption energy across the periodic row similar to Figure \ref{fig:2+_N2_period}. From a There are many sites that bind N$_2$ with an energy of $\approx$ -0.2eV, which represents a weak physorption interaction and is not sufficient to bind N$_2$ at room temperature. However, some metal sites bind N$_2$ in a manner related to the site's formation energy. The sites able to bind N$_2$ are all in the middle of the row as seen in Figure \ref{fig:2+_N2_period} This fact highlights the tradeoff between two trends: the adsorption of N$_2$ and surface formation energy. These metal sites yield a frontier of Pareto optimal surface sites for adsorbing N$_2$. This analysis indicates that the active site's relative instability is a necessary but not sufficient condition for increasing N$_2$ binding.
 
 
-Patterns in nitrogen binding can also be seen down the rows of the periodic table as seen in Figures \ref{fig:2+_N2_period}. It should be noted that we were unable to converge the electronic structure of manganese, so it has been omitted. Figure \ref{fig:2+_N2_period} particularly shows the trend of increased N$_2$ binding down the periodic row, reaching a maximum when the d-shell is half filled and dropping as the d-shell is filled. The results do not match the traditional d-band model\cite{Nilsson_2008} for transition metal binding energies which would have the adsorption energy getting weaker down the row. This is not surprising, however, as the system involves surface oxides rather than transition metals. Additionally, the binding strength increases down the columns as well as across the rows, with Os having the strongest binding as well as being in the middle of the d-block and on the lowest tested row for N$_2$ binding. Finally, it can also be noted that the position of the maxima for N$_2$ adsorption within a rows is not consistent, with row 6 having a maxima in the middle of the period, whereas row 5 has a maxima one position to the right. Similar trends are observed for N$_2$H binding energies when the first row is omitted. The maxima for N$_2$H appears in group 4.
+Patterns in nitrogen binding can also be seen down the rows of the periodic table as seen in Figures \ref{fig:N2_rows}. It should be noted that the results for group 4 have not been included in the main text due to difficulties converging the electronic structures to the correct spin states for the magnetic elements in the row. It is known that the effects of magnetism can complicate simple correlative models of this type, such as the d band model.\cite{Bhattacharjee_2016} Thus, the effects of magnetism have been omitted. However, the obtained results may be in in SXX. Figure \ref{fig:2+_N2_period} particularly shows the trend of increased N$_2$ binding down the periodic row, reaching a maximum in the center of the row and dropping more rapidly as the d-shell is filled. The results do not match the traditional d-band model\cite{Nilsson_2008} for transition metal binding energies which would have the adsorption energy getting weaker down the row. This is not surprising, however, as the system involves surface oxides rather than transition metals. Additionally, the binding strength increases down the columns as well as across the rows, with Os having the strongest binding as well as being in the middle of the d-block and on the lowest tested row for N$_2$ binding. Finally, it can also be noted that the position of the maxima for N$_2$ adsorption within a rows is not consistent, with row 6 having a maxima in the middle of the period, whereas row 5 has a maxima one position to the right.
+
+\begin{figure}
+
+\begin{subfigure}
+    
+    \centering
+    \includegraphics[width=0.5\textwidth]{Images/N2_adsorption_rows.pdf}
+    \caption{Caption}
+    \label{fig:N2_rows}
+\end{subfigure}
+
+\begin{subfigure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{Images/N2H_adsorption_rows.pdf}
+    \caption{Caption}
+    \label{fig:N2H_rows}
+\end{subfigure}
+\end{figure}
+
+
+
+The trend in N$_2$ and N$_2$H binding observed shows a moderate correlation with the cohesive energies of the substituent metals as seen in Figure \ref{fig:cohesive_energies}. This indicates that the binding between the
+
+\begin{equation}
+    E_{coh} = \epsilon_d + \epsilon_s \\
+    E_{coh} = \int_{B_d}^{E_F} (E_d-E)\rho(E)dE
+\end{equation}
+
+where $E_{coh}$ is the cohesive energy, $B_d$ is the bottom of the d band, $E_F$ is the fermi level energy
 
 
 \begin{figure}
+
+\begin{subfigure}
+    
     \centering
-    \includegraphics[width=0.8\linewidth]{Images/2+N2_Formation.pdf}
-    \caption{2+ Formation Energy versus N2 Adsorption Energy}
-    \label{fig:2+_N2_react_stab}
+    \includegraphics[width=0.5\textwidth]{Images/cohesive_eng_vs_N2.pdf}
+    \label{fig:N2_cohesive}
+\end{subfigure}
+
+\begin{subfigure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{Images/cohesive_eng_vs_N2H.pdf}
+    \label{fig:N2H_cohesive}
+\end{subfigure}
+\label{fig:cohesive_energies}
 \end{figure}
+
 %\begin{figure}
 %    \centering
 %    \includegraphics[width=0.8\linewidth]{Images/4+N2_Formation.pdf}
 %    \caption{4+ Formation Energy versus N2 Adsorption Energy}
 %    \label{fig:4+_N2_react_stab}
 %\end{figure}
-
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=0.8\linewidth]{Images/2+N2_Formation.pdf}
+%    \caption{2+ Formation Energy versus N2 Adsorption Energy}
+%    \label{fig:2+_N2_react_stab}
+%\end{figure}
 The first hydrogenation step is commonly thought to be rate limiting, thus the third criterion is a reasonable N$_2$ $\rightarrow$ N$_2$H reaction energy. While some would also add NH$_2$ binding energy as a fourth criterion\cite{}, this was not evaluated. \todo{give a better reason why we didn't do this} However, these authors suggest that an N$_2$H binding energy of 0eV is the optimum for rutile oxides. 
 
 A similar pattern with respect to binding energy and surface formation energy is seen with respect to N$_2$H as was seen with N$_2$. This can be seen for 2+ slabs in Figure \ref{fig:2+_N2H_react_stab}, with a group of metals lying on a line with negative slope. However, in this case there is a cluster of dopants with very unfavorable binding energies as well as high formation energies. \ref{fig:4+_N2H_period}
@@ -195,25 +241,28 @@ A similar pattern with respect to binding energy and surface formation energy is
 %The adsorption of N$_2$ on dopant metals follows a clear trend across the rows of the periodic table as well as down the periodic columns (Figure \ref{}). The trend can be generally described by the d band model.\cite{Nilsson_2008}\todo{describe the d band model} 
 %D-band theory is an explanation of one factor involved in deciding the strength of the interaction between the molecule and the adsorbate. Because of the similarity of the s and p blocks of the transition metals, the most important interactions between the metal adsorbate and the molecule are with the d band. When the molecule and the metal adsorbate interact, they create both a bonding and antibonding state. The higher the filling of the antibonding state, the weaker the bonding is. This corresponds inversely with the height of the d band center; the higher the d band center, the less the antibonding state is filled. This theory predicts that near the center of the d block, the interactions will be stronger, corroborating our theory.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.8\linewidth]{Images/2+N2_by_element.pdf}
-    \caption{2+ N2 Adsorption Energy versus Element}
-    \label{fig:2+_N2_period}
-\end{figure}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.8\linewidth]{Images/2+N2H_by_element.pdf}
-    \caption{2+ N2H Adsorption Energy versus Element}
-    \label{fig:2+_N2H_period}
-\end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[width=0.8\linewidth]{Images/2+N2H_Formation.pdf}
-    \caption{2+ Formation Energy versus N2H Adsorption Energy}
-    \label{fig:2+_N2H_react_stab}
-\end{figure}
+
+
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=0.8\linewidth]{Images/2+N2_by_element.pdf}
+%    \caption{2+ N2 Adsorption Energy versus Element}
+%    \label{fig:2+_N2_period}
+%\end{figure}
+
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=0.8\linewidth]{Images/2+N2H_by_element.pdf}
+%    \caption{2+ N2H Adsorption Energy versus Element}
+%    \label{fig:2+_N2H_period}
+%\end{figure}
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=0.8\linewidth]{Images/2+N2H_Formation.pdf}
+%    \caption{2+ Formation Energy versus N2H Adsorption Energy}
+%    \label{fig:2+_N2H_react_stab}
+%\end{figure}
 %\begin{figure}
 %    \centering
 %    \includegraphics[width=0.8\linewidth]{Images/4+N2_by_element.pdf}
