@@ -28,8 +28,9 @@ data_matrix = np.array(reaction_data).reshape(path_length, path_counter)
 
 nh2 = data_matrix[-3] - data_matrix[-1]
 nh3 = data_matrix[-2] - data_matrix[-1]
+print(data_matrix[0])
 d_band_center = [d_band[a] for a in element_symbol]
 cohesive_energy = [d_cohesive[a] for a in element_symbol]
 
-plt.scatter(cohesive_energy, data_matrix[2] + 0.15)
+plt.scatter(cohesive_energy, data_matrix[0] + 0.15)
 plt.show()
