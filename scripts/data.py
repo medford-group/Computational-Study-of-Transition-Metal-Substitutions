@@ -1,3 +1,31 @@
+element = [
+'Fe',
+'Co',
+'Nb',
+'Tc',
+'V',
+'Zr',
+'Ag',
+'Cu',
+'Pd',
+'Rh',
+'Ru',
+'Sc',
+'Ti',
+'Y',
+'Ni',
+'Cr',
+'Mo',
+'Mn',
+'Au',
+'Hf',
+'Ir',
+'Os',
+'Pt',
+'Re',
+'Ta',
+'W',
+]
 
 fe = [
 5.158732468,
@@ -57,35 +85,9 @@ column = [
 6,
 ]
 
-element = [
-'Fe',
-'Co',
-'Nb',
-'Tc',
-'V',
-'Zr',
-'Ag',
-'Cu',
-'Pd',
-'Rh',
-'Ru',
-'Sc',
-'Ti',
-'Y',
-'Ni',
-'Cr',
-'Mo',
-'Mn',
-'Au',
-'Hf',
-'Ir',
-'Os',
-'Pt',
-'Re',
-'Ta',
-'W',
-]
 
+fe_dict = {a:b for a, b in zip(element, fe)}
+column_dict = {a:b for a, b in zip(element, column)}
 
 cohesive_energies = {
 'Fe':4.28,
@@ -238,6 +240,8 @@ None,
 -0.677330198,
 ]
 
+N2_engs_dict = {a:b for a, b in zip(element, N2_engs)}
+
 N2H_engs = [
 0.9627901614,
 0.0920799095,
@@ -267,6 +271,7 @@ None,
 -0.9835309905,
 ]
 
+N2H_engs_dict = {a:b for a, b in zip(element, N2H_engs)}
 
 d_band = {
 'Fe':-0.92,
