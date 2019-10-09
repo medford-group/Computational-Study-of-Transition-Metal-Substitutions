@@ -133,7 +133,7 @@ ax.plot(plt_data, plt_data * slope + intercept)
 ax.set_title('d-band Center vs Site Formation Energy')
 ax.set_ylabel('Site Formation Energy (eV)', labelpad = -0.1)
 ax.set_xlabel('d-band Center (eV)')
-plt.savefig('Formation_d_band.pdf')
+plt.savefig('../Images/d_band_vs_formation.pdf')
 plt.show()
 
 ############# N2H vs NH2
@@ -170,7 +170,7 @@ ax.set_title('$\Delta E_{NH_2}$ vs d Band Contribution of Cohesive Energy')
 ax.set_ylabel('$\Delta E_{N_2H}$', labelpad=-0.1)
 ax.set_xlabel('d Band Contribution of Cohesive Energy')
 ax.yaxis.labelpad = 0
-plt.savefig('NH2_cohesive.pdf')
+plt.savefig('../Images/cohesive_eng_vs_N2H.pdf')
 plt.show()
 
 ############## cohesive energy vs N2H
@@ -188,6 +188,6 @@ ax.plot(plt_data, plt_data * slope + intercept)
 ax.set_title('$\Delta E_{N_2H}$ vs d Band Contribution of Cohesive Energy')
 ax.set_xlabel('d Band Contribution of Cohesive Energy')
 ax.set_ylabel('$\Delta E_{N_2H}$', labelpad = -0.1)
-plt.savefig('N2H_cohesive.pdf')
+plt.savefig('../Images/cohesive_eng_vs_NH2.pdf')
 plt.show()
 
