@@ -12,6 +12,8 @@ from scipy.stats import linregress
 from sklearn.linear_model import LinearRegression
 import numpy as np
 
+from ase.units import kJ, mol
+
 
 plt.rcParams["figure.figsize"] = (4.5,3.5)
 plt.rcParams["font.size"] = 10
@@ -37,18 +39,24 @@ for pathway in os.listdir('../data/corrected_data'):
 #reaction_data = [float(a) for a in reaction_data]
 # build a matrix 
 
-def build_lists(species):
+def build_lists(species, return_electronegativity=False):
     d_band_center = []
     cohesive_energy = []
     bindings = []
     metals = []
+    electro_n = []
     for metal, binding in metal_dict[species].items():
+        #if metal in ['Sc', 'Ti', 'V', 'Cr', 'Mn', 'Fe', 'Co', 'Ni', 'Cu', 'zn']:
+        #    continue
         if binding is None:
             continue
         d_band_center.append(d_band[metal])
         cohesive_energy.append(d_cohesive[metal])
         bindings.append(float(binding))
         metals.append(metal)
+        electro_n.append(electronegativity[metal])
+    if return_electronegativity:
+        return bindings, cohesive_energy, d_band_center, metals, electro_n
     return bindings, cohesive_energy, d_band_center, metals
 
 def compare_species_bindings(s1, s2):
@@ -138,8 +146,9 @@ plt.show()
 
 ############# N2H vs NH2
 NH2_bindings, cohesive_energy, d_band_center, NH2_metals = build_lists('NH2')
-NH2, N2H, metals = compare_species_bindings('NH2', 'N2H')
+NH2, N2H, metals = compare_species_bindings('N2H', 'NH3')
 slope, intercept, r_value, p_value, std_err = linregress(NH2, N2H)
+print(r_value**2)
 fig = plt.figure()
 ax = fig.add_axes([0.14,0.14,0.76,0.76])
 ax.scatter(NH2, N2H)
@@ -150,12 +159,14 @@ ax.text(x_buffered_loc, max(N2H) - 0.1, 'R$^2$ = {}'.format(round(r_value ** 2, 
 plt_data = np.array([min(NH2), max(NH2)])
 ax.plot(plt_data, plt_data * slope + intercept)
 ax.set_title('$\Delta E_{NH_2}$ vs $\Delta E_{N_2H}$')
-ax.set_ylabel('$\Delta E_{N_2H}$', labelpad = -0.1)
-ax.set_xlabel('$\Delta E_{NH_2}$')
+ax.set_ylabel('$\Delta E_{N_2H}$ (eV)', labelpad = -0.1)
+ax.set_xlabel('$\Delta E_{NH_2}$ (eV)')
 plt.savefig('NH2_N2H.pdf')
 plt.show()
 
 ############## cohesive energy vs NH2
+#sq_d_band_center = [a ** 2 for a in d_band_center]
+cohesive_energy = [a * kJ / mol for a in cohesive_energy]
 slope, intercept, r_value, p_value, std_err = linregress(cohesive_energy, NH2_bindings)
 fig = plt.figure()
 ax = fig.add_axes([0.14,0.14,0.76,0.76])
@@ -167,14 +178,15 @@ x_buffered_loc = (max(cohesive_energy) - min(cohesive_energy)) * 0.8 + min(cohes
 ax.text(x_buffered_loc, max(NH2_bindings) - 0.1, 'R$^2$ = {}'.format(round(r_value ** 2, 2)))
 ax.plot(plt_data, plt_data * slope + intercept)
 ax.set_title('$\Delta E_{NH_2}$ vs d Band Contribution of Cohesive Energy')
-ax.set_ylabel('$\Delta E_{N_2H}$', labelpad=-0.1)
-ax.set_xlabel('d Band Contribution of Cohesive Energy')
+ax.set_ylabel('$\Delta E_{N_2H}$ (eV)', labelpad=-0.1)
+ax.set_xlabel('d-Band Contribution of Cohesive Energy (eV)')
 ax.yaxis.labelpad = 0
 plt.savefig('../Images/cohesive_eng_vs_N2H.pdf')
 plt.show()
 
 ############## cohesive energy vs N2H
 N2H_bindings, cohesive_energy, d_band_center, N2H_metals = build_lists('N2H')
+cohesive_energy = [a * kJ / mol for a in cohesive_energy]
 slope, intercept, r_value, p_value, std_err = linregress(cohesive_energy, N2H_bindings)
 fig = plt.figure()
 ax = fig.add_axes([0.14,0.14,0.76,0.76])
@@ -185,9 +197,39 @@ x_buffered_loc = (max(cohesive_energy) - min(cohesive_energy)) * 0.85 + min(cohe
 ax.text(x_buffered_loc, max(N2H_bindings) - 0.1, 'R$^2$ = {}'.format(round(r_value ** 2, 2)))
 plt_data = np.array([min(cohesive_energy), max(cohesive_energy)])
 ax.plot(plt_data, plt_data * slope + intercept)
-ax.set_title('$\Delta E_{N_2H}$ vs d Band Contribution of Cohesive Energy')
-ax.set_xlabel('d Band Contribution of Cohesive Energy')
-ax.set_ylabel('$\Delta E_{N_2H}$', labelpad = -0.1)
+ax.set_title('$\Delta E_{N_2H}$ vs d Band Contribution of Cohesive Energy (eV)')
+ax.set_xlabel('d-band Contribution of Cohesive Energy (eV)')
+ax.set_ylabel('$\Delta E_{N_2H} (eV)$', labelpad = -0.1)
 plt.savefig('../Images/cohesive_eng_vs_NH2.pdf')
+plt.show()
+
+############## electronegativity vs formation
+common_elements = list(set(list(electronegativity.keys())+ list(fe_dict.keys())))
+fe_s = []
+electro_n = []
+syms = []
+for symbol in common_elements:
+    if symbol not in electronegativity.keys() or symbol not in fe_dict.keys():
+        continue
+    if fe_dict[symbol] == None or electronegativity[symbol] == None:
+        continue
+    fe_s.append(fe_dict[symbol])
+    electro_n.append(electronegativity[symbol])
+    syms.append(symbol)
+
+slope, intercept, r_value, p_value, std_err = linregress(electro_n, fe_s)
+fig = plt.figure()
+ax = fig.add_axes([0.14,0.14,0.76,0.76])
+ax.scatter(electro_n, fe_s)
+for i, j, metal in zip(electro_n, fe_s, syms):
+    ax.text(i + 0.05, j + 0.05, metal)
+x_buffered_loc = (max(electro_n) - min(electro_n)) * 0.82 + min(electro_n)
+ax.text(x_buffered_loc, max(fe_s) + 0.5, 'R$^2$ = {}'.format(round(r_value ** 2, 2)))
+plt_data = np.array([min(electro_n), max(electro_n)])
+ax.plot(plt_data, plt_data * slope + intercept)
+ax.set_title('Electonegativity vs Site Formation Energy')
+ax.set_ylabel('Site Formation Energy (eV)', labelpad = -0.1)
+ax.set_xlabel('Metal Electronegativity')
+plt.savefig('../Images/electronegativity_vs_formation.pdf')
 plt.show()
 
