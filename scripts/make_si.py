@@ -25,7 +25,9 @@ all_species = list(metal_dict.keys())
 
 g = open('../SI.tex', 'w')
 
-g.write('Supplimentary Information')
+g.write('Supplementary Information\n')
+
+g.write('\onecolumn\n')
 
 g.write('\\begin{center}\n\\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c | c |}\n')
 
