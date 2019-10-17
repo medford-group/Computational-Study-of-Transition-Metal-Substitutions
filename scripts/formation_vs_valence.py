@@ -2,7 +2,10 @@ from matplotlib import pyplot as plt
 import numpy as np
 from scipy.stats import linregress
 from data import fe, column, element, cohesive_energies, N2_engs, N2H_engs, d_band, electronegativity,d_cohesive, s_cohesive
-plt.rcParams["figure.figsize"] = (5.2,4.2)
+
+plt.rcParams["figure.figsize"] = (4.5,3.5)
+plt.rcParams["font.size"] = 10
+
 
 #cohesive_energies = s_cohesive
 
@@ -41,10 +44,11 @@ plt.plot([min(n_col),max(n_col)],np.array([min(n_col),max(n_col)]) * slope + int
 plt.title('Valence Number vs Formation Energy')
 plt.ylabel('2+ Substitution Formation Energy')
 plt.xlabel('Valence Number')
-plt.text(min(n_col,),max(n_fe), 'R$^2$ = {}'.format(r_value ** 2))
+plt.text(min(n_col,),max(n_fe)-0.25, 'R$^2$ = {}'.format(round(r_value ** 2, 2)))
 for c, e, t in zip(n_col, n_fe, n_ele):
     plt.text(c + 0.1, e + 0.1, t)
 
+plt.savefig('../Images/Valence_vs_formation_energy.pdf')
 plt.show()
 
 ############################ cohesive energy N2H
