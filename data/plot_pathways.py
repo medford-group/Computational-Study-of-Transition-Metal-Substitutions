@@ -25,9 +25,9 @@ Ti_NH3 = -1.665674942
 NH3 = -0.7394391845
 
 #electric potential correction for adding hydrogen. Approximating as valence band energy of pure titania
-hydrogen_potential = -0.15
+#hydrogen_potential = -0.15
 #not including this effect currently
-#hydrogen_potential = 0
+hydrogen_potential = 0
 
 #free energy corrections for different adsorbates
 H2NNH2_corr = 1.41847290209
@@ -239,7 +239,7 @@ for i in range(0,26):
             missing_step = 1
     if missing_step == 0:
         current_energies.append(NH3*2)
-        plot_pathway(current_energies,associative_adsorbates,slab+' Associative Pathway',slab+'_associative.png')
+        plot_pathway(current_energies,associative_adsorbates,slab+' Associative Pathway',slab+'_associative.pdf')
         np.savetxt(output_energies_folder+slab+"_associative.csv",current_energies,delimiter=",",fmt='%s')
 
     #associative 2
@@ -251,7 +251,7 @@ for i in range(0,26):
             missing_step = 1
     if missing_step == 0:
         current_energies.append(NH3*2)
-        plot_pathway(current_energies,associative_2_adsorbates,slab+' Second Associative Pathway',slab+'_associative_2.png')
+        plot_pathway(current_energies,associative_2_adsorbates,slab+' Second Associative Pathway',slab+'_associative_2.pdf')
         np.savetxt(output_energies_folder+slab+"_associative_2.csv",current_energies,delimiter=",",fmt='%s')
 
     #dissociative
@@ -263,7 +263,7 @@ for i in range(0,26):
             missing_step = 1
     if missing_step == 0:
         current_energies.append(NH3*2)
-        plot_pathway(current_energies,dissociative_adsorbates,slab+' Dissociative Pathway',slab+'_dissociative.png')
+        plot_pathway(current_energies,dissociative_adsorbates,slab+' Dissociative Pathway',slab+'_dissociative.pdf')
     #distal 1
     current_energies = [0]
     missing_step = 0
@@ -273,7 +273,7 @@ for i in range(0,26):
             missing_step = 1
     if missing_step == 0:
         current_energies.append(NH3*2)
-        plot_pathway(current_energies,distal_1_adsorbates,slab+' First Distal Pathway',slab+'_distal_1.png')
+        plot_pathway(current_energies,distal_1_adsorbates,slab+' First Distal Pathway',slab+'_distal_1.pdf')
     #distal 2
     current_energies = [0]
     missing_step = 0
@@ -283,7 +283,7 @@ for i in range(0,26):
             missing_step = 1
     if missing_step == 0:
         current_energies.append(NH3*2)
-        plot_pathway(current_energies,distal_2_adsorbates,slab+' Second Distal Pathway',slab+'_distal_2.png')
+        plot_pathway(current_energies,distal_2_adsorbates,slab+' Second Distal Pathway',slab+'_distal_2.pdf')
 
 
 
