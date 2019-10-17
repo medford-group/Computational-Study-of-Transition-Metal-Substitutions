@@ -24,7 +24,8 @@ path_counter = 0
 compound = []
 for pathway in os.listdir('../data/corrected_data'):
     if '_' in pathway:
-        continue
+        if 'sa' not in pathway:
+            continue
     with open('../data/corrected_data/' + pathway, 'r') as f:
         compound.append(pathway.split('.')[0])
         data = csv.reader(f)
@@ -32,6 +33,7 @@ for pathway in os.listdir('../data/corrected_data'):
             metal_dict[pathway.split('.')[0]][row[0]] = float(row[1])
         # figure out how long one of them is
 
+print(metal_dict.keys())
 # make a dummy comparison entry
 #all_metals = set(list(metal_dict['NH2'].keys()) + list(metal_dict['NH3'].keys()))
 #shared_metals = [a for a in all_metals if a in metal_dict[s1].keys() and a in metal_dict[s2].keys()]
@@ -59,6 +61,7 @@ def build_lists(species, return_electronegativity=False):
         return bindings, cohesive_energy, d_band_center, metals, electro_n
     return bindings, cohesive_energy, d_band_center, metals
 
+
 def compare_species_bindings(s1, s2):
     all_metals = set(list(metal_dict[s1].keys()) + list(metal_dict[s2].keys()))
     shared_metals = [a for a in all_metals if a in metal_dict[s1].keys() and a in metal_dict[s2].keys()]
@@ -67,6 +70,8 @@ def compare_species_bindings(s1, s2):
     metals = []
     for metal in shared_metals:
         if metal_dict[s1][metal] is None or metal_dict[s2][metal] is None:
+            continue
+        if abs(metal_dict[s1][metal]) > 13 or abs(metal_dict[s2][metal]) > 13:
             continue
         s1_binding.append(metal_dict[s1][metal])
         s2_binding.append(metal_dict[s2][metal])
@@ -146,9 +151,27 @@ plt.show()
 
 ############# N2H vs NH2
 NH2_bindings, cohesive_energy, d_band_center, NH2_metals = build_lists('NH2')
-NH2, N2H, metals = compare_species_bindings('N2H', 'NH3')
+NH2, N2H, metals = compare_species_bindings('NH2', 'N2H')
 slope, intercept, r_value, p_value, std_err = linregress(NH2, N2H)
-print(r_value**2)
+fig = plt.figure()
+ax = fig.add_axes([0.14,0.14,0.76,0.76])
+ax.scatter(NH2, N2H)
+for i, j, metal in zip(NH2, N2H, metals):
+    ax.text(i + 0.01, j + 0.01, metal)
+x_buffered_loc = (max(NH2_bindings) - min(NH2_bindings)) * 0 + min(NH2_bindings)
+ax.text(x_buffered_loc, max(N2H) - 0.1, 'R$^2$ = {}'.format(round(r_value ** 2, 2)))
+plt_data = np.array([min(NH2), max(NH2)])
+ax.plot(plt_data, plt_data * slope + intercept)
+ax.set_title('$\Delta E_{NH_2}$ vs $\Delta E_{N_2H}$')
+ax.set_ylabel('$\Delta E_{N_2H}$ (eV)', labelpad = -0.1)
+ax.set_xlabel('$\Delta E_{NH_2}$ (eV)')
+plt.savefig('NH2_N2H.pdf')
+plt.show()
+
+
+############# N2H vs NH2
+NH2, N2H, metals = compare_species_bindings('N2H', 'sa_N2H')
+slope, intercept, r_value, p_value, std_err = linregress(NH2, N2H)
 fig = plt.figure()
 ax = fig.add_axes([0.14,0.14,0.76,0.76])
 ax.scatter(NH2, N2H)
@@ -202,6 +225,27 @@ ax.set_xlabel('d-band Contribution of Cohesive Energy (eV)')
 ax.set_ylabel('$\Delta E_{N_2H} (eV)$', labelpad = -0.1)
 plt.savefig('../Images/cohesive_eng_vs_NH2.pdf')
 plt.show()
+
+
+############## cohesive energy vs N2
+N2H_bindings, cohesive_energy, d_band_center, N2H_metals = build_lists('N2')
+cohesive_energy = [a * kJ / mol for a in cohesive_energy]
+slope, intercept, r_value, p_value, std_err = linregress(cohesive_energy, N2H_bindings)
+fig = plt.figure()
+ax = fig.add_axes([0.14,0.14,0.76,0.76])
+ax.scatter(cohesive_energy, N2H_bindings)
+for i, j, metal in zip(cohesive_energy, N2H_bindings, N2H_metals):
+    ax.text(i + 0.01, j + 0.01, metal)
+x_buffered_loc = (max(cohesive_energy) - min(cohesive_energy)) * 0.85 + min(cohesive_energy)
+ax.text(x_buffered_loc, max(N2H_bindings) - 0.1, 'R$^2$ = {}'.format(round(r_value ** 2, 2)))
+plt_data = np.array([min(cohesive_energy), max(cohesive_energy)])
+ax.plot(plt_data, plt_data * slope + intercept)
+ax.set_title('$\Delta E_{N_2}$ vs d Band Contribution of Cohesive Energy (eV)')
+ax.set_xlabel('d-band Contribution of Cohesive Energy (eV)')
+ax.set_ylabel('$\Delta E_{N_2} (eV)$', labelpad = -0.1)
+plt.savefig('../Images/cohesive_eng_vs_N2.pdf')
+plt.show()
+
 
 ############## electronegativity vs formation
 common_elements = list(set(list(electronegativity.keys())+ list(fe_dict.keys())))
