@@ -87,7 +87,14 @@ column = [
 
 
 fe_dict = {a:b for a, b in zip(element, fe)}
+#with open('../data/data/formation_energy.csv', 'w') as f:
+#    for key, value in fe_dict.items():
+#        if value is None:
+#            continue
+#        f.write(key + ',' + str(value) + '\n')
+
 column_dict = {a:b for a, b in zip(element, column)}
+
 
 cohesive_energies = {
 'Fe':4.28,
