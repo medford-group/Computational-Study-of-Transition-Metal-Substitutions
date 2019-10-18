@@ -43,6 +43,7 @@ g.write('Supplementary Information\n')
 
 g.write('\onecolumn\n')
 
+g.write('\\begin{table}')
 g.write('\\begin{center}\n\\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c | c |}\n')
 
 g.write('\hline\n')
@@ -50,8 +51,8 @@ g.write('Element & ')
 all_species = sorted(all_species)
 for i, species in enumerate(all_species):
     subscripted = ''
-    for i, char in enumerate(species):
-        if i == 0:
+    for j, char in enumerate(species):
+        if j == 0:
             subscripted += char
         elif char.isdecimal():
             subscripted += '$_' + char + '$'
@@ -59,8 +60,8 @@ for i, species in enumerate(all_species):
             subscripted += ' '
         else:
             subscripted += char
-    if subscripted == 'formation energy':
-        subscripted = 'Formation Energy'
+        if subscripted == 'formation energy':
+            subscripted = 'Formation Energy'
     g.write(subscripted)
     if i != len(all_species) - 1:
         g.write(' & ')
@@ -79,25 +80,29 @@ for metal in all_metals:
     g.write(' \\\\\n')
 
 g.write('\hline\n')
-g.write('\\caption{The calculated relative energies of all surface species on all metal substituents at standard state. All energies are referenced with respect to N$_2$ gas and H$_2$ gas at 300K and 1 bar of pressure. Blank spaces represent calculations that could not be converged}\n')
-g.write('\\label{table:energies}\n')
 
 g.write('\\end{tabular}\n')
 g.write('\\end{center}\n')
+g.write('\\caption{The calculated relative energies of all surface species on all metal substituents at standard state. All energies are referenced with respect to N$_2$ gas and H$_2$ gas at 300K and 1 bar of pressure. Blank spaces represent calculations that could not be converged}\n')
+g.write('\\label{table:energies}\n')
+g.write('\\end{table}\n')
 
-g.write('\\begin{center}\n\\begin{tabular}{| c | c |c |}\n')
+g.write('\\begin{table}\n\\begin{center}\n\\begin{tabular}{| c | c |c |}\n')
 
 g.write('\hline\n')
 g.write('Element & Limiting Potential & Limiting Step \\\\\n')
+g.write('\\hline\n')
 txt = csv.reader(open('../data/pathway_data/limiting_potential_associative_2.csv', 'r'))
 txt = list(txt)
 for metal in txt:
     g.write(metal[0] + ' & ' + str(round(float(metal[1]), 2)) + ' & ' + subscipt(metal[2]) + '$\\rightarrow$' + subscipt(metal[3]))
 
     g.write('\\\\\n')
-g.write('\\caption{The limiting potentials and limiting steps for each dopant metal}')
-g.write('\\end{tabular}\n\n\n\n')
+g.write('\\hline\n')
 g.write('\\end{tabular}\n\\end{center}\n')
+g.write('\\caption{The limiting potentials and limiting steps for each dopant metal}')
+g.write('\\label{table:limiting_steps}')
+g.write('\\end{table}')
 
 g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{Images/electronegativity_vs_formation.pdf}\n\\caption{Electronegativity vs formation energy of 2+ dopant site}\n\\end{figure}\n\n')
 
