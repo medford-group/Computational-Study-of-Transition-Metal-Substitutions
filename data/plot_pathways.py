@@ -59,8 +59,10 @@ distal_1_columns = [0,1,2,14,15,16,7,8]
 distal_2_adsorbates = ['N2','N2*','N2H*','N2H2*','HNNH2*','NH*+NH2*','NH*+NH3*','NH2*+NH3*','2NH3*','2NH3']
 distal_2_columns = [0,1,2,3,17,16,7,8]
 
-associative_2_adsorbates = ['N2','N2*','N2H*','N2H2*','HNNH2*','H2NNH2*','NH*+NH3','NH2*+NH3','NH3*+NH3','2NH3']
-associative_2_columns = [0,1,2,3,4,18,19,20]
+#associative_2_adsorbates = ['N2','N2*','N2H*','N2H2*','HNNH2*','H2NNH2*','NH*+NH3','NH2*+NH3','NH3*+NH3','2NH3']
+associative_2_adsorbates = ['N2','N2*','N2H*','N2H2*','HNNH2*','H2NNH2*','2NH2*','NH2*+NH3','NH3*+NH3','2NH3']
+#associative_2_columns = [0,1,2,3,4,18,19,20]
+associative_2_columns = [0,1,2,3,4,13,19,20]
 
 with open(data_folder+'H2NNH2.csv') as csvfile:
     H2NNH2_energies = list(csv.reader(csvfile))
@@ -225,6 +227,7 @@ for energy in NH3_energies:
     for i in range(0,26):
         if energy[0] == slab_list[i]:
             pathway_array[i][20] = make_float(energy[1])+NH3_corr - N2_gas_corr/2 - H2_gas_corr*3/2 + 3*hydrogen_potential + NH3
+
 
 
 #make plots and write associative data to file

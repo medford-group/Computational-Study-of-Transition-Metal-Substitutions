@@ -1,7 +1,7 @@
 from matplotlib import pyplot as plt
 import numpy as np
 from scipy.stats import linregress
-from data import fe, column, element, cohesive_energies, N2_engs, N2H_engs, d_band, electronegativity,d_cohesive, s_cohesive
+from data import fe, column, element, cohesive_energies, N2_engs, N2H_engs, d_band, electronegativity,d_cohesive, s_cohesive, plus_4_N2H
 
 plt.rcParams["figure.figsize"] = (4.5,3.5)
 plt.rcParams["font.size"] = 10
@@ -85,6 +85,37 @@ for c, e, t in zip(co_e, n_N2_engs, n_ele_N2):
     plt.text(c + 0.05, e + 0.05, t)
 
 plt.savefig('cohesive_eng_vs_N2.pdf')
+plt.show()
+
+################################ cohvesive energy N2H
+
+common_elements = list(set(list(d_cohesive.keys())+ list(plus_4_N2H.keys())))
+N2H_s = []
+d_coh_s = []
+syms = []
+for symbol in common_elements:
+    if symbol not in d_cohesive.keys() or symbol not in plus_4_N2H.keys():
+        continue
+    if plus_4_N2H[symbol] == None or d_cohesive[symbol] == None:
+        continue
+    if symbol in ['Cu','Ag']:
+        continue
+    N2H_s.append(plus_4_N2H[symbol])
+    d_coh_s.append(d_cohesive[symbol])
+    syms.append(symbol)
+
+slope, intercept, r_value, p_value, std_err = linregress(d_coh_s, N2H_s)
+plt.title('Metal Cohesive Energy vs 4+ N$_2$H Binding Energy')
+plt.ylabel('N$_2$H Binding Energy')
+plt.xlabel('Metal Cohesive Energy (eV/atom)')
+co_e = d_coh_s
+#plt.text(max(co_e)-0.75,max(n_N2_engs), 'R$^2$ = {}'.format(round(r_value ** 2,2)))
+plt.scatter(d_coh_s, N2H_s)
+plt.plot([min(co_e),max(co_e)],np.array([min(co_e),max(co_e)]) * slope + intercept)
+for e, c, t in zip(co_e, d_coh_s, N2H_s):
+    plt.text(c + 0.05, e + 0.05, t)
+
+plt.savefig('cohesive_eng_vs_4+_N2H.pdf')
 plt.show()
 
 
