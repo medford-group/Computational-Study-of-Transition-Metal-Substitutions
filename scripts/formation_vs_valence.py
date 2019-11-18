@@ -224,7 +224,7 @@ for i, row in enumerate(rows):
         axs[i].set_xlabel('Element')
     if i == 0:
         axs[i].set_title('N$_2$H Adsorption Energy by Periodic Row')
-plt.savefig('N2H_adsorption_rows.pdf')
+plt.savefig('../Images/N2H_adsorption_rows.pdf')
 plt.show()
 
 
