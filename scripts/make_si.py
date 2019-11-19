@@ -1,5 +1,6 @@
 import os
 from collections import defaultdict
+from data import plus_4_fe, plus_4_N2, plus_4_N2H 
 import csv
 
 metal_dict = defaultdict(dict)
@@ -83,9 +84,22 @@ g.write('\hline\n')
 
 g.write('\\end{tabular}\n')
 g.write('\\end{center}\n')
-g.write('\\caption{The calculated relative energies of all surface species on all metal substituents at standard state. All energies are referenced with respect to N$_2$ gas and H$_2$ gas at 300K and 1 bar of pressure. Blank spaces represent calculations that could not be converged}\n')
+g.write('\\caption{The calculated relative energies of all 2+ surface species on all metal substituents at standard state. All energies are referenced with respect to N$_2$ gas and H$_2$ gas at 300K and 1 bar of pressure. Blank spaces represent calculations that could not be converged}\n')
 g.write('\\label{table:energies}\n')
 g.write('\\end{table}\n')
+
+g.write('\\begin{table}')
+g.write('\\begin{center}\n\\begin{tabular}{| c | c | c |c |}\n')
+g.write('\hline\n')
+g.write('Element & ')
+
+g.write('\hline\n')
+g.write('\\end{tabular}\n')
+g.write('\\end{center}\n')
+
+g.write('\hline\n')
+g.write('Element & ')
+
 
 g.write('\\begin{table}\n\\begin{center}\n\\begin{tabular}{| c | c |c |}\n')
 
