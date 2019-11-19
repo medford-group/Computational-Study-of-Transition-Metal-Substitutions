@@ -125,7 +125,7 @@ g.write('\\end{center}\n')
 g.write('\\caption{The calculated relative energies of all 4+ surface species on all metal substituents at standard state. All energies are referenced with respect to N$_2$ gas and H$_2$ gas at 300K and 1 bar of pressure. Blank spaces represent calculations that could not be converged}\n')
 
 g.write('\hline\n')
-g.write('Element & ')
+g.write('\\end{table}\n\n')
 
 
 g.write('\\begin{table}\n\\begin{center}\n\\begin{tabular}{| c | c |c |}\n')
