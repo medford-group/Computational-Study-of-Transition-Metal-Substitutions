@@ -7,6 +7,14 @@ metal_dict = defaultdict(dict)
 all_metals = []
 all_species = []
 
+
+N2_corr = 0.0356539561469
+N2H_corr = 0.482259647646
+
+N2_gas_corr = -0.351226774491
+H2_gas_corr = -0.0394892748343
+
+
 def subscipt(species):
     subscripted = ''
     for i, char in enumerate(species):
@@ -86,16 +94,35 @@ g.write('\\end{tabular}\n')
 g.write('\\end{center}\n')
 g.write('\\caption{The calculated relative energies of all 2+ surface species on all metal substituents at standard state. All energies are referenced with respect to N$_2$ gas and H$_2$ gas at 300K and 1 bar of pressure. Blank spaces represent calculations that could not be converged}\n')
 g.write('\\label{table:energies}\n')
-g.write('\\end{table}\n')
+g.write('\\end{table}\n\n')
 
-g.write('\\begin{table}')
-g.write('\\begin{center}\n\\begin{tabular}{| c | c | c |c |}\n')
+g.write('\\begin{table}\n')
+g.write('\\begin{center}\n\\begin{tabular}{| c | c | c | c |}\n')
 g.write('\hline\n')
-g.write('Element & ')
+g.write('Element & N$_2$ & N$_2$H $ Formation Energy \\\\\n')
+available_elements = list(set(list(plus_4_fe.keys())+ list(plus_4_N2.keys())+ list(plus_4_N2H.keys())))
+for element in available_elements:
+    g.write(element + ' & ')
+    if element in plus_4_N2.keys():
+        g.write(str(round(plus_4_N2[element] + N2_corr - N2_gas_corr, 2)) + ' & ')
+    else:
+        g.write(' & ')
+    if element in plus_4_N2H.keys():
+        g.write(str(round(plus_4_N2H[element] + N2H_corr - N2_gas_corr - H2_gas_corr/2 , 2)) + ' & ')
+    else:
+        g.write(' & ')
+    if element in plus_4_fe.keys():
+        g.write(str(round(plus_4_fe[element], 2)))
+    else:
+        pass
+    g.write(' \\\\\n')
+
+
 
 g.write('\hline\n')
 g.write('\\end{tabular}\n')
 g.write('\\end{center}\n')
+g.write('\\caption{The calculated relative energies of all 4+ surface species on all metal substituents at standard state. All energies are referenced with respect to N$_2$ gas and H$_2$ gas at 300K and 1 bar of pressure. Blank spaces represent calculations that could not be converged}\n')
 
 g.write('\hline\n')
 g.write('Element & ')

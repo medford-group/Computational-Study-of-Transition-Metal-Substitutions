@@ -143,10 +143,10 @@ x_buffered_loc = (max(d_band_s) - min(d_band_s)) * 0.82 + min(d_band_s)
 ax.text(x_buffered_loc, max(fe_s) + 0.5, 'R$^2$ = {}'.format(round(r_value ** 2, 2)))
 plt_data = np.array([min(d_band_s), max(d_band_s)])
 ax.plot(plt_data, plt_data * slope + intercept)
-ax.set_title('d-band Center vs Site Formation Energy')
+ax.set_title('d-band Center vs Site 2+ Formation Energy')
 ax.set_ylabel('Site Formation Energy (eV)', labelpad = -0.1)
 ax.set_xlabel('d-band Center (eV)')
-plt.savefig('../Images/d_band_vs_formation.pdf')
+plt.savefig('../Images/2+_d_band_vs_formation.pdf')
 plt.show()
 
 ############ d-band 4+ fe
@@ -167,9 +167,9 @@ for symbol in common_elements:
     d_band_s.append(d_band[symbol])
     syms.append(symbol)
 
-d_band_s += o_d_band_s
-syms += o_syms
-fe_s += o_fe_s
+#d_band_s += o_d_band_s
+#syms += o_syms
+#fe_s += o_fe_s
 
 slope, intercept, r_value, p_value, std_err = linregress(d_band_s, fe_s)
 fig = plt.figure()
@@ -181,11 +181,37 @@ x_buffered_loc = (max(d_band_s) - min(d_band_s)) * 0.82 + min(d_band_s)
 ax.text(x_buffered_loc, max(fe_s) + 0.5, 'R$^2$ = {}'.format(round(r_value ** 2, 2)))
 plt_data = np.array([min(d_band_s), max(d_band_s)])
 ax.plot(plt_data, plt_data * slope + intercept)
-ax.set_title('d-band Center vs 4+ Site Formation Energy')
+ax.set_title('d-band Center vs Site 4+ Formation Energy')
 ax.set_ylabel('Site Formation Energy (eV)', labelpad = -0.1)
 ax.set_xlabel('d-band Center (eV)')
 plt.savefig('../Images/4+_d_band_vs_formation.pdf')
 plt.show()
+
+################ combined d-band vs fe
+
+
+#d_band_s += o_d_band_s
+#syms += o_syms
+#fe_s += o_fe_s
+
+slope, intercept, r_value, p_value, std_err = linregress(d_band_s+o_d_band_s, fe_s+o_fe_s)
+fig = plt.figure()
+ax = fig.add_axes([0.14,0.14,0.76,0.76])
+ax.scatter(d_band_s, fe_s, label='4+ slabs')
+ax.scatter(o_d_band_s, o_fe_s, label='2+ slabs')
+for i, j, metal in zip(d_band_s+o_d_band_s, fe_s+o_fe_s, syms+o_syms):
+    ax.text(i + 0.05, j + 0.05, metal)
+x_buffered_loc = (max(d_band_s) - min(d_band_s)) * 0.82 + min(d_band_s)
+ax.text(x_buffered_loc, max(fe_s) + 0.5, 'R$^2$ = {}'.format(round(r_value ** 2, 2)))
+plt_data = np.array([min(d_band_s), max(d_band_s)])
+ax.plot(plt_data, plt_data * slope + intercept)
+ax.set_title('d-band Center vs 4+ Site Formation Energy')
+ax.set_ylabel('Site Formation Energy (eV)', labelpad = -0.1)
+ax.set_xlabel('d-band Center (eV)')
+plt.legend()
+plt.savefig('../Images/combined_d_band_vs_formation.pdf')
+plt.show()
+
 
 ############# N2H vs NH2
 NH2_bindings, cohesive_energy, d_band_center, NH2_metals = build_lists('NH2')
