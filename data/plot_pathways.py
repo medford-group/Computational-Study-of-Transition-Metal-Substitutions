@@ -189,8 +189,8 @@ for energy in NH_energies:
 for energy in NH2_energies:
     for i in range(0,26):
         if energy[0] == slab_list[i]:
-            #pathway_array[i][13] = make_float(energy[1])+Ti_NH2 + NH2_corr*2 - N2_gas_corr - H2_gas_corr*2 + 4*hydrogen_potential
-            pathway_array[i][13] = 2*make_float(energy[1])+Ti_NH2 + NH2_corr*2 - N2_gas_corr - H2_gas_corr*2 + 4*hydrogen_potential
+            pathway_array[i][13] = make_float(energy[1])+Ti_NH2 + NH2_corr*2 - N2_gas_corr - H2_gas_corr*2 + 4*hydrogen_potential
+            #pathway_array[i][13] = 2*make_float(energy[1])+Ti_NH2 + NH2_corr*2 - N2_gas_corr - H2_gas_corr*2 + 4*hydrogen_potential
 #14: N* + NH2*
 for energy in N_energies:
     for i in range(0,26):
