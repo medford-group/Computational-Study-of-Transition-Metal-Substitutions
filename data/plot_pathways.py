@@ -50,8 +50,11 @@ NH3_gas_corr = 0.426183909776
 NH3 = NH3 + NH3_corr + 3*hydrogen_potential
 
 
-associative_adsorbates = ['N2','N2*','N2H*','N2H2*','HNNH2*','H2NNH2*','NH2*+NH3*','2NH3*','2NH3']
-associative_columns = [0,1,2,3,4,7,8]
+#associative_adsorbates = ['N2','N2*','N2H*','N2H2*','HNNH2*','H2NNH2*','NH2*+NH3*','2NH3*','2NH3']
+#associative_columns = [0,1,2,3,4,7,8]
+associative_adsorbates = ['N2','N2*','N2H*','HNNH*','HNNH2*','H2NNH2*','2NH2*','NH2*+NH3','NH3*+NH3','2NH3']
+associative_columns = [0,1,2,21,4,13,19,20]
+
 dissociative_adsorbates = ['N2','N2*','2N*','2NH*','2NH2*','2NH3*','2NH3']
 dissociative_columns = [0,11,12,13,8]
 distal_1_adsorbates = ['N2','N2*','N2H*','N2H2*','N*+NH2*','N*+NH3*','NH*+NH3*','NH2*+NH3*','2NH3*','2NH3']
@@ -115,7 +118,7 @@ def plot_pathway(energies,adsorbates,title,file_name):
     plt.close()
     return
 
-pathway_array = [[0 for col in range(0,21)] for row in range(0,26)]
+pathway_array = [[0 for col in range(0,22)] for row in range(0,26)]
 #array, each row is a substitute, each column is the energy of an adsorbate combination.
 #adding corrections for free energy and number of hydrogens attached.
 #Indexed rather arbitrarily:
@@ -228,6 +231,13 @@ for energy in NH3_energies:
     for i in range(0,26):
         if energy[0] == slab_list[i]:
             pathway_array[i][20] = make_float(energy[1])+NH3_corr - N2_gas_corr/2 - H2_gas_corr*3/2 + 3*hydrogen_potential + NH3
+
+#21: HNNH*
+for energy in HNNH_energies:
+    for i in range(0,26):
+        if energy[0] == slab_list[i]:
+            pathway_array[i][21] = make_float(energy[1]) - N2_gas_corr - H2_gas_corr*2 + 2*hydrogen_potential
+
 
 
 
