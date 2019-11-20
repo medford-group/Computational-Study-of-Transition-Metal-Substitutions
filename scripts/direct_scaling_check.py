@@ -4,6 +4,7 @@ from collections import defaultdict
 import itertools
 
 from matplotlib import pyplot as plt
+from matplotlib.transforms import BboxBase
 from sklearn.linear_model import LinearRegression
 from data import fe, column, element, cohesive_energies, N2_engs, N2H_engs, d_band, electronegativity,d_cohesive, s_cohesive, plus_4_fe
 import matplotlib
@@ -17,6 +18,8 @@ from ase.units import kJ, mol
 
 plt.rcParams["figure.figsize"] = (4.5,3.5)
 plt.rcParams["font.size"] = 10
+plt.rcParams['legend.fontsize'] =  9
+plt.rcParams['legend.handlelength'] = 1
 
 
 metal_dict = defaultdict(dict)
@@ -163,7 +166,7 @@ for symbol in common_elements:
         continue
     if plus_4_fe[symbol] == None or d_band[symbol] == None:
         continue
-    fe_s.append(plus_4_fe[symbol])
+    fe_s.append(plus_4_fe[symbol] +  1.54)
     d_band_s.append(d_band[symbol])
     syms.append(symbol)
 
@@ -194,20 +197,24 @@ plt.show()
 #syms += o_syms
 #fe_s += o_fe_s
 
-slope, intercept, r_value, p_value, std_err = linregress(d_band_s+o_d_band_s, fe_s+o_fe_s)
+slope_4, intercept_4, r_value_4, p_value, std_err = linregress(d_band_s, fe_s)
+slope_2, intercept_2, r_value_2, p_value, std_err = linregress(o_d_band_s, o_fe_s)
 fig = plt.figure()
 ax = fig.add_axes([0.14,0.14,0.76,0.76])
 ax.scatter(d_band_s, fe_s, label='4+ slabs')
-ax.scatter(o_d_band_s, o_fe_s, label='2+ slabs')
+ax.scatter(o_d_band_s, o_fe_s, marker='s', label='2+ slabs')
 for i, j, metal in zip(d_band_s+o_d_band_s, fe_s+o_fe_s, syms+o_syms):
-    ax.text(i + 0.05, j + 0.05, metal)
+    ax.text(i + 0.07, j + 0.07, metal)
 x_buffered_loc = (max(d_band_s) - min(d_band_s)) * 0.82 + min(d_band_s)
-ax.text(x_buffered_loc, max(fe_s) + 0.5, 'R$^2$ = {}'.format(round(r_value ** 2, 2)))
+#ax.text(x_buffered_loc, max(fe_s) + 0.5, 'R$^2$ = {}'.format(round(r_value_4 ** 2, 2)))
 plt_data = np.array([min(d_band_s), max(d_band_s)])
-ax.plot(plt_data, plt_data * slope + intercept)
-ax.set_title('d-band Center vs 4+ Site Formation Energy')
+ax.plot(plt_data, plt_data * slope_4 + intercept_4, label='4+ fit, R$^2$={}'.format(round(r_value_4 ** 2, 2)))
+ax.plot(plt_data, plt_data * slope_2 + intercept_2, '--', label='2+ fit, R$^2$={}'.format(round(r_value_2 ** 2, 2)))
+plt.legend(prop={'size': 4}, bbox_to_anchor=BboxBase(), fontsize=6)
+ax.set_title('d-band Center vs Site Formation Energy')
 ax.set_ylabel('Site Formation Energy (eV)', labelpad = -0.1)
 ax.set_xlabel('d-band Center (eV)')
+#ax.set_ylim([-2, 17])
 plt.legend()
 plt.savefig('../Images/combined_d_band_vs_formation.pdf')
 plt.show()
@@ -338,29 +345,32 @@ for symbol in common_elements:
         continue
     if plus_4_fe[symbol] == None or d_band[symbol] == None:
         continue
-    fe_s.append(plus_4_fe[symbol])
+    fe_s.append(plus_4_fe[symbol] + 1.54)
     electro_n.append(electronegativity[symbol])
     syms.append(symbol)
 
-electro_n += o_electro_n
-syms += o_syms
-fe_s += o_fe_s
+#electro_n += o_electro_n
+#syms += o_syms
+#fe_s += o_fe_s
 
 print(electro_n, fe_s)
-
-slope, intercept, r_value, p_value, std_err = linregress(electro_n, fe_s)
+slope_4, intercept_4, r_value_4, p_value, std_err = linregress(electro_n, fe_s)
+slope_2, intercept_2, r_value_2, p_value, std_err = linregress(o_electro_n, o_fe_s)
 fig = plt.figure()
 ax = fig.add_axes([0.14,0.14,0.76,0.76])
-ax.scatter(electro_n, fe_s)
-for i, j, metal in zip(electro_n, fe_s, syms):
-    ax.text(i + 0.05, j + 0.05, metal)
-x_buffered_loc = (max(electro_n) - min(electro_n)) * 0 + min(electro_n)
-ax.text(x_buffered_loc, max(fe_s), 'R$^2$ = {}'.format(round(r_value ** 2, 2)))
+ax.scatter(electro_n, fe_s, label='4+ slabs')
+ax.scatter(o_electro_n, o_fe_s, marker='s', label='2+ slabs')
+for i, j, metal in zip(electro_n+o_electro_n, fe_s+o_fe_s, syms+o_syms):
+    ax.text(i + 0.01, j - 0.07, metal)
+#x_buffered_loc = (max(d_band_s) - min(d_band_s)) * 0.82 + min(d_band_s)
+#ax.text(x_buffered_loc, max(fe_s) + 0.5, 'R$^2$ = {}'.format(round(r_value_4 ** 2, 2)))
 plt_data = np.array([min(electro_n), max(electro_n)])
-ax.plot(plt_data, plt_data * slope + intercept)
+ax.plot(plt_data, plt_data * slope_4 + intercept_4, label='4+ fit, R$^2$={}'.format(round(r_value_4 ** 2, 2)))
+ax.plot(plt_data, plt_data * slope_2 + intercept_2, '--', label='2+ fit, R$^2$={}'.format(round(r_value_2 ** 2, 2)))
 ax.set_title('Electonegativity vs Site Formation Energy')
 ax.set_ylabel('Site Formation Energy (eV)', labelpad = -0.1)
 ax.set_xlabel('Metal Electronegativity')
+plt.legend()
 plt.savefig('../Images/electronegativity_vs_formation.pdf')
 plt.show()
 
