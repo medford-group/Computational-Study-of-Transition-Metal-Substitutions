@@ -136,7 +136,7 @@ g.write('\\hline\n')
 txt = csv.reader(open('../data/pathway_data/limiting_potential_associative_2.csv', 'r'))
 txt = list(txt)
 for metal in txt:
-    g.write(metal[0] + ' & ' + str(round(float(metal[1]), 2)) + ' & ' + subscipt(metal[2]) + '$\\rightarrow$' + subscipt(metal[3]))
+    g.write(metal[0] + ' & ' + str(round(float(metal[1]), 2)) + ' & ' + subscipt(metal[2]) + ' $\\rightarrow$ ' + subscipt(metal[3]))
 
     g.write('\\\\\n')
 g.write('\\hline\n')
@@ -151,7 +151,7 @@ g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{I
 g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{Images/Valence_vs_formation_energy.pdf}\n\\caption{Valence number vs formation energy of 2+ dopant site}\n\\end{figure}\n\n')
 
 for plot in os.listdir('../data/plots/'):
-    g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{data/plots/')
+    g.write('\\begin{figure}\n\\includegraphics[width=0.8\\linewidth]{data/plots/')
     g.write(plot)
     g.write('}\n\\end{figure}\n\n')
 
