@@ -132,7 +132,7 @@ for symbol in common_elements:
         continue
     if fe_dict[symbol] == None or d_band[symbol] == None:
         continue
-    fe_s.append(fe_dict[symbol])
+    fe_s.append(fe_dict[symbol] +  1.54)
     d_band_s.append(d_band[symbol])
     syms.append(symbol)
 
@@ -152,7 +152,7 @@ ax.set_xlabel('d-band Center (eV)')
 plt.savefig('../Images/2+_d_band_vs_formation.pdf')
 plt.show()
 
-############ d-band 4+ fe
+############ d-band 2+ fe
 o_fe_s = fe_s.copy()
 o_d_band_s = d_band_s.copy()
 o_syms = syms.copy()
@@ -166,7 +166,7 @@ for symbol in common_elements:
         continue
     if plus_4_fe[symbol] == None or d_band[symbol] == None:
         continue
-    fe_s.append(plus_4_fe[symbol] +  1.54)
+    fe_s.append(plus_4_fe[symbol])
     d_band_s.append(d_band[symbol])
     syms.append(symbol)
 
@@ -199,6 +199,7 @@ plt.show()
 
 slope_4, intercept_4, r_value_4, p_value, std_err = linregress(d_band_s, fe_s)
 slope_2, intercept_2, r_value_2, p_value, std_err = linregress(o_d_band_s, o_fe_s)
+slope, intercept, r_value, p_value, std_err = linregress(d_band_s+o_d_band_s, fe_s+o_fe_s)
 fig = plt.figure()
 ax = fig.add_axes([0.14,0.14,0.76,0.76])
 ax.scatter(d_band_s, fe_s, label='4+ slabs')
@@ -210,6 +211,7 @@ x_buffered_loc = (max(d_band_s) - min(d_band_s)) * 0.82 + min(d_band_s)
 plt_data = np.array([min(d_band_s), max(d_band_s)])
 ax.plot(plt_data, plt_data * slope_4 + intercept_4, label='4+ fit, R$^2$={}'.format(round(r_value_4 ** 2, 2)))
 ax.plot(plt_data, plt_data * slope_2 + intercept_2, '--', label='2+ fit, R$^2$={}'.format(round(r_value_2 ** 2, 2)))
+#ax.plot(plt_data, plt_data * slope + intercept, '--', label='fit, R$^2$={}'.format(round(r_value ** 2, 2)))
 plt.legend(prop={'size': 4}, bbox_to_anchor=BboxBase(), fontsize=6)
 ax.set_title('d-band Center vs Site Formation Energy')
 ax.set_ylabel('Site Formation Energy (eV)', labelpad = -0.1)
@@ -328,7 +330,7 @@ for symbol in common_elements:
         continue
     if fe_dict[symbol] == None or electronegativity[symbol] == None:
         continue
-    fe_s.append(fe_dict[symbol])
+    fe_s.append(fe_dict[symbol]+  1.54)
     electro_n.append(electronegativity[symbol])
     syms.append(symbol)
 
@@ -345,7 +347,7 @@ for symbol in common_elements:
         continue
     if plus_4_fe[symbol] == None or d_band[symbol] == None:
         continue
-    fe_s.append(plus_4_fe[symbol] + 1.54)
+    fe_s.append(plus_4_fe[symbol])
     electro_n.append(electronegativity[symbol])
     syms.append(symbol)
 
@@ -353,9 +355,11 @@ for symbol in common_elements:
 #syms += o_syms
 #fe_s += o_fe_s
 
-print(electro_n, fe_s)
+#print(electro_n, fe_s)
 slope_4, intercept_4, r_value_4, p_value, std_err = linregress(electro_n, fe_s)
 slope_2, intercept_2, r_value_2, p_value, std_err = linregress(o_electro_n, o_fe_s)
+slope, intercept, r_value, p_value, std_err = linregress(o_electro_n+electro_n, o_fe_s+fe_s)
+
 fig = plt.figure()
 ax = fig.add_axes([0.14,0.14,0.76,0.76])
 ax.scatter(electro_n, fe_s, label='4+ slabs')
@@ -365,8 +369,9 @@ for i, j, metal in zip(electro_n+o_electro_n, fe_s+o_fe_s, syms+o_syms):
 #x_buffered_loc = (max(d_band_s) - min(d_band_s)) * 0.82 + min(d_band_s)
 #ax.text(x_buffered_loc, max(fe_s) + 0.5, 'R$^2$ = {}'.format(round(r_value_4 ** 2, 2)))
 plt_data = np.array([min(electro_n), max(electro_n)])
-ax.plot(plt_data, plt_data * slope_4 + intercept_4, label='4+ fit, R$^2$={}'.format(round(r_value_4 ** 2, 2)))
-ax.plot(plt_data, plt_data * slope_2 + intercept_2, '--', label='2+ fit, R$^2$={}'.format(round(r_value_2 ** 2, 2)))
+#ax.plot(plt_data, plt_data * slope_4 + intercept_4, label='4+ fit, R$^2$={}'.format(round(r_value_4 ** 2, 2)))
+#ax.plot(plt_data, plt_data * slope_2 + intercept_2, '--', label='2+ fit, R$^2$={}'.format(round(r_value_2 ** 2, 2)))
+ax.plot(plt_data, plt_data * slope + intercept, '--', label='fit, R$^2$={}'.format(round(r_value ** 2, 2)))
 ax.set_title('Electonegativity vs Site Formation Energy')
 ax.set_ylabel('Site Formation Energy (eV)', labelpad = -0.1)
 ax.set_xlabel('Metal Electronegativity')
