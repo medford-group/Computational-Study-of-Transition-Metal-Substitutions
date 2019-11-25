@@ -25,7 +25,7 @@ Ti_NH3 = -1.665674942
 NH3 = -0.7394391845
 
 #electric potential correction for adding hydrogen. Approximating as valence band energy of pure titania
-#hydrogen_potential = -0.15
+#hydrogen_potential = -0.1417
 #not including this effect currently
 hydrogen_potential = 0
 
