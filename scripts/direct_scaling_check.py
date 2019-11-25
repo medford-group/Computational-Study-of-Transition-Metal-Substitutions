@@ -6,7 +6,7 @@ import itertools
 from matplotlib import pyplot as plt
 from matplotlib.transforms import BboxBase
 from sklearn.linear_model import LinearRegression
-from data import fe, column, element, cohesive_energies, N2_engs, N2H_engs, d_band, electronegativity,d_cohesive, s_cohesive, plus_4_fe
+from data import fe, column, element, cohesive_energies, N2_engs, N2H_engs, d_band, electronegativity,d_cohesive, s_cohesive, plus_4_fe, bulk_fe_big
 import matplotlib
 from data import fe_dict, d_band
 from scipy.stats import linregress
@@ -30,6 +30,8 @@ for pathway in os.listdir('../data/corrected_data'):
         if 'sa' not in pathway:
             continue
     with open('../data/corrected_data/' + pathway, 'r') as f:
+        if pathway == 'scaling.py':
+            continue
         compound.append(pathway.split('.')[0])
         data = csv.reader(f)
         for row in data:
@@ -204,22 +206,57 @@ fig = plt.figure()
 ax = fig.add_axes([0.14,0.14,0.76,0.76])
 ax.scatter(d_band_s, fe_s, label='4+ slabs')
 ax.scatter(o_d_band_s, o_fe_s, marker='s', label='2+ slabs')
-for i, j, metal in zip(d_band_s+o_d_band_s, fe_s+o_fe_s, syms+o_syms):
-    ax.text(i + 0.07, j + 0.07, metal)
+#for i, j, metal in zip(d_band_s+o_d_band_s, fe_s+o_fe_s, syms+o_syms):
+#    ax.text(i + 0.07, j + 0.07, metal)
 x_buffered_loc = (max(d_band_s) - min(d_band_s)) * 0.82 + min(d_band_s)
 #ax.text(x_buffered_loc, max(fe_s) + 0.5, 'R$^2$ = {}'.format(round(r_value_4 ** 2, 2)))
 plt_data = np.array([min(d_band_s), max(d_band_s)])
 ax.plot(plt_data, plt_data * slope_4 + intercept_4, label='4+ fit, R$^2$={}'.format(round(r_value_4 ** 2, 2)))
+print(slope_4, intercept_4)
 ax.plot(plt_data, plt_data * slope_2 + intercept_2, '--', label='2+ fit, R$^2$={}'.format(round(r_value_2 ** 2, 2)))
 #ax.plot(plt_data, plt_data * slope + intercept, '--', label='fit, R$^2$={}'.format(round(r_value ** 2, 2)))
-plt.legend(prop={'size': 4}, bbox_to_anchor=BboxBase(), fontsize=6)
+#plt.legend(prop={'size': 4}, bbox_to_anchor=BboxBase(), fontsize=6)
 ax.set_title('d-band Center vs Site Formation Energy')
 ax.set_ylabel('Site Formation Energy (eV)', labelpad = -0.1)
 ax.set_xlabel('d-band Center (eV)')
 #ax.set_ylim([-2, 17])
-plt.legend()
+#plt.legend()
 plt.savefig('../Images/combined_d_band_vs_formation.pdf')
+#plt.show()
+
+
+
+
+############# d-band vs bulk fe
+common_elements = list(set(list(d_band.keys())+ list(bulk_fe_big.keys())))
+b_fe_s = []
+b_d_band_s = []
+syms = []
+for symbol in common_elements:
+    if symbol not in d_band.keys() or symbol not in bulk_fe_big.keys():
+        continue
+    if bulk_fe_big[symbol] == None or d_band[symbol] == None:
+        continue
+    b_fe_s.append(bulk_fe_big[symbol] +  1.54)
+    b_d_band_s.append(d_band[symbol])
+    syms.append(symbol)
+
+slope_b, intercept_b, r_value_b, p_value, std_err = linregress(b_d_band_s, b_fe_s)
+#fig = plt.figure()
+#ax = fig.add_axes([0.14,0.14,0.76,0.76])
+ax.scatter(b_d_band_s, b_fe_s, marker='^', label='bulk substitution')
+#for i, j, metal in zip(b_d_band_s, b_fe_s, syms):
+#    ax.text(i + 0.05, j + 0.05, metal)
+plt_data = np.array([min(b_d_band_s), max(b_d_band_s)])
+ax.plot(plt_data, plt_data * slope_b + intercept_b, label='bulk fit, R$^2$={}'.format(round(r_value_b ** 2, 2)))#, c='#838383')
+print(slope_b, intercept_b)
+#ax.set_title('d-band Center vs Bulk Substitution Formation Energy')
+#ax.set_ylabel('Site Formation Energy (eV)', labelpad = -0.1)
+#ax.set_xlabel('d-band Center (eV)')
+plt.legend()
+plt.savefig('../Images/d_band_vs_bulk_formation.pdf')
 plt.show()
+
 
 
 ############# N2H vs NH2

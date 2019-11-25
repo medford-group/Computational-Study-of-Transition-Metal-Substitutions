@@ -47,7 +47,8 @@ H2_gas_corr = -0.0394892748343
 NH3_gas_corr = 0.426183909776
 
 #correct NH3 gas
-NH3 = NH3 + NH3_corr + 3*hydrogen_potential
+#NH3 = NH3 + NH3_corr + 3*hydrogen_potential
+NH3 = NH3 + NH3_gas_corr + 3*hydrogen_potential
 
 
 #associative_adsorbates = ['N2','N2*','N2H*','N2H2*','HNNH2*','H2NNH2*','NH2*+NH3*','2NH3*','2NH3']
@@ -236,7 +237,7 @@ for energy in NH3_energies:
 for energy in HNNH_energies:
     for i in range(0,26):
         if energy[0] == slab_list[i]:
-            pathway_array[i][21] = make_float(energy[1]) - N2_gas_corr - H2_gas_corr*2 + 2*hydrogen_potential
+            pathway_array[i][21] = make_float(energy[1]) + HNNH_corr - N2_gas_corr - H2_gas_corr*2 + 2*hydrogen_potential
 
 
 

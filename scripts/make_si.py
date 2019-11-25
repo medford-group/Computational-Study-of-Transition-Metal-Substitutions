@@ -52,7 +52,7 @@ g.write('Supplementary Information\n')
 
 g.write('\onecolumn\n')
 
-g.write('\\begin{table}')
+g.write('\\begin{table}\n')
 g.write('\\begin{center}\n\\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c | c |}\n')
 
 g.write('\hline\n')
@@ -100,6 +100,7 @@ g.write('\\begin{table}\n')
 g.write('\\begin{center}\n\\begin{tabular}{| c | c | c | c |}\n')
 g.write('\hline\n')
 g.write('Element & N$_2$ & N$_2$H & Formation Energy \\\\\n')
+g.write('\\hline\n')
 available_elements = list(set(list(plus_4_fe.keys())+ list(plus_4_N2.keys())+ list(plus_4_N2H.keys())))
 for element in available_elements:
     g.write(element + ' & ')
