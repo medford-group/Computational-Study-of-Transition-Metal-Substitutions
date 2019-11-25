@@ -34,6 +34,8 @@ for pathway in os.listdir('../data/corrected_data'):
         if pathway != 'formation_energy.csv':
             continue
     with open('../data/corrected_data/' + pathway, 'r') as f:
+        if pathway == 'scaling.py':
+            continue
         data = csv.reader(f)
         for row in data:
             metal_dict[pathway.split('.')[0]][row[0]] = float(row[1])
