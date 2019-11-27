@@ -16,7 +16,9 @@ n_N2_engs = []
 n_N2H_engs = []
 nn_N2H_engs = []
 
+print(len(column))
 for i, e in enumerate(fe):
+    print(element[i], column[i], e)
     if e is None:
         continue
     n_col.append(column[i])
@@ -190,13 +192,16 @@ for i, row in enumerate(rows):
         elif eng < 0:
             positive_row_energies[i].append(0)
             negative_row_energies[i].append(eng)
-del rows[0]
-del positive_row_energies[0]
-del negative_row_energies[0]
+#del rows[0]
+#del positive_row_energies[0]
+#del negative_row_energies[0]
 
 for i, row in enumerate(rows):
     axs[i].bar(row, positive_row_energies[i], color='#0390fc')
     axs[i].bar(row, negative_row_energies[i], color='#0390fc')
+    #axs[i].scatter(row, positive_row_energies[i], color='#0390fc')
+    #axs[i].scatter(row, negative_row_energies[i], color='#0390fc')
+
     #axs[i].set_title('Row {}'.format(i + 4))
     axs[i].set_ylim([-1.6,0])
     if i == 1:

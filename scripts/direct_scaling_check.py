@@ -248,7 +248,7 @@ ax.scatter(b_d_band_s, b_fe_s, marker='^', label='bulk substitution')
 #for i, j, metal in zip(b_d_band_s, b_fe_s, syms):
 #    ax.text(i + 0.05, j + 0.05, metal)
 plt_data = np.array([min(b_d_band_s), max(b_d_band_s)])
-ax.plot(plt_data, plt_data * slope_b + intercept_b, label='bulk fit, R$^2$={}'.format(round(r_value_b ** 2, 2)))#, c='#838383')
+ax.plot(plt_data, plt_data * slope_b + intercept_b, label='bulk fit, R$^2$={}'.format(round(r_value_b ** 2, 2)), linestyle='dotted')#, c='#838383')
 print(slope_b, intercept_b)
 #ax.set_title('d-band Center vs Bulk Substitution Formation Energy')
 #ax.set_ylabel('Site Formation Energy (eV)', labelpad = -0.1)
@@ -311,10 +311,10 @@ x_buffered_loc = (max(cohesive_energy) - min(cohesive_energy)) * 0.8 + min(cohes
 ax.text(x_buffered_loc, max(NH2_bindings) - 0.1, 'R$^2$ = {}'.format(round(r_value ** 2, 2)))
 ax.plot(plt_data, plt_data * slope + intercept)
 ax.set_title('$\Delta E_{NH_2}$ vs d Band Contribution of Cohesive Energy')
-ax.set_ylabel('$\Delta E_{N_2H}$ (eV)', labelpad=-0.1)
+ax.set_ylabel('$\Delta E_{NH_2}$ (eV)', labelpad=-0.1)
 ax.set_xlabel('d-Band Contribution of Cohesive Energy (eV)')
 ax.yaxis.labelpad = 0
-plt.savefig('../Images/cohesive_eng_vs_N2H.pdf')
+plt.savefig('../Images/cohesive_eng_vs_NH2.pdf')
 plt.show()
 
 ############## cohesive energy vs N2H
@@ -333,7 +333,7 @@ ax.plot(plt_data, plt_data * slope + intercept)
 ax.set_title('$\Delta E_{N_2H}$ vs d Band Contribution of Cohesive Energy (eV)')
 ax.set_xlabel('d-band Contribution of Cohesive Energy (eV)')
 ax.set_ylabel('$\Delta E_{N_2H} (eV)$', labelpad = -0.1)
-plt.savefig('../Images/cohesive_eng_vs_NH2.pdf')
+plt.savefig('../Images/cohesive_eng_vs_N2H.pdf')
 plt.show()
 
 
@@ -346,8 +346,8 @@ ax = fig.add_axes([0.14,0.14,0.76,0.76])
 ax.scatter(cohesive_energy, N2H_bindings)
 for i, j, metal in zip(cohesive_energy, N2H_bindings, N2H_metals):
     ax.text(i + 0.01, j + 0.01, metal)
-x_buffered_loc = (max(cohesive_energy) - min(cohesive_energy)) * 0.85 + min(cohesive_energy)
-ax.text(x_buffered_loc, max(N2H_bindings) - 0.1, 'R$^2$ = {}'.format(round(r_value ** 2, 2)))
+x_buffered_loc = (max(cohesive_energy) - min(cohesive_energy)) * 0.80 + min(cohesive_energy)
+ax.text(x_buffered_loc, max(N2H_bindings) - 0.07, 'R$^2$ = {}'.format(round(r_value ** 2, 2)))
 plt_data = np.array([min(cohesive_energy), max(cohesive_energy)])
 ax.plot(plt_data, plt_data * slope + intercept)
 ax.set_title('$\Delta E_{N_2}$ vs d Band Contribution of Cohesive Energy (eV)')
