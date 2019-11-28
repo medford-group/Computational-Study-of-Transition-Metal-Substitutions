@@ -54,7 +54,7 @@ NH3 = NH3 + NH3_gas_corr + 3*hydrogen_potential
 #associative_adsorbates = ['N2','N2*','N2H*','N2H2*','HNNH2*','H2NNH2*','NH2*+NH3*','2NH3*','2NH3']
 #associative_columns = [0,1,2,3,4,7,8]
 associative_adsorbates = ['N2','N2*','N2H*','HNNH*','HNNH2*','H2NNH2*','2NH2*','NH2*+NH3','NH3*+NH3','2NH3']
-associative_columns = [0,1,2,21,4,13,19,20]
+associative_columns = [0,1,21,3,4,13,19,20]
 
 dissociative_adsorbates = ['N2','N2*','2N*','2NH*','2NH2*','2NH3*','2NH3']
 dissociative_columns = [0,11,12,13,8]
