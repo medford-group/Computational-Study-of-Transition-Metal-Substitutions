@@ -237,7 +237,7 @@ for energy in NH3_energies:
 for energy in HNNH_energies:
     for i in range(0,26):
         if energy[0] == slab_list[i]:
-            pathway_array[i][21] = make_float(energy[1]) + HNNH_corr - N2_gas_corr - H2_gas_corr*2 + 2*hydrogen_potential
+            pathway_array[i][21] = make_float(energy[1]) + HNNH_corr - N2_gas_corr - H2_gas_corr + 2*hydrogen_potential
 
 
 

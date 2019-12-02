@@ -361,3 +361,55 @@ for i, row in enumerate(rows):
 
 plt.savefig('N2H_adsorption_rows')
 plt.show()
+
+
+########################################### NH2
+
+fig, _axs = plt.subplots(nrows=3, ncols=1)
+axs = _axs.flatten()
+N2H_corr = 0.482259647646
+N2_gas_corr = -0.351226774491
+H2_gas_corr = -0.0394892748343
+
+
+row_1_elements = ['Sc', 'Ti', 'V', 'Cr', 'Mn', 'Fe', 'Co', 'Ni', 'Cu']
+row_2_elements = ['Y',  'Zr', 'Nb', 'Mo', 'Tc', 'Ru', 'Rh', 'Pd', 'Ag']
+row_3_elements = ['', 'Hf', 'Ta', 'W', 'Re', 'Os', 'Ir', 'Pt', 'Au']
+
+positive_row_energies = [[],[],[]]
+negative_row_energies = [[],[],[]]
+
+rows = [row_1_elements, row_2_elements, row_3_elements]
+
+for i, row in enumerate(rows):
+    for element_sym in row:
+        if element_sym == '':
+            eng = 0
+        elif element_sym not in plus_4_N2H.keys():
+            eng = 0
+        else:
+            eng = plus_4_N2H[element_sym] + N2H_corr - N2_gas_corr - H2_gas_corr/2
+            if eng is None:
+                eng = 0
+        if eng >= 0:
+            positive_row_energies[i].append(eng)
+            negative_row_energies[i].append(0)
+        elif eng < 0:
+            positive_row_energies[i].append(0)
+            negative_row_energies[i].append(eng)
+
+for i, row in enumerate(rows):
+    axs[i].bar(row, positive_row_energies[i], color='#0390fc')
+    axs[i].bar(row, negative_row_energies[i], color='#0390fc')
+    #axs[i].set_title('Row {}'.format(i + 4))
+    axs[i].set_ylim([-1.5,2.5])
+    if i == 1:
+        axs[i].set_ylabel('N$_2$H Adsorption Energy (eV)')
+    if i == 2:
+        axs[i].set_xlabel('Element')
+    if i == 0:
+        axs[i].set_title('N$_2$H Adsorption Energy by Periodic Row')
+
+plt.savefig('N2H_adsorption_rows')
+plt.show()
+
