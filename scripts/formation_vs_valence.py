@@ -1,7 +1,7 @@
 from matplotlib import pyplot as plt
 import numpy as np
 from scipy.stats import linregress
-from data import fe, column, element, cohesive_energies, N2_engs, N2H_engs, d_band, electronegativity,d_cohesive, s_cohesive, plus_4_N2H, plus_4_N2
+from data import fe, column, element, cohesive_energies, N2_engs, N2H_engs, d_band, electronegativity,d_cohesive, s_cohesive, plus_4_N2H, plus_4_N2, NH2_engs_dict
 
 plt.rcParams["figure.figsize"] = (4.5,3.5)
 plt.rcParams["font.size"] = 10
@@ -16,9 +16,8 @@ n_N2_engs = []
 n_N2H_engs = []
 nn_N2H_engs = []
 
-print(len(column))
 for i, e in enumerate(fe):
-    print(element[i], column[i], e)
+    #print(element[i], column[i], e)
     if e is None:
         continue
     n_col.append(column[i])
@@ -134,7 +133,7 @@ plt.plot([min(n_N2_engs),max(n_N2_engs)],np.array([min(n_N2_engs),max(n_N2_engs,
 for c, e, t in zip(n_N2_engs, nn_N2H_engs, n_ele_N2):
     plt.text(c + 0.05, e + 0.05, t)
 
-plt.savefig('N2_vs_N2H.pdf')
+plt.savefig('../Images/N2_vs_N2H.pdf')
 plt.show()
 
 ###########################  d band center vs formation
@@ -173,7 +172,7 @@ row_3_elements = ['', 'Hf', 'Ta', 'W', 'Re', 'Os', 'Ir', 'Pt', 'Au']
 positive_row_energies = [[],[],[]]
 negative_row_energies = [[],[],[]]
 
-rows = [row_1_elements, row_2_elements, row_3_elements]
+rows = [row_1_elements, row_2_elements]#, row_3_elements]
 
 for i, row in enumerate(rows):
     for element_sym in row:
@@ -317,6 +316,7 @@ plt.show()
 fig, _axs = plt.subplots(nrows=3, ncols=1)
 axs = _axs.flatten()
 N2H_corr = 0.482259647646
+NH2_corr = 0.681757082272
 N2_gas_corr = -0.351226774491
 H2_gas_corr = -0.0394892748343
 
@@ -376,8 +376,12 @@ row_1_elements = ['Sc', 'Ti', 'V', 'Cr', 'Mn', 'Fe', 'Co', 'Ni', 'Cu']
 row_2_elements = ['Y',  'Zr', 'Nb', 'Mo', 'Tc', 'Ru', 'Rh', 'Pd', 'Ag']
 row_3_elements = ['', 'Hf', 'Ta', 'W', 'Re', 'Os', 'Ir', 'Pt', 'Au']
 
+row_nums = [3,4,5,6,7,8,9,10,11]
+
+
 positive_row_energies = [[],[],[]]
 negative_row_energies = [[],[],[]]
+numbered_row_energies = [[],[],[]]
 
 rows = [row_1_elements, row_2_elements, row_3_elements]
 
@@ -385,12 +389,13 @@ for i, row in enumerate(rows):
     for element_sym in row:
         if element_sym == '':
             eng = 0
-        elif element_sym not in plus_4_N2H.keys():
+        elif element_sym not in NH2_engs_dict.keys():
             eng = 0
         else:
-            eng = plus_4_N2H[element_sym] + N2H_corr - N2_gas_corr - H2_gas_corr/2
+            eng = NH2_engs_dict[element_sym] + NH2_corr - N2_gas_corr/2 - H2_gas_corr
             if eng is None:
                 eng = 0
+        numbered_row_energies[i].append(eng)
         if eng >= 0:
             positive_row_energies[i].append(eng)
             negative_row_energies[i].append(0)
@@ -399,10 +404,11 @@ for i, row in enumerate(rows):
             negative_row_energies[i].append(eng)
 
 for i, row in enumerate(rows):
-    axs[i].bar(row, positive_row_energies[i], color='#0390fc')
-    axs[i].bar(row, negative_row_energies[i], color='#0390fc')
+    #axs[i].bar(row, positive_row_energies[i], color='#0390fc')
+    #axs[i].bar(row, negative_row_energies[i], color='#0390fc')
     #axs[i].set_title('Row {}'.format(i + 4))
-    axs[i].set_ylim([-1.5,2.5])
+    axs[1].scatter(row_nums, numbered_row_energies[i])
+    axs[1].set_ylim([-1.5,2.5])
     if i == 1:
         axs[i].set_ylabel('N$_2$H Adsorption Energy (eV)')
     if i == 2:

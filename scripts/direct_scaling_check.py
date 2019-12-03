@@ -38,7 +38,7 @@ for pathway in os.listdir('../data/corrected_data'):
             metal_dict[pathway.split('.')[0]][row[0]] = float(row[1])
         # figure out how long one of them is
 
-print(metal_dict.keys())
+print(metal_dict['NH2'])
 # make a dummy comparison entry
 #all_metals = set(list(metal_dict['NH2'].keys()) + list(metal_dict['NH3'].keys()))
 #shared_metals = [a for a in all_metals if a in metal_dict[s1].keys() and a in metal_dict[s2].keys()]

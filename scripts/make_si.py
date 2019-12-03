@@ -150,6 +150,7 @@ g.write('\\end{table}')
 
 g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{Images/electronegativity_vs_formation.pdf}\n\\caption{Electronegativity vs formation energy of 2+ dopant site}\n\\end{figure}\n\n')
 
+g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{Images/N2_vs_N2H.pdf}\n\\caption{The binding energy of N$_2$ vs N$_2$H}\n\\end{figure}\n\n')
 
 g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{Images/Valence_vs_formation_energy.pdf}\n\\caption{Valence number vs formation energy of 2+ dopant site}\n\\end{figure}\n\n')
 
