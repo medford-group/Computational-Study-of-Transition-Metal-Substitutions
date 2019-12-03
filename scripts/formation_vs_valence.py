@@ -1,7 +1,7 @@
 from matplotlib import pyplot as plt
 import numpy as np
 from scipy.stats import linregress
-from data import fe, column, element, cohesive_energies, N2_engs, N2H_engs, d_band, electronegativity,d_cohesive, s_cohesive, plus_4_N2H, plus_4_N2, NH2_engs_dict
+from data import fe, column, element, cohesive_energies, N2_engs, N2H_engs, d_band, electronegativity,d_cohesive, s_cohesive, plus_4_N2H, plus_4_N2, NH2_engs_dict, N2H_engs_dict, N2_engs_dict 
 
 plt.rcParams["figure.figsize"] = (4.5,3.5)
 plt.rcParams["font.size"] = 10
@@ -317,6 +317,7 @@ fig, _axs = plt.subplots(nrows=3, ncols=1)
 axs = _axs.flatten()
 N2H_corr = 0.482259647646
 NH2_corr = 0.681757082272
+N2_corr = 0.0356539561469
 N2_gas_corr = -0.351226774491
 H2_gas_corr = -0.0394892748343
 
@@ -363,9 +364,11 @@ plt.savefig('N2H_adsorption_rows')
 plt.show()
 
 
-########################################### NH2
+########################################### Combined scatters
 
+plt.rcParams["figure.figsize"] = (5, 12.5)
 fig, _axs = plt.subplots(nrows=3, ncols=1)
+axs = _axs
 axs = _axs.flatten()
 N2H_corr = 0.482259647646
 N2_gas_corr = -0.351226774491
@@ -377,6 +380,7 @@ row_2_elements = ['Y',  'Zr', 'Nb', 'Mo', 'Tc', 'Ru', 'Rh', 'Pd', 'Ag']
 row_3_elements = ['', 'Hf', 'Ta', 'W', 'Re', 'Os', 'Ir', 'Pt', 'Au']
 
 row_nums = [3,4,5,6,7,8,9,10,11]
+markers = ['o', 's', '^']
 
 
 positive_row_energies = [[],[],[]]
@@ -385,37 +389,62 @@ numbered_row_energies = [[],[],[]]
 
 rows = [row_1_elements, row_2_elements, row_3_elements]
 
-for i, row in enumerate(rows):
-    for element_sym in row:
-        if element_sym == '':
-            eng = 0
-        elif element_sym not in NH2_engs_dict.keys():
-            eng = 0
-        else:
-            eng = NH2_engs_dict[element_sym] + NH2_corr - N2_gas_corr/2 - H2_gas_corr
-            if eng is None:
+for j, species_dict in enumerate([N2_engs_dict, N2H_engs_dict, NH2_engs_dict]):
+    positive_row_energies = [[],[],[]]
+    negative_row_energies = [[],[],[]]
+    numbered_row_energies = [[],[],[]]
+
+    for i, row in enumerate(rows):
+        for element_sym in row:
+            if element_sym == '':
+                eng = None
+            elif element_sym not in species_dict.keys():
+                eng = None
+            # iron is messed up for N2H
+            elif  j == 1 and element_sym == 'Fe':
+                eng == None
+            else:
+                if species_dict[element_sym] is None:
+                    eng = None
+                elif j == 0:
+                    eng = species_dict[element_sym] + N2_corr - N2_gas_corr
+                elif j == 1:
+                    eng = species_dict[element_sym] + N2H_corr - N2_gas_corr - H2_gas_corr/2
+                elif j ==2:
+                    eng = species_dict[element_sym] + NH2_corr - N2_gas_corr/2 - H2_gas_corr
+            if eng == None:
+                numbered_row_energies[i].append(None)
+            else:
+                numbered_row_energies[i].append(eng)
+            if eng == None:
                 eng = 0
-        numbered_row_energies[i].append(eng)
-        if eng >= 0:
-            positive_row_energies[i].append(eng)
-            negative_row_energies[i].append(0)
-        elif eng < 0:
-            positive_row_energies[i].append(0)
-            negative_row_energies[i].append(eng)
+            if eng >= 0:
+                positive_row_energies[i].append(eng)
+                negative_row_energies[i].append(0)
+            elif eng < 0:
+                positive_row_energies[i].append(0)
+                negative_row_energies[i].append(eng)
 
-for i, row in enumerate(rows):
-    #axs[i].bar(row, positive_row_energies[i], color='#0390fc')
-    #axs[i].bar(row, negative_row_energies[i], color='#0390fc')
-    #axs[i].set_title('Row {}'.format(i + 4))
-    axs[1].scatter(row_nums, numbered_row_energies[i])
-    axs[1].set_ylim([-1.5,2.5])
-    if i == 1:
-        axs[i].set_ylabel('N$_2$H Adsorption Energy (eV)')
-    if i == 2:
-        axs[i].set_xlabel('Element')
-    if i == 0:
-        axs[i].set_title('N$_2$H Adsorption Energy by Periodic Row')
+    for i, row in enumerate(rows):
+        #axs[i].bar(row, positive_row_energies[i], color='#0390fc')
+        #axs[i].bar(row, negative_row_energies[i], color='#0390fc')
+        #axs[i].set_title('Row {}'.format(i + 4))
+        axs[j].scatter(row_nums, numbered_row_energies[i], label='row {}'.format(i + 4),
+                       marker=markers[i])
+        axs[j].set_ylim([-1.5,2.5])
+        if j == 0:
+            axs[j].set_ylabel('N$_2$ Adsorption Energy (eV)')
+        if j == 1:
+             axs[j].set_ylabel('N$_2$H Adsorption Energy (eV)')
+        if j == 2:
+             axs[j].set_ylabel('NH$_2$ Adsorption Energy (eV)')
+        if j == 2:
+            axs[j].set_xlabel('Column')
+        if j == 0:
+            axs[j].set_title('Binding Energy vs Periodic Column')
+        axs[0].legend()
 
-plt.savefig('N2H_adsorption_rows')
+plt.tight_layout()
+plt.savefig('../Images/adsorption_rows.pdf')
 plt.show()
 

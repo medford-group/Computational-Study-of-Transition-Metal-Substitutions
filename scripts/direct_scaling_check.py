@@ -366,6 +366,7 @@ ax.set_title('Species Binding Energies vs\nd-Band Contribution of Cohesive Energ
 ax.set_xlabel('(a)')
 ax.set_ylabel('$\Delta E_{N_2} (eV)$', labelpad = -0.1)
 #plt.savefig('../Images/cohesive_eng_vs_N2.pdf')
+plt.tight_layout()
 plt.savefig('../Images/species_cohesive.pdf')
 plt.show()
 
