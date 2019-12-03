@@ -300,7 +300,7 @@ plt.show()
 
 ################## combined cohesive plots
 
-plt.rcParams["figure.figsize"] = (4.8, 13)
+plt.rcParams["figure.figsize"] = (4.8, 12.5)
 fig, _axs = plt.subplots(nrows=3, ncols=1)
 axs = _axs.flatten()
 
@@ -308,7 +308,7 @@ axs = _axs.flatten()
 #sq_d_band_center = [a ** 2 for a in d_band_center]
 cohesive_energy = [a * kJ / mol for a in cohesive_energy]
 slope, intercept, r_value, p_value, std_err = linregress(cohesive_energy, NH2_bindings)
-ax = axs[0]
+ax = axs[2]
 #ax = fig.add_axes([0.14,0.14,0.76,0.76])
 ax.scatter(cohesive_energy, NH2_bindings)
 for i, j, metal in zip(cohesive_energy, NH2_bindings, NH2_metals):
@@ -317,10 +317,10 @@ plt_data = np.array([min(cohesive_energy), max(cohesive_energy)])
 x_buffered_loc = (max(cohesive_energy) - min(cohesive_energy)) * 0.8 + min(cohesive_energy)
 ax.text(x_buffered_loc, max(NH2_bindings) - 0.1, 'R$^2$ = {}'.format(round(r_value ** 2, 2)))
 ax.plot(plt_data, plt_data * slope + intercept)
-ax.set_title('Species Binding Energies vs\nd-Band Contribution of Cohesive Energy')
+#ax.set_title('Species Binding Energies vs\nd-Band Contribution of Cohesive Energy')
 ax.set_ylabel('$\Delta E_{NH_2}$ (eV)', labelpad=-0.1)
 #ax.set_xlabel('d-Band Contribution of Cohesive Energy (eV)')
-ax.set_xlabel('(a)')
+ax.set_xlabel('(c)\nd-band Contribution of Cohesive Energy (eV)')
 ax.yaxis.labelpad = 0
 #plt.savefig('../Images/cohesive_eng_vs_NH2.pdf')
 #plt.show()
@@ -353,7 +353,7 @@ cohesive_energy = [a * kJ / mol for a in cohesive_energy]
 slope, intercept, r_value, p_value, std_err = linregress(cohesive_energy, N2H_bindings)
 #fig = plt.figure()
 #ax = fig.add_axes([0.14,0.14,0.76,0.76])
-ax = axs[2]
+ax = axs[0]
 ax.scatter(cohesive_energy, N2H_bindings)
 for i, j, metal in zip(cohesive_energy, N2H_bindings, N2H_metals):
     ax.text(i + 0.01, j + 0.01, metal)
@@ -362,7 +362,8 @@ ax.text(x_buffered_loc, max(N2H_bindings) - 0.07, 'R$^2$ = {}'.format(round(r_va
 plt_data = np.array([min(cohesive_energy), max(cohesive_energy)])
 ax.plot(plt_data, plt_data * slope + intercept)
 #ax.set_title('$\Delta E_{N_2}$ vs d Band Contribution of Cohesive Energy (eV)')
-ax.set_xlabel('(c)\nd-band Contribution of Cohesive Energy (eV)')
+ax.set_title('Species Binding Energies vs\nd-Band Contribution of Cohesive Energy')
+ax.set_xlabel('(a)')
 ax.set_ylabel('$\Delta E_{N_2} (eV)$', labelpad = -0.1)
 #plt.savefig('../Images/cohesive_eng_vs_N2.pdf')
 plt.savefig('../Images/species_cohesive.pdf')
