@@ -297,12 +297,19 @@ ax.set_xlabel('$\Delta E_{NH_2}$ (eV)')
 plt.savefig('NH2_N2H.pdf')
 plt.show()
 
+
+################## combined cohesive plots
+
+plt.rcParams["figure.figsize"] = (4.8, 13)
+fig, _axs = plt.subplots(nrows=3, ncols=1)
+axs = _axs.flatten()
+
 ############## cohesive energy vs NH2
 #sq_d_band_center = [a ** 2 for a in d_band_center]
 cohesive_energy = [a * kJ / mol for a in cohesive_energy]
 slope, intercept, r_value, p_value, std_err = linregress(cohesive_energy, NH2_bindings)
-fig = plt.figure()
-ax = fig.add_axes([0.14,0.14,0.76,0.76])
+ax = axs[0]
+#ax = fig.add_axes([0.14,0.14,0.76,0.76])
 ax.scatter(cohesive_energy, NH2_bindings)
 for i, j, metal in zip(cohesive_energy, NH2_bindings, NH2_metals):
     ax.text(i + 0.01, j + 0.01, metal)
@@ -310,19 +317,21 @@ plt_data = np.array([min(cohesive_energy), max(cohesive_energy)])
 x_buffered_loc = (max(cohesive_energy) - min(cohesive_energy)) * 0.8 + min(cohesive_energy)
 ax.text(x_buffered_loc, max(NH2_bindings) - 0.1, 'R$^2$ = {}'.format(round(r_value ** 2, 2)))
 ax.plot(plt_data, plt_data * slope + intercept)
-ax.set_title('$\Delta E_{NH_2}$ vs d Band Contribution of Cohesive Energy')
+ax.set_title('Species Binding Energies vs\nd-Band Contribution of Cohesive Energy')
 ax.set_ylabel('$\Delta E_{NH_2}$ (eV)', labelpad=-0.1)
-ax.set_xlabel('d-Band Contribution of Cohesive Energy (eV)')
+#ax.set_xlabel('d-Band Contribution of Cohesive Energy (eV)')
+ax.set_xlabel('(a)')
 ax.yaxis.labelpad = 0
-plt.savefig('../Images/cohesive_eng_vs_NH2.pdf')
-plt.show()
+#plt.savefig('../Images/cohesive_eng_vs_NH2.pdf')
+#plt.show()
 
 ############## cohesive energy vs N2H
 N2H_bindings, cohesive_energy, d_band_center, N2H_metals = build_lists('N2H')
 cohesive_energy = [a * kJ / mol for a in cohesive_energy]
 slope, intercept, r_value, p_value, std_err = linregress(cohesive_energy, N2H_bindings)
-fig = plt.figure()
-ax = fig.add_axes([0.14,0.14,0.76,0.76])
+#fig = plt.figure()
+#ax = fig.add_axes([0.14,0.14,0.76,0.76])
+ax = axs[1]
 ax.scatter(cohesive_energy, N2H_bindings)
 for i, j, metal in zip(cohesive_energy, N2H_bindings, N2H_metals):
     ax.text(i + 0.01, j + 0.01, metal)
@@ -330,19 +339,21 @@ x_buffered_loc = (max(cohesive_energy) - min(cohesive_energy)) * 0.85 + min(cohe
 ax.text(x_buffered_loc, max(N2H_bindings) - 0.1, 'R$^2$ = {}'.format(round(r_value ** 2, 2)))
 plt_data = np.array([min(cohesive_energy), max(cohesive_energy)])
 ax.plot(plt_data, plt_data * slope + intercept)
-ax.set_title('$\Delta E_{N_2H}$ vs d Band Contribution of Cohesive Energy (eV)')
-ax.set_xlabel('d-band Contribution of Cohesive Energy (eV)')
+#ax.set_title('$\Delta E_{N_2H}$ vs d Band Contribution of Cohesive Energy (eV)')
+#ax.set_xlabel('d-band Contribution of Cohesive Energy (eV)')
+ax.set_xlabel('(b)')
 ax.set_ylabel('$\Delta E_{N_2H} (eV)$', labelpad = -0.1)
-plt.savefig('../Images/cohesive_eng_vs_N2H.pdf')
-plt.show()
+#plt.savefig('../Images/cohesive_eng_vs_N2H.pdf')
+#plt.show()
 
 
 ############## cohesive energy vs N2
 N2H_bindings, cohesive_energy, d_band_center, N2H_metals = build_lists('N2')
 cohesive_energy = [a * kJ / mol for a in cohesive_energy]
 slope, intercept, r_value, p_value, std_err = linregress(cohesive_energy, N2H_bindings)
-fig = plt.figure()
-ax = fig.add_axes([0.14,0.14,0.76,0.76])
+#fig = plt.figure()
+#ax = fig.add_axes([0.14,0.14,0.76,0.76])
+ax = axs[2]
 ax.scatter(cohesive_energy, N2H_bindings)
 for i, j, metal in zip(cohesive_energy, N2H_bindings, N2H_metals):
     ax.text(i + 0.01, j + 0.01, metal)
@@ -350,12 +361,14 @@ x_buffered_loc = (max(cohesive_energy) - min(cohesive_energy)) * 0.80 + min(cohe
 ax.text(x_buffered_loc, max(N2H_bindings) - 0.07, 'R$^2$ = {}'.format(round(r_value ** 2, 2)))
 plt_data = np.array([min(cohesive_energy), max(cohesive_energy)])
 ax.plot(plt_data, plt_data * slope + intercept)
-ax.set_title('$\Delta E_{N_2}$ vs d Band Contribution of Cohesive Energy (eV)')
-ax.set_xlabel('d-band Contribution of Cohesive Energy (eV)')
+#ax.set_title('$\Delta E_{N_2}$ vs d Band Contribution of Cohesive Energy (eV)')
+ax.set_xlabel('(c)\nd-band Contribution of Cohesive Energy (eV)')
 ax.set_ylabel('$\Delta E_{N_2} (eV)$', labelpad = -0.1)
-plt.savefig('../Images/cohesive_eng_vs_N2.pdf')
+#plt.savefig('../Images/cohesive_eng_vs_N2.pdf')
+plt.savefig('../Images/species_cohesive.pdf')
 plt.show()
 
+plt.rcParams["figure.figsize"] = (4.5,3.5)
 
 ############## electronegativity vs formation
 common_elements = list(set(list(electronegativity.keys())+ list(fe_dict.keys())))
