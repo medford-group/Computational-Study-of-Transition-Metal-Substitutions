@@ -368,7 +368,7 @@ plt.show()
 
 ########################################### Combined scatters
 
-plt.rcParams["figure.figsize"] = (5, 12.5)
+plt.rcParams["figure.figsize"] = (4.8, 12.5)
 fig, _axs = plt.subplots(nrows=3, ncols=1)
 axs = _axs
 axs = _axs.flatten()
