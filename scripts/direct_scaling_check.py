@@ -139,8 +139,9 @@ for symbol in common_elements:
     syms.append(symbol)
 
 slope, intercept, r_value, p_value, std_err = linregress(d_band_s, fe_s)
-fig = plt.figure()
-ax = fig.add_axes([0.14,0.14,0.76,0.76])
+#fig = plt.figure()
+#ax = fig.add_axes([0.14,0.14,0.76,0.76])
+fig, ax = plt.subplots()
 ax.scatter(d_band_s, fe_s)
 for i, j, metal in zip(d_band_s, fe_s, syms):
     ax.text(i + 0.05, j + 0.05, metal)
@@ -176,6 +177,7 @@ for symbol in common_elements:
 #syms += o_syms
 #fe_s += o_fe_s
 
+
 slope, intercept, r_value, p_value, std_err = linregress(d_band_s, fe_s)
 fig = plt.figure()
 ax = fig.add_axes([0.14,0.14,0.76,0.76])
@@ -202,12 +204,17 @@ plt.show()
 slope_4, intercept_4, r_value_4, p_value, std_err = linregress(d_band_s, fe_s)
 slope_2, intercept_2, r_value_2, p_value, std_err = linregress(o_d_band_s, o_fe_s)
 slope, intercept, r_value, p_value, std_err = linregress(d_band_s+o_d_band_s, fe_s+o_fe_s)
-fig = plt.figure()
-ax = fig.add_axes([0.14,0.14,0.76,0.76])
+#fig = plt.figure()
+#ax = fig.add_axes([0.14,0.14,0.76,0.76])
+plt.rcParams["figure.figsize"] = (9,3.5)
+fig, axs = plt.subplots(ncols=2, nrows=1)
+axs = axs.flatten()
+ax = axs[0]
 ax.scatter(d_band_s, fe_s, label='4+ slabs')
 ax.scatter(o_d_band_s, o_fe_s, marker='s', label='2+ slabs')
 #for i, j, metal in zip(d_band_s+o_d_band_s, fe_s+o_fe_s, syms+o_syms):
-#    ax.text(i + 0.07, j + 0.07, metal)
+for i, j, metal in zip(d_band_s, fe_s, syms):
+    ax.text(i + 0.07, j + 0.07, metal)
 x_buffered_loc = (max(d_band_s) - min(d_band_s)) * 0.82 + min(d_band_s)
 #ax.text(x_buffered_loc, max(fe_s) + 0.5, 'R$^2$ = {}'.format(round(r_value_4 ** 2, 2)))
 plt_data = np.array([min(d_band_s), max(d_band_s)])
@@ -220,18 +227,19 @@ ax.set_title('d-band Center vs Site Formation Energy')
 ax.set_ylabel('Site Formation Energy (eV)', labelpad = -0.1)
 ax.set_xlabel('d-band Center (eV)')
 #ax.set_ylim([-2, 17])
-#plt.legend()
-plt.savefig('../Images/combined_d_band_vs_formation.pdf')
-#plt.show()
-
+plt.legend()
+#plt.savefig('../Images/combined_d_band_vs_formation.pdf')
 
 
 
 ############# d-band vs bulk fe
+#fig, ax = plt.subplots()
+ax = axs[1]
 common_elements = list(set(list(d_band.keys())+ list(bulk_fe_big.keys())))
 b_fe_s = []
 b_d_band_s = []
 syms = []
+ax.scatter(d_band_s, fe_s, label='4+ slabs')
 for symbol in common_elements:
     if symbol not in d_band.keys() or symbol not in bulk_fe_big.keys():
         continue
@@ -245,16 +253,17 @@ slope_b, intercept_b, r_value_b, p_value, std_err = linregress(b_d_band_s, b_fe_
 #fig = plt.figure()
 #ax = fig.add_axes([0.14,0.14,0.76,0.76])
 ax.scatter(b_d_band_s, b_fe_s, marker='^', label='bulk substitution')
-#for i, j, metal in zip(b_d_band_s, b_fe_s, syms):
-#    ax.text(i + 0.05, j + 0.05, metal)
+for i, j, metal in zip(b_d_band_s, b_fe_s, syms):
+    ax.text(i + 0.05, j + 0.05, metal)
 plt_data = np.array([min(b_d_band_s), max(b_d_band_s)])
+ax.plot(plt_data, plt_data * slope_4 + intercept_4, label='4+ fit, R$^2$={}'.format(round(r_value_4 ** 2, 2)))
 ax.plot(plt_data, plt_data * slope_b + intercept_b, label='bulk fit, R$^2$={}'.format(round(r_value_b ** 2, 2)), linestyle='dotted')#, c='#838383')
-print(slope_b, intercept_b)
-#ax.set_title('d-band Center vs Bulk Substitution Formation Energy')
-#ax.set_ylabel('Site Formation Energy (eV)', labelpad = -0.1)
-#ax.set_xlabel('d-band Center (eV)')
+ax.set_title('d-band Center vs Bulk Substitution Formation Energy')
+ax.set_ylabel('Site Formation Energy (eV)', labelpad = -0.1)
+ax.set_xlabel('d-band Center (eV)')
+plt.tight_layout()
 plt.legend()
-plt.savefig('../Images/d_band_vs_bulk_formation.pdf')
+plt.savefig('../Images/d_band_vs_formation.pdf')
 plt.show()
 
 

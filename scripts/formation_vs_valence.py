@@ -437,15 +437,17 @@ for j, species_dict in enumerate([N2_engs_dict, N2H_engs_dict, NH2_engs_dict]):
             axs[j].text(c + 0.05, e + 0.05, t)
         if j == 0:
             axs[j].set_ylabel('N$_2$ Adsorption Energy (eV)')
-            axs[j].set_ylim([-1.5,1])
+            axs[j].set_ylim([-1.5,1.1])
+            axs[j].set_ylabel('(a)')
         if j == 1:
              axs[j].set_ylabel('N$_2$H Adsorption Energy (eV)')
              axs[j].set_ylim([-0.5,2.9])
+             axs[j].set_ylabel('(b)')
         if j == 2:
              axs[j].set_ylabel('NH$_2$ Adsorption Energy (eV)')
              axs[j].set_ylim([-1.5,2.5])
         if j == 2:
-            axs[j].set_xlabel('Column')
+            axs[j].set_xlabel('(c)\nColumn')
         if j == 0:
             axs[j].set_title('Binding Energy vs Periodic Column')
         axs[0].legend()
