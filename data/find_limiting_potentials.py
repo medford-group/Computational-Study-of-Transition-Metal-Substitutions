@@ -86,7 +86,7 @@ for counter in range(len(path_names)):
 
                 # find the thermochemical steps
                 if cur_e_transfers[i] - cur_e_transfers[i+1] == 0:
-                    print(cur_adsorbates[i], cur_adsorbates[i+1])
+                    #print(cur_adsorbates[i], cur_adsorbates[i+1])
                     sp_thermo_steps.append(cur_adsorbates[i]+','+cur_adsorbates[i+1])
                     #print(cur_step)
                     thermo_steps.append(cur_step)
@@ -96,7 +96,7 @@ for counter in range(len(path_names)):
                     largest_pot = cur_pot_step
                     start_step = temp_start_step
                     end_step = temp_end_step
-            print(max(thermo_steps))
+            #print(max(thermo_steps))
             output_array.append([slab,str(-1 * largest_pot),start_step,end_step])
             t_index = thermo_steps.index(max(thermo_steps))
             thermo_output_array.append([slab,str(max(thermo_steps)),sp_thermo_steps[t_index]])
