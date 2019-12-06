@@ -79,6 +79,7 @@ for i, species in enumerate(all_species):
 g.write('\\\\\n\hline\n')
 g.write('\n')
 
+
 for metal in all_metals:
     g.write(metal + ' & ')
     for i, species in enumerate(all_species):
