@@ -18,6 +18,8 @@ nn_N2H_engs = []
 
 for i, e in enumerate(fe):
     #print(element[i], column[i], e)
+    if i == len(fe)-1:
+        continue
     if e is None:
         continue
     n_col.append(column[i])
@@ -437,12 +439,12 @@ for j, species_dict in enumerate([N2_engs_dict, N2H_engs_dict, NH2_engs_dict]):
             axs[j].text(c + 0.05, e + 0.05, t)
         if j == 0:
             axs[j].set_ylabel('N$_2$ Adsorption Energy (eV)')
-            axs[j].set_ylim([-1.5,1.1])
-            axs[j].set_ylabel('(a)')
+            axs[j].set_ylim([-1.5,1.2])
+            axs[j].set_xlabel('(a)')
         if j == 1:
              axs[j].set_ylabel('N$_2$H Adsorption Energy (eV)')
              axs[j].set_ylim([-0.5,2.9])
-             axs[j].set_ylabel('(b)')
+             axs[j].set_xlabel('(b)')
         if j == 2:
              axs[j].set_ylabel('NH$_2$ Adsorption Energy (eV)')
              axs[j].set_ylim([-1.5,2.5])
