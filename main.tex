@@ -295,7 +295,7 @@ These data also have implications for the formation of surface metal clusters. F
 \begin{figure*}
     \centering
     \includegraphics[width=0.9\linewidth]{Images/d_band_vs_bulk_formation.pdf}
-    \caption{Formation energy of surface sites with respect to their bulk metalic form vs the substituted metal's \textit{d}-band center as reported by Ruban et. al \cite{Ruban_1997}. The formation energy of metals being doped into bulk rutile is plotted for reference.}
+    \caption{(a) Formation energy of surface sites with respect to their bulk metalic form vs the substituted metal's \textit{d}-band center as reported by Ruban et. al \cite{Ruban_1997}. (b) The formation energy of metals doped into bulk rutile compared to the 4+ site formation energy.}
     \label{fig:d_band}
 \end{figure*}
 %\twocolumn
@@ -330,7 +330,7 @@ The adsorption of the inert N$_2$ molecule is required for nitrogen fixation, an
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.5\textwidth]{Images/adsorption_rows.pdf}
+    \includegraphics[width=0.4\textwidth]{Images/adsorption_rows.pdf}
     \caption{The binding energies of (a) N$_2$, (b) N$_2$H and (c) NH$_2$ plotted against the periodic column}
     \label{fig:column_trends}
 \end{figure}
@@ -360,7 +360,7 @@ The trend in N$_2$ and N$_2$H binding observed deviates from the near-linear cor
 
 A similar quadratic trend is seen for N$_2$ adsorption in Fig. \ref{fig:cohesive}a, though there are several outliers near the middle of the \textit{d}-block (Tc, Ru, Re, Os, Ir) that bind N$_2$ substantially stronger than predicted by the cohesive energy. The origin of this anomalously-high reactivity toward N$_2$ suggests that the simplistic Friedel model breaks down for N$_2$ binding on these reactive atoms, though the origins of this deviation are beyond the scope of this work. 
 %There are also some significant deviations from the linear correlation for N$_2$H; however, the correlation between N$_2$H and N$_2$ adsorption is relatively strong (Fig. ???). 
-This finding indicates that there are correlations in the deviations from the simplistic model, although the N$_2$ adsorption on Ru and Os remains anomalously strong. The existence of linear scaling relations between nitrogen intermediates adsorbed at transition-metal dopants in TiO$_2$ is consistent with prior work on other adsorbates \cite{Xu_2015, Garc_a_Mota_2011, Yao_2017}, and we hypothesize that the latent correlation with the \textit{d}-band contributions to cohesive energies is a general descriptor for reactivity of single metal atoms in oxide surfaces.
+This finding indicates that there are correlations in the deviations from the simplistic model, although the N$_2$ adsorption on middle transition metals remains anomalously strong. The existence of linear scaling relations between nitrogen intermediates adsorbed at transition-metal dopants in TiO$_2$ is consistent with prior work on other adsorbates \cite{Xu_2015, Garc_a_Mota_2011, Yao_2017}.%, and we hypothesize that the latent correlation with the \textit{d}-band contributions to cohesive energies is a general descriptor for reactivity of single metal atoms in oxide surfaces.
 
 %however the correlation is much less predictive due to several elements displaying much stronger binding than would be expected by this model. The low $R^2$ value of this correlation implies that the system is more complicated than the case of N$_2$H. Thus, for the case of N$_2$ binding, increasing cohesive energy predicting increased binding is only a general trend. 
 
@@ -394,12 +394,7 @@ This finding indicates that there are correlations in the deviations from the si
 %    \label{fig:NH2_cohesive}
 %\end{figure}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.5\textwidth]{Images/species_cohesive.pdf}
-    \caption{the \textit{d}-band contribution to cohesive energies vs. the binding energies of (a) N$_2$, (b) N$_2$H, (c) NH$_2$}
-    \label{fig:my_label}
-\end{figure}{}
+
 
 %\begin{figure}
 %    \centering
@@ -463,7 +458,12 @@ This finding indicates that there are correlations in the deviations from the si
 %\end{figure}
 
 %There is an inherent uncertainty in predicting energies of reactions using DFT. Literature suggests an additional error buffer of around 0.2 eV (CITATIONS). This does not greatly change the interpretation of our results, as the margin of favorability or disfavorability for the calculated reactions is typically larger than 0.2 eV. The change in the likelihood of a reaction occurring with the energetic favorability becomes smaller with increasing magnitude of energies, due to the exponential distribution of temperature.
-
+\begin{figure}
+    \centering
+    \includegraphics[width=0.4\textwidth]{Images/species_cohesive.pdf}
+    \caption{the \textit{d}-band contribution to cohesive energies vs. the binding energies of (a) N$_2$, (b) N$_2$H, (c) NH$_2$}
+    \label{fig:my_label}
+\end{figure}
 \subsection{Trends in Catalytic Activity for Nitrogen Reduction}
 
 The photocatalytic activity of doped TiO$_2$ surfaces can be assessed by computing the maximum thermodynamic barrier with electrons at the conduction band edge potential \cite{Comer_2018}, while electrocatalytic activity can be assessed by computing the thermodynamic limiting potential \cite{Norskov_2004,Garc_a_Mota_2011}. In both cases, the computational hydrogen electrode (CHE) provides a route to computing the thermochemical potential of electrons (Sec. \ref{sec:PEC_methods}), and the resulting analysis provides only a thermodynamic picture of the reaction pathway; however, this establishes a lower bound on the kinetics, and has been demonstrated to correlate well with experimental trends \cite{Seh_2017}. Computing the maximum barrier or limiting potential requires the free energies of each state along a given reaction pathway. However, the binding energy of N$_2$H has been previously identified to be the primary descriptor for a surface's ability to perform the nitrogen reduction reaction \cite{Hoskuldsson_2017, Montoya_2015}. Using the N$_2$H adsorption energies provides an initial estimate of the limiting potential that is a lower bound to the actual limiting potential, and hence provides a good starting point for screening. The N$_2$H adsorption energies were computed for all 2+ and 4+ defects, revealing prohibitive barriers of $>$1.5 eV for all 4+ sites (Table SXX) and a lack of clear trends as discussed in Sec. \ref{sec:reactivity}. For this reason, only 2+ sites were considered for limiting potential analysis. %However, some 2+ sites has reasonable N$_2$H binding energies thus further thermodynamic pathway analysis was performed for 2+ sites.
