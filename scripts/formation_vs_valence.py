@@ -431,13 +431,19 @@ for j, species_dict in enumerate([N2_engs_dict, N2H_engs_dict, NH2_engs_dict]):
         #axs[i].set_title('Row {}'.format(i + 4))
         axs[j].scatter(row_nums, numbered_row_energies[i], label='row {}'.format(i + 4),
                        marker=markers[i])
-        axs[j].set_ylim([-1.5,2.5])
+        for c, e, t in zip(row_nums, numbered_row_energies[i], row):
+            if c is None or e is None:
+                continue
+            axs[j].text(c + 0.05, e + 0.05, t)
         if j == 0:
             axs[j].set_ylabel('N$_2$ Adsorption Energy (eV)')
+            axs[j].set_ylim([-1.5,1])
         if j == 1:
              axs[j].set_ylabel('N$_2$H Adsorption Energy (eV)')
+             axs[j].set_ylim([-0.5,2.9])
         if j == 2:
              axs[j].set_ylabel('NH$_2$ Adsorption Energy (eV)')
+             axs[j].set_ylim([-1.5,2.5])
         if j == 2:
             axs[j].set_xlabel('Column')
         if j == 0:
