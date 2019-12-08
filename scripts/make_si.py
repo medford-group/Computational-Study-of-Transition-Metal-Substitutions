@@ -149,9 +149,9 @@ g.write('\\caption{The limiting potentials and limiting steps for each dopant me
 g.write('\\label{table:limiting_steps}')
 g.write('\\end{table}')
 
-g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{Images/scaling_reactions.pdf}\n\\caption{Electronegativity vs formation energy of 2+ dopant site}\n\\end{figure}\n\n')
+g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{Images/scaling_species.pdf}\n\\caption{The calculated scaling relations between the binding energies of various species and the binding energies of N$_2$H and NH$_2$ on 2+ dopant sites}\n\\end{figure}\n\n')
 
-g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{Images/scaling_reactions.pdf}\n\\caption{Electronegativity vs formation energy of 2+ dopant site}\n\\end{figure}\n\n')
+g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{Images/scaling_reactions.pdf}\n\\caption{The calculated scaling relations between the binding energies of various species and the binding energies of N$_2$H and NH$_2$ on 2+ dopant sites}\n\\end{figure}\n\n')
 
 g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{Images/electronegativity_vs_formation.pdf}\n\\caption{Electronegativity vs formation energy of 2+ dopant site}\n\\end{figure}\n\n')
 
