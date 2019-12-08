@@ -59,6 +59,8 @@ def build_lists(species, return_electronegativity=False):
             continue
         d_band_center.append(d_band[metal])
         cohesive_energy.append(d_cohesive[metal])
+        #cohesive_energy.append(cohesive_energies[metal])
+        #cohesive_energy.append(s_cohesive[metal])
         bindings.append(float(binding))
         metals.append(metal)
         electro_n.append(electronegativity[metal])
@@ -227,7 +229,7 @@ ax.set_title('d-band Center vs Site Formation Energy')
 ax.set_ylabel('Site Formation Energy (eV)', labelpad = -0.1)
 ax.set_xlabel('(a)\nd-band Center (eV)')
 #ax.set_ylim([-2, 17])
-plt.legend()
+ax.legend()
 #plt.savefig('../Images/combined_d_band_vs_formation.pdf')
 
 
@@ -258,11 +260,12 @@ for i, j, metal in zip(b_d_band_s, b_fe_s, syms):
 plt_data = np.array([min(b_d_band_s), max(b_d_band_s)])
 ax.plot(plt_data, plt_data * slope_4 + intercept_4, label='4+ fit, R$^2$={}'.format(round(r_value_4 ** 2, 2)))
 ax.plot(plt_data, plt_data * slope_b + intercept_b, label='bulk fit, R$^2$={}'.format(round(r_value_b ** 2, 2)), linestyle='dotted')#, c='#838383')
+print(intercept_4, intercept_b)
 ax.set_title('d-band Center vs Bulk Substitution Formation Energy')
 ax.set_ylabel('Site Formation Energy (eV)', labelpad = -0.1)
 ax.set_xlabel('(b)\nd-band Center (eV)')
 plt.tight_layout()
-plt.legend()
+ax.legend()
 plt.savefig('../Images/d_band_vs_formation.pdf')
 plt.show()
 

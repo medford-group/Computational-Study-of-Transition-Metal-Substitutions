@@ -36,9 +36,9 @@ for counter in range(len(path_names)):
     thermo_cur_output_name = 'thermo_' + output_names[counter]
     output_array = []
     thermo_output_array = []
-    print('\n')
+    #print('\n')
     for slab in slab_list:
-        print(slab)
+        #print(slab)
         cur_path = pathway_data_folder+slab+cur_path_name
         cur_e_transfers = e_transfers[counter]
         if os.path.exists(cur_path):
