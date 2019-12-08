@@ -6,7 +6,7 @@ import itertools
 from matplotlib import pyplot as plt
 from matplotlib.transforms import BboxBase
 from sklearn.linear_model import LinearRegression
-from data import fe, column, element, cohesive_energies, N2_engs, N2H_engs, d_band, electronegativity,d_cohesive, s_cohesive, plus_4_fe, bulk_fe_big
+from data import fe, column, element, cohesive_energies, N2_engs, N2H_engs, d_band, electronegativity,d_cohesive, s_cohesive, plus_4_fe, bulk_fe_big, column_dict
 import matplotlib
 from data import fe_dict, d_band
 from scipy.stats import linregress
@@ -442,4 +442,18 @@ ax.set_xlabel('Metal Electronegativity')
 plt.legend()
 plt.savefig('../Images/electronegativity_vs_formation.pdf')
 plt.show()
+
+
+#################################### limiting vs cohesive
+
+with open('../data/pathway_data/limiting_potential_associative_2.csv') as csvfile:
+    rate_limiting_energies = list(csv.reader(csvfile))
+potentials_dict = {a[0]:a[1] for a in rate_limiting_energies}
+
+metals = [a for a in potentials_dict.keys()]
+metals = [a for a in metals if a in column_dict.keys()]
+
+plt.scatter([cohesive_energies[a] for a in metals], [float(potentials_dict[a]) for a in metals])
+plt.show()
+
 
