@@ -145,7 +145,7 @@ for metal in txt:
     g.write('\\\\\n')
 g.write('\\hline\n')
 g.write('\\end{tabular}\n\\end{center}\n')
-g.write('\\caption{The limiting potentials and limiting steps for each dopant metal}')
+g.write('\\caption{The limiting potentials and limiting steps for each dopant metal on 2+ surfaces}')
 g.write('\\label{table:limiting_steps}')
 g.write('\\end{table}')
 
@@ -166,7 +166,7 @@ for metal in txt:
     g.write('\\\\\n')
 g.write('\\hline\n')
 g.write('\\end{tabular}\n\\end{center}\n')
-g.write('\\caption{The limiting potentials and limiting steps for each dopant metal}')
+g.write('\\caption{The largest thermodynamic barrier and correspinding steps for each dopant metal on 2+ surfaces}')
 g.write('\\label{table:limiting_steps}')
 g.write('\\end{table}')
 
