@@ -446,14 +446,18 @@ plt.show()
 
 #################################### limiting vs cohesive
 
-with open('../data/pathway_data/limiting_potential_associative_2.csv') as csvfile:
+with open('../data/pathway_data/thermo_limiting_potential_associative_2.csv') as csvfile:
     rate_limiting_energies = list(csv.reader(csvfile))
 potentials_dict = {a[0]:a[1] for a in rate_limiting_energies}
 
 metals = [a for a in potentials_dict.keys()]
-metals = [a for a in metals if a in column_dict.keys()]
+metals = [a for a in metals if a in d_cohesive.keys()]
 
-plt.scatter([cohesive_energies[a] for a in metals], [float(potentials_dict[a]) for a in metals])
+paramater = [d_cohesive[a] for a in metals]
+quantity = [float(potentials_dict[a]) for a in metals]
+
+plt.scatter(paramater, quantity)
+for p, q, m in zip(paramater, quantity, metals):
+    plt.text(p + 0.05, q + 0.05, m)
 plt.show()
-
 
