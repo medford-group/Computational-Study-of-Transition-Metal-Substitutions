@@ -149,6 +149,12 @@ g.write('\\caption{The limiting potentials and limiting steps for each dopant me
 g.write('\\label{table:limiting_steps}')
 g.write('\\end{table}')
 
+
+g.write('\hline\n')
+g.write('\\end{table}\n\n')
+
+
+g.write('\\begin{table}\n\\begin{center}\n\\begin{tabular}{| c | c |c |}\n')
 g.write('\hline\n')
 g.write('Element & Limiting Potential & Limiting Step \\\\\n')
 g.write('\\hline\n')
