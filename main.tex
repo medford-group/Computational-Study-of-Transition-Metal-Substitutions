@@ -257,14 +257,14 @@ In total, all d-block transition-metals, except Mn (24 total), were screened for
 \begin{figure}
     \centering
     \includegraphics[width=0.5\linewidth]{Images/ex_2+_slab.png}
-    \caption{An example of the screened 2+ slabs. The substituent metal has replaced a 6 fold Ti atom (seen in blue) and a bridging oxygen vacancy has been formed to allow the metal to enter the 2+ oxidation state.}
+    %\caption{An example of the screened 2+ slabs. The substituent metal has replaced a 6 fold Ti atom (seen in blue) and a bridging oxygen vacancy has been formed to allow the metal to enter the 2+ oxidation state.}
     \label{fig:2+_ex_slab}
-\end{figure}
+%\end{figure}
 
-\begin{figure}
+%\begin{figure}
     \centering
     \includegraphics[width=0.5\linewidth]{Images/ex_4+_slab.png}
-    \caption{An example of the screened 4+ slabs. The substituent metal has replaced a five-fold Ti atom (seen in blue), and a bridging oxygen vacancy has been formed to allow the metal to enter the 4+ oxidation state.}
+    \caption{An example of the screened 2+ (top) and 4+ (bottom) slabs. For 2+ sites the substituent metal has replaced a 6 fold Ti atom (seen in blue) and a bridging oxygen vacancy has been formed to allow the metal to enter the 2+ oxidation state.  For 4+ sites the substituent metal has replaced a five-fold Ti atom (seen in blue), and a bridging oxygen vacancy has been formed to allow the metal to enter the 4+ oxidation state.}
     \label{fig:2+ex_slab}
 \end{figure}
 
@@ -406,17 +406,21 @@ An interesting result comes from the combination of the \textit{d}-band center's
 
 Hoskuldsson et. al. \cite{Hoskuldsson_2017} previously found strong scaling relations between the binding of nitrogen compounds and the N$_2$H binding energy. To assess the presence of scaling relations in our system, the binding energies of all species are fit to the two primary descriptors identified previously: N$_2$H and N$_2$H \cite{Hoskuldsson_2017}. The results of this scaling analysis may be seen in Figure SXX. The scaling relations for this systems are quite weak, with most species only showing an R$^2$ value between 0.7 and 0.9 even when two species are used in the fitting process. Hydrazine show a particularly weak fit (R$^2$ = 0.4), which is likely due to difficulties controlling the conformational configuration of this species in optimization. The N$_2$H and NH$_2$ were also used to fit scaling relationships for all electrochemical steps. The results of this analysis may be seen in Figure SXX. As with the scaling relationships for the binding of individual species, the scaling relationships for the chemical reactions are quite weak.
 
-The reason for these weak correlations is likely due to limitations in the computational methods selected. Specifically, the pseudopotentials selected \cite{SSSP_pseudos} may not be well suited to modeling this system, as they are highly heterogeneous in type, and are optimized to replicate bulk properties. Additionally, GGA functionals are known to have difficulty modeling oxide materials \cite{}. However, the basis of these inconsistencies is not known.
+The reason for these weak correlations is likely due to limitations in the computational methods selected. Specifically, the pseudopotentials selected \cite{SSSP_pseudos} may not be well suited to modeling this system, as they are highly heterogeneous in type, and are optimized to replicate bulk properties. The cells were also not allowed to relax, causing some systems to have strain effects, which can affect binding energies \cite{Xu_2015}. Additionally, GGA functionals are known to have difficulty modeling oxide materials \cite{}. However, the full cause of these inconsistencies is not known.
 
 \subsection{Trends in Catalytic Activity for Nitrogen Reduction}
 \label{sec:cat_trends}
-%The photocatalytic activity of doped TiO$_2$ surfaces can be assessed by computing the maximum thermodynamic barrier with electrons at the conduction band edge potential \cite{Comer_2018}, while 
-The electrocatalytic activity of doped TiO$_2$ surfaces can be assessed by computing the thermodynamic limiting potential \cite{Norskov_2004,Garc_a_Mota_2011}. The computational hydrogen electrode (CHE) provides a route to computing the thermochemical potential of electrons at the TiO$_2$ surface (Sec. \ref{sec:PEC_methods}), and the resulting analysis provides only a thermodynamic picture of the reaction pathway; however, this establishes a lower bound on the kinetics, and has been demonstrated to correlate well with experimental trends \cite{Seh_2017}.
+The photocatalytic activity of doped TiO$_2$ surfaces can be assessed by computing the maximum thermodynamic barrier with electrons at the conduction band edge potential \cite{Comer_2018}, while electrocatalytic activity of doped TiO$_2$ surfaces can be assessed by computing the thermodynamic limiting potential \cite{Norskov_2004,Garc_a_Mota_2011}. The computational hydrogen electrode (CHE) provides a route to computing the thermochemical potential of electrons at the TiO$_2$ surface (Sec. \ref{sec:PEC_methods}), and the resulting analysis provides only a thermodynamic picture of the reaction pathway; however, this establishes a lower bound on the kinetics, and has been demonstrated to correlate well with experimental trends \cite{Seh_2017}.
 
-Computing the 
-%maximum barrier or 
-limiting potential requires the free energies of each state along a given reaction pathway. However, the binding energy of N$_2$H has been previously identified to be the primary descriptor for a surface's ability to perform the nitrogen reduction reaction \cite{Hoskuldsson_2017, Montoya_2015}. Using the N$_2$H adsorption energies provides an initial estimate of the limiting potential that is a lower bound to the actual limiting potential, and hence provides a good starting point for screening. The N$_2$H adsorption energies were computed for all 2+ and 4+ defects, revealing prohibitive barriers of $>$1.5 eV for all 4+ sites (Table SXX) and a lack of clear trends as discussed in Sec. \ref{sec:reactivity}. For this reason, only 2+ sites were considered for limiting potential analysis. %However, some 2+ sites has reasonable N$_2$H binding energies thus further thermodynamic pathway analysis was performed for 2+ sites.
+Computing the maximum barrier or limiting potential requires the free energies of each state along a given reaction pathway. However, the binding energy of N$_2$H has been previously identified to be the primary descriptor for a surface's ability to perform the nitrogen reduction reaction \cite{Hoskuldsson_2017, Montoya_2015}. Using the N$_2$H adsorption energies provides an initial estimate of the limiting potential that is a lower bound to the actual limiting potential, and hence provides a good starting point for screening. The N$_2$H adsorption energies were computed for all 2+ and 4+ defects, revealing prohibitive barriers of $>$1.5 eV for all 4+ sites (Table SXX) and a lack of clear trends as discussed in Sec. \ref{sec:reactivity}. For this reason, only 2+ sites were considered for limiting potential analysis. %However, some 2+ sites has reasonable N$_2$H binding energies thus further thermodynamic pathway analysis was performed for 2+ sites.
 The full thermodynamics of the N$_2$ reduction reaction pathways on all 2+ sites were calculated, allowing free energy diagrams to be generated for all possible reaction pathways (Fig. SXX-SYY, Table SXX). 
+
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=0.5\textwidth]{Images/2d_N2H_NH2_plot.pdf}
+%    \caption{Caption}
+%    \label{fig:my_label}
+%\end{figure}
 
 %To assess the nitrogen reduction reaction rates of these sites, two cases were considered: electrochemistry and photochemistry. 
 
@@ -424,7 +428,10 @@ The full thermodynamics of the N$_2$ reduction reaction pathways on all 2+ sites
 
 The electrochemical limiting potential was calculated for all surfaces to assess their ability to reduce N$_2$ under applied bias. The results are plotted against the NH$_2$ binding energy in Figure \ref{fig:NH2_limiting_pot}. This plot reveals a clear volcano relationship between the NH$_2$ binding energy and the largest barrier of the rate limiting step. In contrast to prior work by Hoskuldsson et. al.\cite{Hoskuldsson_2017} and Montoya et. al. \cite{Montoya_2015}, we find that the NH$_2$ binding energy is a slightly more reliable descriptor than N$_2$H binding; however these quantities are fundamentally linked by scaling relations
 %(Sec. \ref{sec:reactivity})
-, indicating that either descriptor can be used. In this case, the limiting step shifts from NH$_2$ desorption on the left to N$_2$ hydrogenation on the right, with most dopants being limited by NH$_2$ desorption. This means that NH$_2$ adsorption energy directly controls the reactive side of the volcano, and explains why it is an accurate descriptor in this case. There are also a few dopants that deviate from the trend. Notably, Ti (i.e. undoped TiO$_2$) is on the reactive side of the volcano, but the potential limiting step is N$_2$H formation\cite{Comer_2018, Hoskuldsson_2017}. Nonetheless, Ti fortuitously falls close to the trend predicted by the volcano plot. The more significant outliers are Ru and Sc, where Ru is also limited by N$_2$H formation despite being on the reactive leg of the volcano due to the anomalously strong N$_2$ adsorption. On the other hand, Sc is simply an outlier on the NH$_2$ vs. N$_2$H scaling relation, causing its limiting potential to be under-estimated.
+, indicating that either descriptor can be used. In this case, the limiting step shifts from NH$_2$ desorption on the left to N$_2$ hydrogenation on the right, with most dopants being limited by NH$_2$ desorption. This means that NH$_2$ adsorption energy directly controls the reactive side of the volcano, and explains why it is an accurate descriptor in this case. There are also a few dopants that deviate from the trend. 
+%Notably, Ti (i.e. undoped TiO$_2$) is on the reactive side of the volcano, but the potential limiting step is N$_2$H formation\cite{Comer_2018, Hoskuldsson_2017}. Nonetheless, Ti fortuitously falls close to the trend predicted by the volcano plot. 
+Notably, Ru, Sc, and Ru where Zr and Rh are also limited by N$_2$H formation despite being on the reactive leg of the volcano due to the weak nature of the scaling calculated for this system.
+%anomalously strong N$_2$ adsorption. On the other hand, Sc is simply an outlier on the NH$_2$ vs. N$_2$H scaling relation, causing its limiting potential to be under-estimated.
 
 \begin{figure}
     \centering
@@ -435,36 +442,38 @@ The electrochemical limiting potential was calculated for all surfaces to assess
 
 %The only element not following this trend is Ti, whose limiting step is also N$_2$ hydrogenation. This may not be surprising, as electronic interactions between the doping metal and the host metal atoms are known to have an impact on the chemistry of dopant sites, and this particular interaction is absent in the case of Ti \cite{Xu_2015}.\todo{does that make any sense?}. Additionally, Ru and Sc appear to be abnormally unreactive with respect to the trend in the volcano plot.
 
-Overall, the results suggest that very few dopants are capable of improving the performance over pure TiO$_2$. The only two elements that show significant improvement are Tc and Co. The former presents a serious problem for experimental testing or practical application since Tc is a scarce, synthetically produced, radioactive element. In addition, the active sites may be challenging to synthesize due to their relatively high formation energy (Fig. \ref{fig:d_band}). On the other hand, the relatively low limiting potential of Co is a promising result, as Co is relatively inexpensive and abundant. The formation energy of the surface site may still present an issue since it is relatively unstable relative to bulk Co metal (Fig. \ref{fig:d_band}), but synthesis strategies that create meta-stable sites may be feasible. Moreover, the adsorption of N$_2$ at the Co site is endergonic, which lead to difficulties achieving substantial N$_2$* concentrations under competitive adsorption with H$_2$O. Nonetheless, the results indicate that Co is the most promising dopant for improving electrocatalytic performance of TiO$_2$.
+Overall, the results suggest that very few dopants are capable of improving the performance over pure TiO$_2$. The only elements that show significant improvement are Tc, Co, V, Rh, and Re. Tc sits at the top of the volcano, and presents a serious problem for experimental testing or practical application since Tc is a scarce, synthetically produced, radioactive element. In addition, the active sites may be challenging to synthesize due to their relatively high formation energy (Fig. \ref{fig:d_band}). On the other hand, the relatively low limiting potential of Co, V, Rh, and Re are promising results. Co and V are relatively inexpensive and abundant whereas Re and Rh are more expensive. These materials may present good oppurtunities for improving catalytic rates on TiO$_2$. However, the formation energy of the surface site may still present an issue since it these active sites are relatively unstable compared to their respective bulk metals (Fig. \ref{fig:d_band}), but synthesis strategies that create meta-stable sites may be feasible. Moreover, the adsorption of N$_2$ at the Co site is endergonic, which lead to difficulties achieving substantial N$_2$* concentrations under competitive adsorption with H$_2$O. %Nonetheless, the results indicate that Co is the most promising dopant for improving electrocatalytic performance of TiO$_2$.
 %Discouragingly, one of the species also near the top of the volcano is the host metal of the oxide material, Ti. This means that substituting other metals will only yield moderate improvements on rates of reaction for electrocatalysis. However, Co lowers limiting potential by 0.2V and is inexpensive and abundant making it a good candidate for experimental investigation.
+
+A second consideration when selecting a dopant material is the largest thermochemical barrier in a given pathway. Since some steps do not involve electron transfers at the limiting potential the rate begins to be dominated by these thermochemical steps. The largest 
 
 The ability of dopant metals to improve photocatalytic nitrogen reduction is assessed by computing the largest thermodynamic barrier at a reductive potential equal to the conduction band edge of TiO$_2$ (approximately -0.15 V vs. RHE). This approach assumes that the conduction band edge of TiO$_2$ is not significantly affected by the presence of the dopant, and neglects improvements in other bulk photochemical properties such as charge separation or carrier lifetime. Nonetheless, it provides a good starting point for assessing the impact of dopant metals on the surface catalytic properties.
 The highest thermodynamic barrier for the best reaction pathway is plotted vs. the NH$_2$* binding energy in Figure \ref{fig:NH2_limiting_bar}. This quantity is different than the electrochemical limiting potential, as it includes non-electrochemical steps in addition to electrochemical steps. The thermodynamics of the electrochemical steps are improved by the reductive potential of excited electrons, while the chemical surface steps are unaffected. The energy of NH$_3$* and  NH$_2$* are roughly equal for most studied metals, so the slight change in the potential has a limited effect on metals on the left side of the plot. This is because the desorption of NH$_3$ (a non-electrochemical step) rapidly becomes rate limiting. On the other hand, surfaces where N$_2$ hydrogenation is rate-limiting are shifted to be slightly more favorable, effectively shifting the right side of the volcano downward. This leads to a minimum thermodynamic barrier of 0.85 eV for Co, suggesting that if kinetic barriers are very low then photocatalytic nitrogen reduction may by promoted by Co 2+ dopant sites, though rates are still expected to be low. 
 
-Experimental observations can provide further insight into the computational predictions. Several prior reports have investigated transition-metal dopants for enhancing photocatalytic ammonia production on TiO$_2$ \cite{Schrauzer_1977, Ranjit_1996, Hirakawa_2017}. Interestingly, the ammonia yield has been reported to increase in the presence of Co dopants \cite{Schrauzer_1977}, though this was reported in the early literature and rigorous controls \cite{Greenlee_2018} or isotopic labeling studies \cite{Andersen_2019} are not included. Moreover, the same report revealed enhanced rates for Fe, Ni, and Mo, so the confirmation of the prediction regarding Co should be treated with caution. The rate enhancement for nobel metals such as Ru, Rh, Pt, and Pd is conflicting even in the early literature, with Schrauzer and Guth reporting no enhancement \cite{Schrauzer_1977} and Ranjit et al. reporting enhancement for all noble metals with the greatest improvement for Ru\cite{Ranjit_1996}. In all of these systems the metal dopants were incorporated via co-precipitation, and catalysts were polycrystalline TiO$_2$, indicating that the metals may also enhance yields via charge separation, mediation of crystallization, or other mechanisms\cite{Medford_2017}. More recently, Hirakawa et al. added Ru, Pt, and Pd to pre-synthesized TiO$_2$ particles and reported no significant improvement in the reaction rates\cite{Hirakawa_2017}. These experiments are more consistent with the computational model system used in this study since only surface properties are affected, and the results are consistent with the prediction that these noble metals will not affect the rate. However, further systematic and well-controlled experiments that characterize the state of the metal incorporation in the TiO$_2$ surface are required to validate the predicted trends.
-%making photocatalysis at room temperature feasible.
+Experimental observations can provide further insight into the computational predictions. Several prior reports have investigated transition-metal dopants for enhancing photocatalytic ammonia production on TiO$_2$ \cite{Schrauzer_1977, Ranjit_1996, Hirakawa_2017}. Interestingly, the ammonia yield has been reported to increase in the presence of Co and Mo dopants \cite{Schrauzer_1977}, though this was reported in the early literature and rigorous controls \cite{Greenlee_2018} or isotopic labeling studies \cite{Andersen_2019} are not included. Moreover, the same report revealed enhanced rates for Fe, and Ni so the confirmation of the prediction regarding the former two should be treated with caution. The rate enhancement for noble metals such as Ru, Rh, Pt, and Pd is conflicting even in the early literature, with Schrauzer and Guth reporting no enhancement \cite{Schrauzer_1977} and Ranjit et al. reporting enhancement for all noble metals with the greatest improvement for Ru \cite{Ranjit_1996}. In all of these systems the metal dopants were incorporated via co-precipitation, and catalysts were polycrystalline TiO$_2$, indicating that the metals may also enhance yields via charge separation, mediation of crystallization, or other mechanisms\cite{Medford_2017}. More recently, Hirakawa et al. added Ru, Pt, and Pd to pre-synthesized TiO$_2$ particles and reported no significant improvement in the reaction rates\cite{Hirakawa_2017}. These experiments are more consistent with the computational model system used in this study since only surface properties are affected, and the results are consistent with the prediction that these noble metals will not affect the rate. However, further systematic and well-controlled experiments that characterize the state of the metal incorporation in the TiO$_2$ surface are required to validate the predicted trends.
+
 
 
 %The lack of improvement in the rate of reaction with the addition of Ru, Pt, and Pd in the case of photocatalysis also agrees with the previous experimental findings by Hirakawa et. al.\cite{Hirakawa_2017}. They report no improvements in reaction rates when metals are bound to the TiO$_2$ surface.
 
 
-%\begin{figure}
-%    \centering
-%    \includegraphics[width=0.4\textwidth]{Images/NH2_v_limiting_pot.pdf}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.4\textwidth]{Images/NH2_v_limiting_pot.pdf}
     
-%    \caption{The limiting potential vs the NH$_2$ Binding Energy}
-%    \label{fig:NH2_limiting_pot}
-%\end{figure}
+    \caption{The limiting potential vs the NH$_2$ Binding Energy}
+    \label{fig:NH2_limiting_pot}
+\end{figure}
 
 %These results highlight the challenge of improving reaction rates for nitrogen fixation, indicating that more creative strategies must be employed. While have not considered the possible effects of metals on TiO$_2$'s bulk photochemical properties such as charge separation and carrier lifetime we believe this provides a starting point for engineering surface segregated metal dopants. In future, we could imagine engineering oxide structures with metal dopants in the bulk structure that improve photochemical properties and surface segregated metal dopants that improve reaction kinetics.
 
-%\begin{figure}
-%    \centering
-%    \includegraphics[width=0.4\textwidth]{Images/NH2_v_rate_limiting.pdf}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.4\textwidth]{Images/NH2_v_rate_limiting.pdf}
     
-%    \caption{The highest barrier observed vs the NH$_2$ Binding Energy}
-%    \label{fig:NH2_limiting_bar}
-%\end{figure}
+    \caption{The highest barrier observed vs the NH$_2$ Binding Energy}
+    \label{fig:NH2_limiting_bar}
+\end{figure}
 
 \section{Conclusions}
 The stability of metal dopant surface sites and their effects on the reaction thermodynamics of N$_2$ reduction on rutile (110) are studied using DFT. We find that the formation energy of these doped surface states is strongly related to the location of the \textit{d}-band center of the substituted metal, with a trend consistent with the \textit{d}-band model. We also find correlation between the cohesive energy of metals and their N$_2$H and NH$_2$ binding energy on the surface, suggesting that the bonding and anti-bonding regions of \textit{d}-band lies close to the fermi level. Finally, we investigate the effects of dopant sites on the full reaction pathways for 2+ sites on all studied metals. We find a clear volcano relationship between NH$_2$ binding and both the electrochemical limiting potential and the highest thermodynamic barrier for photocatalytic reactions. The formation of Co 2+ sites is proposed to yield a slight improvement of reaction rates in both electrocatalysis and photocatalysis, though other metal dopants are predicted to have a limited or deterimental effect on the surface catalytic properties of TiO$_2$ for nitrogen reduction. This suggests that the role of metal dopants in photocatalytic ammonia synthesis by TiO$_2$ is likely related to modifications of bulk properties in most cases. However, the existence of clear trends in the formation energy and reactivity of single metal atom dopants toward nitrogen intermediates suggests that computational design of metal-doped oxide materials is a promising strategy for other oxide systems and/or other nitrogen conversion reactions.
@@ -489,10 +498,6 @@ E_{adsorption} = E_{slab+adsorbate} - E_{slab} - E_{adsorbate}
 To calculate the adsorption energy at standard temperature and pressure, the thermochemistry package from ASE was used \cite{ase-paper}. Free gasses are approximated in the ideal gas limit, and adsorbed gasses in the harmonic limit. A frequency cutoff of 33 cm$^{-1}$ for low frequency modes was selected. 
 
 From these results, the free energies were calculated using Equation \ref{eq:gibbs} The vibrational mode for all metals were assumed to be approximately the same as those of the respective species adsorbed to the oxygen vacant TiO$_2$ (110) surface, thus the same thermodynamic correction values were applied to all species of the same type.
-\begin{equation*}
-    G=H-TS
-    \label{eq:gibbs}
-\end{equation*}
 
 \subsection{Photochemistry}
 \label{sec:PEC_methods}
