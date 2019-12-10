@@ -129,7 +129,6 @@ g.write('\\end{center}\n')
 g.write('\\label{table:4+_energies}\n')
 g.write('\\caption{The calculated relative energies of all 4+ surface species on all metal substituents at standard state. All energies are referenced with respect to N$_2$ gas and H$_2$ gas at 300K and 1 bar of pressure. Blank spaces represent calculations that could not be converged}\n')
 
-g.write('\hline\n')
 g.write('\\end{table}\n\n')
 
 
@@ -150,9 +149,6 @@ g.write('\\caption{The limiting potentials and limiting steps for each dopant me
 g.write('\\label{table:limiting_steps}')
 g.write('\\end{table}')
 
-
-g.write('\hline\n')
-g.write('\\end{table}\n\n')
 
 
 g.write('\\begin{table}\n\\begin{center}\n\\begin{tabular}{| c | c |c |}\n')
@@ -182,7 +178,7 @@ g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{I
 #g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{Images/Valence_vs_formation_energy.pdf}\n\\caption{Valence number vs formation energy of 2+ dopant site}\n\\end{figure}\n\n')
 
 for plot in os.listdir('../data/plots/'):
-    g.write('\\begin{figure}\n\\includegraphics[width=0.8\\linewidth]{data/plots/')
+    g.write('\\begin{figure}\n\\includegraphics[width=0.5\\linewidth]{data/plots/')
     g.write(plot)
     g.write('}\n\\label{fig:' + plot.split('.')[0] + '}\n\\end{figure}\n\n')
 
