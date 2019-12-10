@@ -157,7 +157,7 @@ g.write('\\end{table}\n\n')
 
 g.write('\\begin{table}\n\\begin{center}\n\\begin{tabular}{| c | c |c |}\n')
 g.write('\hline\n')
-g.write('Element & Limiting Potential & Limiting Step \\\\\n')
+g.write('Element & Rate Limiting Step & Limiting Step \\\\\n')
 g.write('\\hline\n')
 txt = csv.reader(open('../data/pathway_data/thermo_limiting_potential_associative_2.csv', 'r'))
 txt = list(txt)
