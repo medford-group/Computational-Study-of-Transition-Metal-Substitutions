@@ -177,10 +177,10 @@ g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{I
 
 #g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{Images/Valence_vs_formation_energy.pdf}\n\\caption{Valence number vs formation energy of 2+ dopant site}\n\\end{figure}\n\n')
 
-for plot in os.listdir('../data/plots/'):
-    g.write('\\begin{figure}\n\\includegraphics[width=0.5\\linewidth]{data/plots/')
-    g.write(plot)
-    g.write('}\n\\label{fig:' + plot.split('.')[0] + '}\n\\end{figure}\n\n')
+#for plot in os.listdir('../data/plots/'):
+#    g.write('\\begin{figure}\n\\includegraphics[width=0.5\\linewidth]{data/plots/')
+#    g.write(plot)
+#    g.write('}\n\\label{fig:' + plot.split('.')[0] + '}\n\\end{figure}\n\n')
 
 
 g.close()
