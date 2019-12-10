@@ -153,7 +153,7 @@ g.write('\\end{table}')
 
 g.write('\\begin{table}\n\\begin{center}\n\\begin{tabular}{| c | c |c |}\n')
 g.write('\hline\n')
-g.write('Element & Rate Limiting Step & Limiting Step \\\\\n')
+g.write('Element & Largest Thermodynamic Step & Limiting Step \\\\\n')
 g.write('\\hline\n')
 txt = csv.reader(open('../data/pathway_data/thermo_limiting_potential_associative_2.csv', 'r'))
 txt = list(txt)
@@ -163,7 +163,24 @@ for metal in txt:
     g.write('\\\\\n')
 g.write('\\hline\n')
 g.write('\\end{tabular}\n\\end{center}\n')
-g.write('\\caption{The largest thermodynamic barrier and correspinding steps for each dopant metal on 2+ surfaces}')
+g.write('\\caption{The largest barrier for thermochemical steps and corresponding steps for each dopant metal on 2+ surfaces}')
+g.write('\\label{table:limiting_steps}')
+g.write('\\end{table}')
+
+
+g.write('\\begin{table}\n\\begin{center}\n\\begin{tabular}{| c | c |c |}\n')
+g.write('\hline\n')
+g.write('Element & Rate Limiting Step & Limiting Step \\\\\n')
+g.write('\\hline\n')
+txt = csv.reader(open('../data/pathway_data/rate_limiting_steps_associative_2.csv', 'r'))
+txt = list(txt)
+for metal in txt:
+    g.write(metal[0] + ' & ' + str(round(float(metal[1]), 2)) + ' & ' + subscipt(metal[2]) + ' $\\rightarrow$ ' + subscipt(metal[3]))
+
+    g.write('\\\\\n')
+g.write('\\hline\n')
+g.write('\\end{tabular}\n\\end{center}\n')
+g.write('\\caption{The largest thermodynamic barrier and corresponding steps for each dopant metal on 2+ surfaces when set at the band edge of rutile, -0.142V}')
 g.write('\\label{table:limiting_steps}')
 g.write('\\end{table}')
 
