@@ -146,7 +146,7 @@ for metal in txt:
 g.write('\\hline\n')
 g.write('\\end{tabular}\n\\end{center}\n')
 g.write('\\caption{The limiting potentials and limiting steps for each dopant metal on 2+ surfaces}')
-g.write('\\label{table:limiting_steps}')
+g.write('\\label{table:pot_limiting_steps}')
 g.write('\\end{table}')
 
 
@@ -164,7 +164,7 @@ for metal in txt:
 g.write('\\hline\n')
 g.write('\\end{tabular}\n\\end{center}\n')
 g.write('\\caption{The largest barrier for thermochemical steps and corresponding steps for each dopant metal on 2+ surfaces}')
-g.write('\\label{table:limiting_steps}')
+g.write('\\label{table:thermo_limiting_steps}')
 g.write('\\end{table}')
 
 
@@ -181,7 +181,7 @@ for metal in txt:
 g.write('\\hline\n')
 g.write('\\end{tabular}\n\\end{center}\n')
 g.write('\\caption{The largest thermodynamic barrier and corresponding steps for each dopant metal on 2+ surfaces when set at the band edge of rutile, -0.142V}')
-g.write('\\label{table:limiting_steps}')
+g.write('\\label{table:rate_limiting_steps}')
 g.write('\\end{table}')
 
 g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{Images/scaling_species.pdf}\n\\caption{The calculated scaling relations between the binding energies of various species and the binding energies of N$_2$H and NH$_2$ on 2+ dopant sites}\n\\label{fig:scaling_species}\n\\end{figure}\n\n')
