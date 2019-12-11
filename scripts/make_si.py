@@ -70,6 +70,8 @@ header = r"""\documentclass[journal=jacsat,manuscript=article]{achemso}
 \usepackage{lastpage}
 \usepackage{array}
 \setlength\extrarowheight{2pt}
+\renewcommand{\thefigure}{\arabic{figure}S}
+\renewcommand{\thefigure}{S\arabic{figure}}
 
 \title{Supplementary Information for Computational Study of Transition-Metal Substitutions in Rutile TiO$_2$ (110) for Photoelectrocatalytic Ammonia Synthesis}
 
