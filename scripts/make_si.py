@@ -70,7 +70,7 @@ header = r"""\documentclass[journal=jacsat,manuscript=article]{achemso}
 \usepackage{lastpage}
 \usepackage{array}
 \setlength\extrarowheight{2pt}
-\renewcommand{\thefigure}{\arabic{figure}S}
+\renewcommand{\thetable}{S\arabic{table}}
 \renewcommand{\thefigure}{S\arabic{figure}}
 
 \title{Supplementary Information for Computational Study of Transition-Metal Substitutions in Rutile TiO$_2$ (110) for Photoelectrocatalytic Ammonia Synthesis}
@@ -84,7 +84,7 @@ $\dagger$ These authors contributed equally to this work. \\
   311 Ferst Drive NW, Atlanta, Georgia 30318 \\
   Tel.:+1 (404) 385-5531\\}
 
-\author{Benjamin M. Comer$^{1 \dagger}$, Max H. Lenk$^{2 \dagger}$, Aradhya P. Rajanala$^{3}$, Emma L. Flynn$^{4}$, Andrew J. Medford$^{1}$*}
+\author{Benjamin M. Comer, Max H. Lenk, Aradhya P. Rajanala, Emma L. Flynn, Andrew J. Medford}
 \begin{document}
 
 \maketitle"""
