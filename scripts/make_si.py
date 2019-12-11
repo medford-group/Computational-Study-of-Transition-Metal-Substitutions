@@ -48,13 +48,49 @@ for key, value in metal_dict.items():
 
 all_species = list(metal_dict.keys())
 
+
 g = open('../SI.tex', 'w')
 
-g.write('Supplementary Information\n')
+header = r"""\documentclass[journal=jacsat,manuscript=article]{achemso}
 
-g.write('\onecolumn\n')
+\usepackage{graphicx}
+\usepackage[version=3]{mhchem} % Formula subscripts using \ce{}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{longtable}
+\usepackage{placeins}
+\usepackage{color,soul}
+\usepackage[colorinlistoftodos]{todonotes}
+%\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{subcaption}
+\usepackage{comment}
+\usepackage{totcount}
+\usepackage{makecell}
+\usepackage{lastpage}
+\usepackage{array}
+\setlength\extrarowheight{2pt}
+
+\title{Supplementary Information for Computational Study of Transition-Metal Substitutions in Rutile TiO$_2$ (110) for Photoelectrocatalytic Ammonia Synthesis}
+
+\affiliation{$^{1}$ School of Chemical and Biomolecular Engineering, Georgia Institute of Technology\\
+$^{2}$ School of Materials Science and Engineering, Georgia Institute of Technology\\
+$^{3}$ School of Physics, Georgia Institute of Technology\\
+$^{4}$ School of Computer Science, Georgia Institute of Technology\\
+$\dagger$ These authors contributed equally to this work. \\
+* Correspondence \email{andrew.medford@chbe.gatech.edu}\\
+  311 Ferst Drive NW, Atlanta, Georgia 30318 \\
+  Tel.:+1 (404) 385-5531\\}
+
+\author{Benjamin M. Comer$^{1 \dagger}$, Max H. Lenk$^{2 \dagger}$, Aradhya P. Rajanala$^{3}$, Emma L. Flynn$^{4}$, Andrew J. Medford$^{1}$*}
+\begin{document}
+
+\maketitle"""
+
+g.write(header)
 
 g.write('\\begin{table}\n')
+g.write('\\setlength\\tabcolsep{2pt}\n')
 g.write('\\begin{center}\n\\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c | c |}\n')
 
 g.write('\hline\n')
@@ -199,5 +235,6 @@ g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{I
 #    g.write(plot)
 #    g.write('}\n\\label{fig:' + plot.split('.')[0] + '}\n\\end{figure}\n\n')
 
+g.write('\\end{document}')
 
 g.close()
