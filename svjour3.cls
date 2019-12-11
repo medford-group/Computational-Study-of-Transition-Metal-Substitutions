@@ -547,7 +547,8 @@ to\hsize{\vrule\kern3pt\vbox{\kern3pt
 \normalfont
 \vbox to0pt{\if@twocolumn\vskip-39pt\else\vskip-49pt\fi
 \nointerlineskip
-\makeheadbox\vss}\nointerlineskip
+%\makeheadbox
+\vss}\nointerlineskip
 \vbox to 0pt{\offinterlineskip\rubricwidth=\columnwidth
 %%%%\vskip-12.5pt          % -12.5pt
 \if@twocolumn\else % one column journal
