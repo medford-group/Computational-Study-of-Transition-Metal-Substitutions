@@ -34,9 +34,10 @@ grestore
 \usepackage[switch]{lineno}
 \usepackage{array}
 \usepackage{longtable}
-\usepackage{natbib}
+%\usepackage{natbib}
+\usepackage[numbers]{natbib}
 \usepackage{hyphenat}
-\bibliographystyle{ieeetr}
+\bibliographystyle{abbrv}
 \setcitestyle{square}
 \setcitestyle{citesep={,}}
 
@@ -211,7 +212,7 @@ $\dagger$ These authors contributed equally to this work. \\
 
 %%%%%%%% catalysis letters requests an approximately 50 word abstract. I see others with ~150 word abstracts, so let's aim for that
 
-Synthesis of ammonia through photo- and electrocatalysis is a rapidly growing field. Titania-based catalysts are widely reported for photocatalytic ammonia synthesis, and have also been suggested as electrocatalysts. Addition of transition-metal dopants is one strategy for improving performance of titania-based catalysts. In this work, we screen \textit{d}\hyp{}block transition-metal dopants for surface site stability and evaluate trends in their performance as the active site for the reduction of nitrogen to ammonia on TiO$_2$. We find a linear relationship between the \textit{d}\hyp{}band center and formation energy of the dopant site, while the binding energies of N$_2$, N$_2$H, and NH$_2$ all are strongly correlated with the cohesive energies of the dopant metals. The activity of the metal-doped systems shows a volcano type relationship with the NH$_2$ and N$_2$H energies as descriptors. Some metals such as Co, Mo, and V are predicted to slightly improve photo- and electrocatalytic performance, but most metals inhibit the ammonia synthesis reaction. The results provide insight into the role of transition-metal dopants for promoting ammonia synthesis, and the trends are based on unexpected electronic structure factors that may have broader implications for single-atom catalysis and doped oxides.
+Synthesis of ammonia through photo- and electrocatalysis is a rapidly growing field. Titania-based catalysts are widely reported for photocatalytic ammonia synthesis and have also been suggested as electrocatalysts. The addition of transition-metal dopants is one strategy for improving the performance of titania-based catalysts. In this work, we screen \textit{d}\hyp{}block transition-metal dopants for surface site stability and evaluate trends in their performance as the active site for the reduction of nitrogen to ammonia on TiO$_2$. We find a linear relationship between the \textit{d}\hyp{}band center and formation energy of the dopant site, while the binding energies of N$_2$, N$_2$H, and NH$_2$ all are strongly correlated with the cohesive energies of the dopant metals. The activity of the metal-doped systems shows a volcano type relationship with the NH$_2$ and N$_2$H energies as descriptors. Some metals such as Co, Mo, and V are predicted to slightly improve photo- and electrocatalytic performance, but most metals inhibit the ammonia synthesis reaction. The results provide insight into the role of transition-metal dopants for promoting ammonia synthesis, and the trends are based on unexpected electronic structure factors that may have broader implications for single-atom catalysis and doped oxides.
 
 \end{abstract}
 \section{Introduction}
@@ -262,14 +263,14 @@ In total, all d-block transition-metals, except Mn and Cr (23 total), are screen
     \centering
     \includegraphics[width=0.5\linewidth]{Images/ex_2+_slab.png}
     %\caption{An example of the screened 2+ slabs. The substituent metal has replaced a 6 fold Ti atom (seen in blue) and a bridging oxygen vacancy has been formed to allow the metal to enter the 2+ oxidation state.}
-    \label{fig:2+_ex_slab}
+    %\label{fig:2+_ex_slab}
 %\end{figure}
 
 %\begin{figure}
     \centering
     \includegraphics[width=0.5\linewidth]{Images/ex_4+_slab.png}
     \caption{An example of the screened 2+ (top) and 4+ (bottom) slabs. For 2+ sites the substituent metal has replaced a 6 fold Ti atom (seen in blue) and a bridging oxygen vacancy has been formed to allow the metal to enter the 2+ oxidation state.  For 4+ sites the substituent metal has replaced a 5 fold Ti atom (seen in blue) resulting in a 4+ formal oxidation state.}%, and a bridging oxygen vacancy has been formed to allow the metal to enter the 4+ oxidation state.}
-    \label{fig:2+ex_slab}
+    \label{fig:2ex_slab}
 \end{figure}
 
 %\subsection{Trends Across The Periodic Table}
@@ -504,12 +505,12 @@ The photochemistry has been treated using the methods outlined by Hellman et. al
 The potentials of electrons and holes are set at the value of the band edges of the rutile \cite{Nozik_1996}.
 
 \subsection{Model Surface Generation}
- The surfaces are constructed with 4 TiO$_2$ tri-layers (bottom 2 layers constrained to bulk positions), with a 1$\times$2 supercell repeat. The pristine slab totals 48 atoms, with 4 Ti and 8 O per tri-layer. 6 \AA  of vacuum are added on both top and bottom of the slab and a dipole corrections is applied in the $z$ direction\cite{Dipole_paper}. The lattice parameters of the unit cells are fixed at the calculated value for pure rutile TiO$_2$. 2+ sites were created by replacing the six-fold titanium site with the substituent metal and removing a single bridging oxygen (see Fig. \ref{fig:2+ex_slab}.) 4+ sites were generated by replacing the five-fold titanium site with the substituent metal. The adsorption site was selected to directly over the substituent metals. 
+ The surfaces are constructed with 4 TiO$_2$ tri-layers (bottom 2 layers constrained to bulk positions), with a 1$\times$2 supercell repeat. The pristine slab totals 48 atoms, with 4 Ti and 8 O per tri-layer. 6 \AA  of vacuum are added on both top and bottom of the slab and a dipole corrections is applied in the $z$ direction\cite{Dipole_paper}. The lattice parameters of the unit cells are fixed at the calculated value for pure rutile TiO$_2$. 2+ sites were created by replacing the six-fold titanium site with the substituent metal and removing a single bridging oxygen (see Fig. \ref{fig:2ex_slab}) 4+ sites were generated by replacing the five-fold titanium site with the substituent metal. The adsorption site was selected to directly over the substituent metals. 
 
 \section{Acknowledgements}
 We would like to thank Fuhzu Liu and Gabriel Gusm\~ao for their comments and suggestions for improving this manuscript. This material is based upon work supported by the U. S. Department of Energy, Office of Science, Office of Basic Energy Sciences Computational Chemical Sciences program under Award No.DE-SC0019410. 
 
-\bibliographystyle{abbrv}
+%\bibliographystyle{abbrv}
 \bibliography{main}
 \appendix
 %\include{SI}
