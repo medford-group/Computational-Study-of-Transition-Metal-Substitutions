@@ -1,7 +1,7 @@
 from matplotlib import pyplot as plt
 import numpy as np
 from scipy.stats import linregress
-from data import fe, column, element, cohesive_energies, N2_engs, N2H_engs, d_band, electronegativity,d_cohesive, s_cohesive, plus_4_N2H, plus_4_N2, NH2_engs_dict, N2H_engs_dict, N2_engs_dict 
+from data import fe_dict, column_dict, element, cohesive_energies, d_band, electronegativity,d_cohesive, s_cohesive, plus_4_N2H, plus_4_N2, NH2_engs_dict, N2H_engs_dict, N2_engs_dict 
 
 plt.rcParams["figure.figsize"] = (4.5,3.5)
 plt.rcParams["font.size"] = 10
@@ -15,27 +15,31 @@ n_ele = []
 n_N2_engs = []
 n_N2H_engs = []
 nn_N2H_engs = []
+N2H_engs = []
+N2_engs = []
 
-for i, e in enumerate(fe):
+
+for key, e in fe_dict.items():
     #print(element[i], column[i], e)
-    if i == len(fe)-1:
-        continue
     if e is None:
         continue
-    n_col.append(column[i])
-    n_fe.append(fe[i])
-    n_ele.append(element[i])
-    n_N2H_engs.append(N2H_engs[i])
+    if key in ['Fe', 'Y']:
+        continue
+    n_col.append(column_dict[key])
+    n_fe.append(fe_dict[key])
+    n_ele.append(key)
+    n_N2H_engs.append(N2H_engs_dict[key])
+    
 
 n_ele_N2 = []
-for e, n2,n2h in zip(element,N2_engs,N2H_engs):
-    if n2 is None:
+for e in element:
+    if e in ['Fe', 'Mn', 'Y']:
         continue
-    if e in ['Fe', 'Ni', 'Co', 'Mn', 'Cr']:
-        continue
-    n_N2_engs.append(n2)
-    nn_N2H_engs.append(n2h)
+    n_N2_engs.append(N2_engs_dict[e])
+    nn_N2H_engs.append(N2H_engs_dict[e])
     n_ele_N2.append(e)
+    N2_engs.append(N2_engs_dict[e])
+    N2_engs.append(N2H_engs_dict[e])
 
 ########################### periodic table position
 
@@ -231,13 +235,13 @@ rows = [row_1_elements, row_2_elements, row_3_elements]
 
 for i, row in enumerate(rows):
     for element_sym in row:
-        if element_sym == '':
+        if element_sym in ['', 'Mn', 'Fe', 'Y']:
             eng = 0
         elif element_sym not in element:
             eng = 0
         else:
             index = element.index(element_sym)
-            eng = N2H_engs[index]
+            eng = N2H_engs_dict[element_sym]
             if eng is None:
                 eng = 0
         if eng >= 0:

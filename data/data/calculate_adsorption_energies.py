@@ -83,9 +83,3 @@ numpy.savetxt("NH2.csv",energies,delimiter=",",fmt='%s')
 
 energies = get_energies('2+_NH3_energies.csv',N2_energy/2 + H2_energy*3/2)
 numpy.savetxt("NH3.csv",energies,delimiter=",",fmt='%s')
-
-energies = sa_get_energies('single_atom_N2H.csv',N2_energy+H2_energy/2)
-numpy.savetxt("sa_N2H.csv",energies,delimiter=",",fmt='%s')
-
-energies = sa_get_energies('single_atom_NH2.csv',N2_energy/2 + H2_energy)
-numpy.savetxt("sa_NH2.csv",energies,delimiter=",",fmt='%s')
