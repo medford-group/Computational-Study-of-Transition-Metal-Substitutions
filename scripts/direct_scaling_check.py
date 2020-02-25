@@ -6,7 +6,7 @@ import itertools
 from matplotlib import pyplot as plt
 from matplotlib.transforms import BboxBase
 from sklearn.linear_model import LinearRegression
-from data import fe, column, element, cohesive_energies, d_band, electronegativity,d_cohesive, s_cohesive, plus_4_fe, bulk_fe_big, column_dict
+from data import column, element, cohesive_energies, d_band, electronegativity,d_cohesive, s_cohesive, plus_4_fe, bulk_fe_big, column_dict
 import matplotlib
 from data import fe_dict, d_band
 from scipy.stats import linregress
