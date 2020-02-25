@@ -1,11 +1,16 @@
 import io, re
+from ase.units import Rydberg
 import csv
 import numpy
 
 slab_list = ['Sc','Ti','V','Cr','Mn','Fe','Co','Ni','Cu','Y','Zr','Nb','Mo','Tc','Ru','Rh','Pd','Ag','Hf','Ta','W','Re','Os','Ir','Pt','Au']
 
-N2_energy = -554.5670507
-H2_energy = -32.88420862
+#N2_energy = -554.5670507
+#H2_energy = -32.88420862
+
+N2_energy = -40.79776463 * Rydberg
+H2_energy = -2.42265925 * Rydberg
+
 
 def make_float(num):
     num = num.replace(' ','').replace(',','.').replace("-", "-")
