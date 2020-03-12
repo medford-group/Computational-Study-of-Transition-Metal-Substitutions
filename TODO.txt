@@ -1,9 +1,0 @@
-List of things to address prior to submission to a journal:
-
-1) Check HER activity -- is the selectivity challenge still an issue?
-
-2) Get Pt into screening plots/tables. (plus other elements that are missing)
-
-3) higher resolution calculations (550eV)
-
-4) Check spin states for all magnetic elements (Ni, Co, Cr, Fe)
