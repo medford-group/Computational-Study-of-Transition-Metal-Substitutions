@@ -1078,7 +1078,6 @@ FUNCTION {article}
     }
   if$
   format.doi output
-  format.url output
   format.note output
   format.eprint output
   fin.entry
@@ -1113,7 +1112,6 @@ FUNCTION {book}
     }
   if$
   format.doi output
-  format.url output
   format.note output
   format.eprint output
   fin.entry
@@ -1129,7 +1127,6 @@ FUNCTION {booklet}
   howpublished "howpublished" bibinfo.check output
   address "address" bibinfo.check output
   format.doi output
-  format.url output
   format.note output
   format.eprint output
   fin.entry
@@ -1167,7 +1164,6 @@ FUNCTION {inbook}
     }
   if$
   format.doi output
-  format.url output
   format.note output
   format.eprint output
   fin.entry
@@ -1194,7 +1190,6 @@ FUNCTION {incollection}
     }
   if$
   format.doi output
-  format.url output
   format.note output
   format.eprint output
   fin.entry
@@ -1224,7 +1219,6 @@ FUNCTION {inproceedings}
     }
   if$
   format.doi output
-  format.url output
   format.note output
   format.eprint output
   fin.entry
@@ -1242,7 +1236,6 @@ FUNCTION {manual}
   address "address" bibinfo.check output
   format.edition output
   format.doi output
-  format.url output
   format.note output
   format.eprint output
   fin.entry
@@ -1261,7 +1254,6 @@ FUNCTION {mastersthesis}
   school "school" bibinfo.warn output
   address "address" bibinfo.check output
   format.doi output
-  format.url output
   format.note output
   format.eprint output
   fin.entry
@@ -1277,7 +1269,6 @@ FUNCTION {misc}
   new.sentence
   howpublished "howpublished" bibinfo.check output
   format.doi output
-  format.url output
   format.note output
   format.eprint output
   fin.entry
@@ -1295,7 +1286,6 @@ FUNCTION {phdthesis}
   school "school" bibinfo.warn output
   address "address" bibinfo.check output
   format.doi output
-  format.url output
   format.note output
   format.eprint output
   fin.entry
@@ -1317,7 +1307,6 @@ FUNCTION {proceedings}
     }
   if$
   format.doi output
-  format.url output
   format.note output
   format.eprint output
   fin.entry
@@ -1336,7 +1325,6 @@ FUNCTION {techreport}
   institution "institution" bibinfo.warn output
   address "address" bibinfo.check output
   format.doi output
-  format.url output
   format.note output
   format.eprint output
   fin.entry
@@ -1350,7 +1338,6 @@ FUNCTION {unpublished}
   date.block
   format.title "title" output.check
   format.doi output
-  format.url output
   format.note "note" output.check
   format.eprint output
   fin.entry
