@@ -231,7 +231,7 @@ g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{I
 g.write('\\twocolumn\n')
 
 for i, plot in enumerate(os.listdir('../data/plots/')):
-    if not i % 4:
+    if not i % 6:
         g.write('\\clearpage\n')
     g.write('\\begin{figure}\n\\includegraphics[width=1\\linewidth]{data/plots/')
     g.write(plot)
