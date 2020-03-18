@@ -1,6 +1,7 @@
 import os
 from collections import defaultdict
 from data import plus_4_fe, plus_4_N2, plus_4_N2H 
+import json
 import csv
 
 metal_dict = defaultdict(dict)
@@ -30,6 +31,8 @@ def subscipt(species):
 
 
 for pathway in os.listdir('../data/corrected_data'):
+    if pathway == 'formation_energy.csv':
+        continue
     if '_' in pathway:
         if pathway != 'formation_energy.csv':
             continue
@@ -40,6 +43,8 @@ for pathway in os.listdir('../data/corrected_data'):
         for row in data:
             metal_dict[pathway.split('.')[0]][row[0]] = float(row[1])
 
+fes = json.load(open('../data/corrected_data/formation_energy.csv', 'r'))
+metal_dict['formation_energy'] = fes
 
 for key, value in metal_dict.items():
     for metal in value.keys():
@@ -51,29 +56,29 @@ all_species = list(metal_dict.keys())
 
 g = open('../SI.tex', 'w')
 
-header = r"""\documentclass[journal=jacsat,manuscript=article]{achemso}
+header = r"""\documentclass{article}
 
 \usepackage{graphicx}
-\usepackage[version=3]{mhchem} % Formula subscripts using \ce{}
-\usepackage{amsmath}
-\usepackage{graphicx}
-\usepackage{wrapfig}
 \usepackage{longtable}
-\usepackage{placeins}
-\usepackage{color,soul}
-\usepackage[colorinlistoftodos]{todonotes}
-%\usepackage[colorlinks=true, allcolors=blue]{hyperref}
-\usepackage{subcaption}
-\usepackage{comment}
-\usepackage{totcount}
-\usepackage{makecell}
 \usepackage{lastpage}
 \usepackage{array}
 \setlength\extrarowheight{2pt}
 \renewcommand{\thetable}{S\arabic{table}}
 \renewcommand{\thefigure}{S\arabic{figure}}
 
-\title{Supplementary Information for Computational Study of Transition-Metal Substitutions in Rutile TiO$_2$ (110) for Photoelectrocatalytic Ammonia Synthesis}
+\usepackage{geometry}
+\geometry{
+letterpaper,
+total={170mm,257mm},
+left=20mm,
+top=20mm,
+}
+
+\newcommand*{\TitleFont}{%
+      \usefont{\encodingdefault}{\rmdefault}{b}{n}%
+            \fontsize{25}{30}%
+                  \selectfont}
+\title{\TitleFont Supplementary Information for Computational Study of Transition-Metal Substitutions in Rutile TiO$_2$ (110) for Photoelectrocatalytic Ammonia Synthesis}
 
 \affiliation{$^{1}$ School of Chemical and Biomolecular Engineering, Georgia Institute of Technology\\
 $^{2}$ School of Materials Science and Engineering, Georgia Institute of Technology\\
@@ -236,7 +241,7 @@ g.write('\\twocolumn\n')
 
 for i, plot in enumerate(os.listdir('../data/plots/')):
     if not i % 2:
-        g.write('\\newpage\n')
+        g.write('\\clearpage\n')
     g.write('\\begin{figure}\n\\includegraphics[width=1\\linewidth]{data/plots/')
     g.write(plot)
     g.write('}\n\\label{fig:' + plot.split('.')[0] + '}\n\\caption{Free energy diagram for '+plot.split('_')[0]+'}\n\\end{figure}\n\n')
