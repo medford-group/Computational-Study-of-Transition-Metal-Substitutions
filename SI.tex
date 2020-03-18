@@ -1,40 +1,61 @@
-\documentclass[journal=jacsat,manuscript=article,email=0]{achemso}
+\documentclass{article}
 
 \usepackage{graphicx}
-\usepackage[version=3]{mhchem} % Formula subscripts using \ce{}
-\usepackage{amsmath}
-\usepackage{graphicx}
-\usepackage{wrapfig}
+%\usepackage[version=3]{mhchem} % Formula subscripts using \ce{}
+%\usepackage{amsmath}
+%\usepackage{graphicx}
+%\usepackage{wrapfig}
 \usepackage{longtable}
-\usepackage{placeins}
-\usepackage{color,soul}
-\usepackage[colorinlistoftodos]{todonotes}
+%\usepackage{placeins}
+%\usepackage{color,soul}
+%\usepackage[colorinlistoftodos]{todonotes}
 %\usepackage[colorlinks=true, allcolors=blue]{hyperref}
-\usepackage{subcaption}
-\usepackage{comment}
-\usepackage{totcount}
-\usepackage{makecell}
+%\usepackage{subcaption}
+%\usepackage{comment}
+%\usepackage{totcount}
+%\usepackage{makecell}
 \usepackage{lastpage}
 \usepackage{array}
+\usepackage{etoolbox}
+
+\usepackage{blindtext}
 \setlength\extrarowheight{2pt}
 \renewcommand{\thetable}{S\arabic{table}}
 \renewcommand{\thefigure}{S\arabic{figure}}
 
-\title{Supplementary Information for Computational Study of Transition-Metal Substitutions in Rutile TiO$_2$ (110) for Photoelectrocatalytic Ammonia Synthesis}
+\usepackage{geometry}
+ \geometry{
+ letterpaper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+\newcommand*{\TitleFont}{%
+      \usefont{\encodingdefault}{\rmdefault}{b}{n}%
+      \fontsize{25}{30}%
+      \selectfont}
+
+\title{\TitleFont Supplementary Information for Computational Study of Transition-Metal Substitutions in Rutile TiO$_2$ (110) for Photoelectrocatalytic Ammonia Synthesis}
+
+\makeatletter
+\patchcmd{\acs@contact@details}{E}{E}{}{ }
+\makeatother
 
 %\affiliation{$^{1}$ School of Chemical and Biomolecular Engineering, Georgia Institute of Technology\\
 %$^{2}$ School of Materials Science and Engineering, Georgia Institute of Technology\\
 %$^{3}$ School of Physics, Georgia Institute of Technology\\
 %$^{4}$ School of Computer Science, Georgia Institute of Technology\\
 %$\dagger$ These authors contributed equally to this work. \\
-%* Correspondence \email{andrew.medford@chbe.gatech.edu}\\
+%* Correspondence
+%\email{andrew.medford@chbe.gatech.edu}
 %  311 Ferst Drive NW, Atlanta, Georgia 30318 \\
 %  Tel.:+1 (404) 385-5531\\}
 
-\author{Benjamin M. Comer, Max H. Lenk, Aradhya P. Rajanala, Emma L. Flynn, Andrew J. Medford}
+\author{Benjamin M. Comer, Max H. Lenk, Aradhya P. Rajanala, Emma L. Flynn,\\ Andrew J. Medford}
 \begin{document}
 
-\maketitle\begin{table}
+\maketitle
+\begin{table}
 \setlength\tabcolsep{2pt}
 \begin{center}
 \begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c | c |}
@@ -214,21 +235,21 @@ Au & 2.57 & N$_2$ $\rightarrow$ N$_2$H$_2$*\\
 \end{center}
 \caption{The largest thermodynamic barrier and corresponding steps for each dopant metal on 2+ surfaces when set at the band edge of rutile, -0.142V}\label{table:rate_limiting_steps}\end{table}\begin{figure}
 \centering
-\includegraphics[width=0.8\linewidth]{Images/scaling_species.pdf}
+\includegraphics[width=1\linewidth]{Images/scaling_species.pdf}
 \caption{The calculated scaling relations between the binding energies of various species and the binding energies of N$_2$H and NH$_2$ on 2+ dopant sites}
 \label{fig:scaling_species}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\linewidth]{Images/scaling_reactions.pdf}
+\includegraphics[width=1\linewidth]{Images/scaling_reactions.pdf}
 \caption{The calculated scaling relations between the reaction energies energies of all electrochemical reations and the binding energies of N$_2$H and NH$_2$ on 2+ dopant sites}
 \label{fig:scaling_reactions}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\linewidth]{Images/electronegativity_vs_formation.pdf}
+\includegraphics[width=1\linewidth]{Images/electronegativity_vs_formation.pdf}
 \caption{Electronegativity vs formation energy of 2+ dopant site}
 \label{fig:electronegativity}
 \end{figure}
@@ -247,7 +268,7 @@ Au & 2.57 & N$_2$ $\rightarrow$ N$_2$H$_2$*\\
 \caption{Free energy diagram for Ir}
 \end{figure}
 
-\newpage
+\clearpage
 \begin{figure}
 \includegraphics[width=1\linewidth]{data/plots/V_associative_2.pdf}
 \label{fig:V_associative_2}
