@@ -80,15 +80,6 @@ top=20mm,
                   \selectfont}
 \title{\TitleFont Supplementary Information for Computational Study of Transition-Metal Substitutions in Rutile TiO$_2$ (110) for Photoelectrocatalytic Ammonia Synthesis}
 
-\affiliation{$^{1}$ School of Chemical and Biomolecular Engineering, Georgia Institute of Technology\\
-$^{2}$ School of Materials Science and Engineering, Georgia Institute of Technology\\
-$^{3}$ School of Physics, Georgia Institute of Technology\\
-$^{4}$ School of Computer Science, Georgia Institute of Technology\\
-$\dagger$ These authors contributed equally to this work. \\
-* Correspondence \email{andrew.medford@chbe.gatech.edu}\\
-  311 Ferst Drive NW, Atlanta, Georgia 30318 \\
-  Tel.:+1 (404) 385-5531\\}
-
 \author{Benjamin M. Comer, Max H. Lenk, Aradhya P. Rajanala, Emma L. Flynn, Andrew J. Medford}
 \begin{document}
 
@@ -240,7 +231,7 @@ g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{I
 g.write('\\twocolumn\n')
 
 for i, plot in enumerate(os.listdir('../data/plots/')):
-    if not i % 2:
+    if not i % 4:
         g.write('\\clearpage\n')
     g.write('\\begin{figure}\n\\includegraphics[width=1\\linewidth]{data/plots/')
     g.write(plot)
