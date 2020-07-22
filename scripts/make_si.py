@@ -261,7 +261,7 @@ for metal in all_metals:
     #for i, species, values in zip(range(len(metal_dict.keys())), metal_dict.keys(),\
     #                              metal_dict.values()):
         if metal in mag_dict[species].keys():
-            g.write(str(round(metal_dict[species][metal], 2)))
+            g.write(str(round(mag_dict[species][metal], 2)))
         if i != len(metal_dict.keys()) - 1:
             g.write(' & ')
     g.write(' \\\\\n')
