@@ -230,7 +230,7 @@ g.write('\\end{table}')
 
 g.write('\\begin{table}\n')
 g.write('\\setlength\\tabcolsep{2pt}\n')
-g.write('\\begin{center}\n\\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c | c |}\n')
+g.write('\\begin{center}\n\\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c |}\n')
 
 g.write('\hline\n')
 g.write('Element & ')
@@ -251,8 +251,10 @@ for i, species in enumerate(all_species):
         if subscripted == 'formation energy':
             subscripted = 'Formation Energy'
     g.write(subscripted)
-    if i != len(all_species) - 1:
+    if i != len(all_species) - 2:
         g.write(' & ')
+    else:
+        print(species)
 g.write('\\\\\n\hline\n')
 g.write('\n')
 
@@ -264,7 +266,7 @@ for metal in all_metals:
     #                              metal_dict.values()):
         if metal in mag_dict[species].keys():
             g.write(str(round(mag_dict[species][metal], 2)))
-        if i != len(metal_dict.keys()) - 1:
+        if i != len(metal_dict.keys()) - 2:
             g.write(' & ')
     g.write(' \\\\\n')
 
