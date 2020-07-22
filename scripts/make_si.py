@@ -5,6 +5,7 @@ import json
 import csv
 
 metal_dict = defaultdict(dict)
+mag_dict = defaultdict(dict)
 all_metals = []
 all_species = []
 
@@ -42,6 +43,12 @@ for pathway in os.listdir('../data/corrected_data'):
         data = csv.reader(f)
         for row in data:
             metal_dict[pathway.split('.')[0]][row[0]] = float(row[1])
+
+for pathway in os.listdir('../data/magnetizations'):
+    with open('../data/magnetizations/' + pathway, 'r') as f:
+        data = csv.reader(f)
+        for row in data:
+            mag_dict[pathway.split('.')[0]][row[0]] = float(row[1])
 
 fes = json.load(open('../data/corrected_data/formation_energy.csv', 'r'))
 metal_dict['formation_energy'] = fes
@@ -217,6 +224,53 @@ g.write('\\end{tabular}\n\\end{center}\n')
 g.write('\\caption{The largest thermodynamic barrier and corresponding steps for each dopant metal on 2+ surfaces when set at the band edge of rutile, -0.142V}')
 g.write('\\label{table:rate_limiting_steps}')
 g.write('\\end{table}')
+
+
+g.write('\\begin{table}\n')
+g.write('\\setlength\\tabcolsep{2pt}\n')
+g.write('\\begin{center}\n\\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c | c |}\n')
+
+g.write('\hline\n')
+g.write('Element & ')
+all_species = sorted(all_species)
+for i, species in enumerate(all_species):
+    subscripted = ''
+    for j, char in enumerate(species):
+        if j == 0:
+            subscripted += char
+        elif char.isdecimal():
+            subscripted += '$_' + char + '$'
+        elif char == '_':
+            subscripted += ' '
+        else:
+            subscripted += char
+        if subscripted == 'formation energy':
+            subscripted = 'Formation Energy'
+    g.write(subscripted)
+    if i != len(all_species) - 1:
+        g.write(' & ')
+g.write('\\\\\n\hline\n')
+g.write('\n')
+
+
+for metal in all_metals:
+    g.write(metal + ' & ')
+    for i, species in enumerate(all_species):
+    #for i, species, values in zip(range(len(metal_dict.keys())), metal_dict.keys(),\
+    #                              metal_dict.values()):
+        if metal in mag_dict[species].keys():
+            g.write(str(round(metal_dict[species][metal], 2)))
+        if i != len(metal_dict.keys()) - 1:
+            g.write(' & ')
+    g.write(' \\\\\n')
+
+g.write('\hline\n')
+
+g.write('\\end{tabular}\n')
+g.write('\\end{center}\n')
+g.write('\\caption{The calculated total magnetic moments for the unit cells of each 2+ species. Blank spaces represent calculations that could not be converged}\n')
+g.write('\\label{table:mags}\n')
+g.write('\\end{table}\n\n')
 
 g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{Images/scaling_species.pdf}\n\\caption{The calculated scaling relations between the binding energies of various species and the binding energies of N$_2$H and NH$_2$ on 2+ dopant sites}\n\\label{fig:scaling_species}\n\\end{figure}\n\n')
 
