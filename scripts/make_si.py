@@ -262,6 +262,8 @@ g.write('\n')
 for metal in all_metals:
     g.write(metal + ' & ')
     for i, species in enumerate(all_species):
+        if 'formation' in species:
+            continue
     #for i, species, values in zip(range(len(metal_dict.keys())), metal_dict.keys(),\
     #                              metal_dict.values()):
         if metal in mag_dict[species].keys():
