@@ -48,7 +48,9 @@ for pathway in os.listdir('../data/magnetizations'):
     with open('../data/magnetizations/' + pathway, 'r') as f:
         data = csv.reader(f)
         for row in data:
-            mag_dict[pathway.split('.')[0]][row[0]] = float(row[1])
+            species = pathway.split('_magnetizations.')[0].split('_')[1]
+            mag_dict[species][row[0]] = float(row[1])
+
 
 fes = json.load(open('../data/corrected_data/formation_energy.csv', 'r'))
 metal_dict['formation_energy'] = fes
