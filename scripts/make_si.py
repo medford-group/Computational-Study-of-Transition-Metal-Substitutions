@@ -236,6 +236,8 @@ g.write('\hline\n')
 g.write('Element & ')
 all_species = sorted(all_species)
 for i, species in enumerate(all_species):
+    if 'formation' in species:
+        continue
     subscripted = ''
     for j, char in enumerate(species):
         if j == 0:
