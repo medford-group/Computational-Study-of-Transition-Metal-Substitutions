@@ -8,6 +8,7 @@ metal_dict = defaultdict(dict)
 mag_dict = defaultdict(dict)
 all_metals = []
 all_species = []
+mag_4_dict = defaultdict(dict)
 
 
 N2_corr = 0.0356539561469
@@ -50,6 +51,17 @@ for pathway in os.listdir('../data/magnetizations'):
         for row in data:
             species = pathway.split('_magnetizations.')[0].split('_')[1]
             mag_dict[species][row[0]] = float(row[1])
+
+mag_dict['Slab'] = mag_dict.pop('Clean')
+
+for pathway in os.listdir('../data/4+_data/magnetizations/'):
+    with open('../data/4+_data/magnetizations/' + pathway, 'r') as f:
+        data = csv.reader(f)
+        for row in data:
+            species = pathway.split('_magnetizations.')[0].split('_')[1]
+            mag_4_dict[species][row[0]] = float(row[1])
+
+mag_4_dict['Slab'] = mag_4_dict.pop('pristine')
 
 
 fes = json.load(open('../data/corrected_data/formation_energy.csv', 'r'))
@@ -234,8 +246,13 @@ g.write('\\begin{center}\n\\begin{tabular}{| c | c | c | c | c | c | c | c | c |
 
 g.write('\hline\n')
 g.write('Element & ')
-all_species = sorted(all_species)
-for i, species in enumerate(all_species):
+
+mag_species = all_species.copy()
+mag_species.remove('formation_energy')
+mag_species.append('Slab')
+
+mag_species = sorted(mag_species)
+for i, species in enumerate(mag_species):
     if 'formation' in species:
         continue
     subscripted = ''
@@ -251,24 +268,22 @@ for i, species in enumerate(all_species):
         if subscripted == 'formation energy':
             subscripted = 'Formation Energy'
     g.write(subscripted)
-    if i != len(all_species) - 2:
+    if i != len(mag_species) - 1:
         g.write(' & ')
-    else:
-        print(species)
 g.write('\\\\\n\hline\n')
 g.write('\n')
 
 
 for metal in all_metals:
     g.write(metal + ' & ')
-    for i, species in enumerate(all_species):
+    for i, species in enumerate(mag_species):
         if 'formation' in species:
             continue
     #for i, species, values in zip(range(len(metal_dict.keys())), metal_dict.keys(),\
     #                              metal_dict.values()):
         if metal in mag_dict[species].keys():
             g.write(str(round(mag_dict[species][metal], 2)))
-        if i != len(metal_dict.keys()) - 2:
+        if i != len(metal_dict.keys()) - 1:
             g.write(' & ')
     g.write(' \\\\\n')
 
@@ -280,6 +295,59 @@ g.write('\\caption{The calculated total magnetic moments for the unit cells of e
 g.write('\\label{table:mags}\n')
 g.write('\\end{table}\n\n')
 
+
+"""
+g.write('\\begin{table}\n')
+g.write('\\setlength\\tabcolsep{2pt}\n')
+g.write('\\begin{center}\n\\begin{tabular}{| c | c | c |}\n')
+
+g.write('\hline\n')
+g.write('Element & ')
+mag_species = sorted(mag_species)
+for i, species in enumerate(['N2', 'N2H', 'Slab']):
+    if 'formation' in species:
+        continue
+    subscripted = ''
+    for j, char in enumerate(species):
+        if j == 0:
+            subscripted += char
+        elif char.isdecimal():
+            subscripted += '$_' + char + '$'
+        elif char == '_':
+            subscripted += ' '
+        else:
+            subscripted += char
+        if subscripted == 'formation energy':
+            subscripted = 'Formation Energy'
+    g.write(subscripted)
+    if i != 2:
+        g.write(' & ')
+g.write('\\\\\n\hline\n')
+g.write('\n')
+
+
+for metal in all_metals:
+    g.write(metal + ' & ')
+    for i, species in enumerate(['N2', 'N2H', 'Slab']):
+        if 'formation' in species:
+            continue
+    #for i, species, values in zip(range(len(metal_dict.keys())), metal_dict.keys(),\
+    #                              metal_dict.values()):
+        if metal in mag_4_dict[species].keys():
+            g.write(str(round(mag_4_dict[species][metal], 2)))
+        if i != 2:
+            g.write(' & ')
+    g.write(' \\\\\n')
+
+g.write('\hline\n')
+
+g.write('\\end{tabular}\n')
+g.write('\\end{center}\n')
+g.write('\\caption{The calculated total magnetic moments for the unit cells of each 2+ species. Blank spaces represent calculations that could not be converged}\n')
+g.write('\\label{table:mags}\n')
+g.write('\\end{table}\n\n')
+
+"""
 g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{Images/scaling_species.pdf}\n\\caption{The calculated scaling relations between the binding energies of various species and the binding energies of N$_2$H and NH$_2$ on 2+ dopant sites}\n\\label{fig:scaling_species}\n\\end{figure}\n\n')
 
 g.write('\\begin{figure}\n\\centering\n\\includegraphics[width=0.8\\linewidth]{Images/scaling_reactions.pdf}\n\\caption{The calculated scaling relations between the reaction energies energies of all electrochemical reations and the binding energies of N$_2$H and NH$_2$ on 2+ dopant sites}\n\\label{fig:scaling_reactions}\n\\end{figure}\n\n')
